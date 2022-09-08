@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DMD.BL.Models\DMD.BL.Models.csproj" />
+    <ProjectReference Include="..\DMD.PL\DMD.PL.csproj" />
+  </ItemGroup>
+
+</Project>

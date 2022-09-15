@@ -59,5 +59,16 @@
     <Folder Include="PostDeploy" />
     <Folder Include="PreDeploy" />
     <Folder Include="Tables" />
+    <Folder Include="PostDeploy\DefaultData" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="PostDeploy\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="PreDeploy\Script.PreDeployment1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\tblUser.sql" />
+    <Build Include="Tables\tblCharacter.sql" />
   </ItemGroup>
 </Project>

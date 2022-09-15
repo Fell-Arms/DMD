@@ -1,0 +1,5 @@
+Finish building basic tables and the scripts in the DB project
+Set up foreign key relationships between tables
+
+Ensure DB builds
+Get scaffolding set up

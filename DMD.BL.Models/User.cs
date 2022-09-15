@@ -2,7 +2,7 @@
 {
     public class User
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } // use guids instead of Id
         public string UserName { get; set; }
         public string Password { get; set; } //todo: Make sure this is hashed later.
         public string Email { get; set; }

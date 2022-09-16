@@ -1,0 +1,12 @@
+﻿Tools → NuGet Package Manager → Package Manager Console
+Switch project to PL with NuGet
+
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+Install-Package Microsoft.EntityFrameworkCore.Tools
+Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design
+
+Scaffold-DbContext "Server=(localdb)\MSSQLLocalDb;Database=DMD.DB;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -Context DMDEntities -UseDatabaseNames -force
+
+
+remote server:
+optionsBuilder.UseSqlServer("Data Source=dmdadmindb.database.windows.net;Initial Catalog=dmddb;User ID=dmdadmindb;Password=Test123!;Connect Timeout = 30;Encrypt = True; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");

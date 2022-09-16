@@ -73,6 +73,7 @@
     <Build Include="Tables\tblCharacter.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="PostDeploy\DefaultData\User.sql" />
+    <None Include="PostDeploy\DefaultData\Users.sql" />
+    <None Include="local.publish.xml" />
   </ItemGroup>
 </Project>

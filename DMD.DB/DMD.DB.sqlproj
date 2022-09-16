@@ -60,6 +60,7 @@
     <Folder Include="PreDeploy" />
     <Folder Include="Tables" />
     <Folder Include="PostDeploy\DefaultData" />
+    <Folder Include="ForeignKeys" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeploy\Script.PostDeployment.sql" />
@@ -70,5 +71,8 @@
   <ItemGroup>
     <Build Include="Tables\tblUser.sql" />
     <Build Include="Tables\tblCharacter.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeploy\DefaultData\User.sql" />
   </ItemGroup>
 </Project>

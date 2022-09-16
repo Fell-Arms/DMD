@@ -3,3 +3,6 @@ Set up foreign key relationships between tables
 
 Ensure DB builds
 Get scaffolding set up
+
+
+Add address to User table

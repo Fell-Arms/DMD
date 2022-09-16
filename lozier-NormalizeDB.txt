@@ -1,0 +1,191 @@
+DB PURPOSE
+Track user data and their characters
+
+ATTRIBUTES
+
+****************************************************
+** V1
+****************************************************
+
+Character Name
+Class
+Level
+Experience Points
+Race
+Alignment
+Age
+Height
+Weight
+Eyes
+Skin
+Hair
+
+Strength
+Dexterity
+Constitution
+Intelligence
+Wisdom
+Charisma
+
+Inspiration
+Proficiency Bonus
+Saving Throws
+
+Acrobatics
+Animal Handling
+Arcana
+Athletics
+Deception
+History
+Insight
+Intimidation
+Investigation
+Medicine
+Nature
+Perception
+Performance
+Persuasion
+Religion
+Sleight of Hand
+Stealth
+Survival
+
+Armor Class
+Initiative
+Speed
+Max Hit Points
+Current Hit Points
+Temporary Hit Points
+
+Hit Dice
+
+Death Saves
+Successes
+Failures
+
+Personality Traits
+Ideals
+Bonds
+Flaws
+
+Features and Traits
+
+Equipment
+
+Currency
+	Copper Pieces
+	Silver Pieces
+	Electrum Pieces
+	Gold Pieces
+	Platinum Pieces
+
+Languages
+
+Appearance
+
+Allies & Organizations
+
+Backstory
+
+Treasure
+
+Spellcasting Ability (Stat)
+
+Spell Slots
+	Spell Level
+	Total Slots
+	Slots Expended
+
+
+****************************************************
+** V2 (Determine Composite & Derived)
+****************************************************
+
+Character Name
+Class
+Level
+Experience Points
+Race
+Alignment
+Age
+Height
+Weight
+Eyes
+Skin
+Hair
+
+Strength
+Dexterity
+Constitution
+Intelligence
+Wisdom
+Charisma
+
+Inspiration
+Proficiency Bonus
+Saving Throws
+
+Acrobatics
+Animal Handling
+Arcana
+Athletics
+Deception
+History
+Insight
+Intimidation
+Investigation
+Medicine
+Nature
+Perception
+Performance
+Persuasion
+Religion
+Sleight of Hand
+Stealth
+Survival
+
+Armor Class
+Initiative (derived) 
+Speed
+Max Hit Points
+Current Hit Points
+Temporary Hit Points
+
+Hit Dice
+
+Death Saves
+   Successes
+   Failures
+
+Personality Traits
+Ideals
+Bonds
+Flaws
+
+Features and Traits
+
+Equipment
+
+Currency
+	Copper Pieces
+	Silver Pieces
+	Electrum Pieces
+	Gold Pieces
+	Platinum Pieces
+
+Languages
+
+Appearance
+
+Allies & Organizations
+
+Backstory
+
+Treasure
+
+Spellcasting Ability (Stat)
+
+Spell Slots
+	Spell Level
+	Total Slots
+	Slots Expended

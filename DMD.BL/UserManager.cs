@@ -8,6 +8,7 @@ using DMD.BL;
 using DMD.PL;
 using Microsoft.EntityFrameworkCore.Storage;
 using DMD.BL.Models;
+using Microsoft.Extensions.Logging;
 
 
 namespace DMD.BL
@@ -65,7 +66,9 @@ namespace DMD.BL
                     tblUser row = new tblUser();
                     // Set the properties
                     // Use a Ternary operator (if else in 1 line.)
-                    row.Id = dc.tblUsers.Any() ? dc.tblUsers.Max(s => s.Id) + 1 : 1; //NEEDS TO BE LOOKED AT
+                    //row.Id = dc.tblUsers.Any() ? dc.tblUsers.Max(s => s.Id) + 1 : 1; //NEEDS TO BE LOOKED AT
+                    
+                    row.Id = Guid.NewGuid();
                     row.FirstName = user.FirstName;
                     row.LastName = user.LastName;
                     row.Username = user.UserName;
@@ -97,7 +100,7 @@ namespace DMD.BL
                             tblUser tblUser = dc.tblUsers.FirstOrDefault(u => u.Username == user.UserName);
                             if (tblUser != null)
                             {
-                                if (tblUser.Password == GetHash(user.Password))
+                                if (tblUser.Password == user.Password) //HASH LATER!
                                 {
                                    // Back fill all the user data, if logged in succedes
                                     user.FirstName = tblUser.FirstName;

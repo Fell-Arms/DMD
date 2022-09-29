@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Account";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Account</h1>
+    <p>
+        This page is accessible through clicking your username or icon.
+        Here, users can view their account details, edit their information, or delete their account.
+    </p>
+
+    <br />
+    <a class="btn btn-secondary" asp-area="" asp-controller="Account" asp-action="Details">Account Details</a>
+    <a class="btn btn-secondary" asp-area="" asp-controller="Account" asp-action="Edit">Edit Account</a>
+    <br />
+    <br />
+    <a class="btn btn-danger" asp-area="" asp-controller="Account" asp-action="Delete">Delete Account</a>
+</div>

@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Play";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Play</h1>
+    <p>
+        This page will be the main play window. Might include options like viewing details 
+        about current games, creating new games, and deleting games.
+    </p>
+
+    <br />
+    <a class="btn btn-secondary" asp-area="" asp-controller="Play" asp-action="Details">Game Details</a>
+    <a class="btn btn-secondary" asp-area="" asp-controller="Play" asp-action="Edit">Edit Game</a>
+    <a class="btn btn-secondary" asp-area="" asp-controller="Play" asp-action="Create">Create Game</a>
+    <br />
+    <br />
+    <a class="btn btn-danger" asp-area="" asp-controller="Play" asp-action="Delete">Delete Game</a>
+</div>

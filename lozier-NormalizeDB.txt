@@ -105,46 +105,49 @@ Spell Slots
 
 Character Name
 Class
-Level
+Level (Derived - Potentially makes sense to include?)
 Experience Points
 Race
 Alignment
 Age
 Height
 Weight
-Eyes
-Skin
-Hair
+EyeColor
+SkinColor
+HairColor
+HairStyle
 
-Strength
-Dexterity
-Constitution
-Intelligence
-Wisdom
-Charisma
+Stats
+	Strength
+	Dexterity
+	Constitution
+	Intelligence
+	Wisdom
+	Charisma
 
 Inspiration
 Proficiency Bonus
 Saving Throws
 
-Acrobatics
-Animal Handling
-Arcana
-Athletics
-Deception
-History
-Insight
-Intimidation
-Investigation
-Medicine
-Nature
-Perception
-Performance
-Persuasion
-Religion
-Sleight of Hand
-Stealth
-Survival
+Skills
+	Acrobatics
+	Animal Handling
+	Arcana
+	Athletics
+	Deception
+	History
+	Insight
+	Intimidation
+	Investigation
+	Medicine
+	Nature
+	Perception
+	Performance
+	Persuasion
+	Religion
+	Sleight of Hand
+	Stealth
+	Survival
 
 Armor Class
 Initiative (derived) 
@@ -153,20 +156,24 @@ Max Hit Points
 Current Hit Points
 Temporary Hit Points
 
-Hit Dice
+	Hit Dice
 
 Death Saves
-   Successes
-   Failures
+   Successes (int?)
+   Failures (int?)
 
 Personality Traits
-Ideals
-Bonds
-Flaws
+	Ideals
+	Bonds
+	Flaws
 
 Features and Traits
+	...ToDo?
 
 Equipment
+	Name
+
+
 
 Currency
 	Copper Pieces
@@ -175,15 +182,19 @@ Currency
 	Gold Pieces
 	Platinum Pieces
 
-Languages
+CharacterLanguages
+	Languages
 
-Appearance
+AppearanceImage
 
 Allies & Organizations
 
 Backstory
 
 Treasure
+	Name
+	Value
+	Image
 
 Spellcasting Ability (Stat)
 
@@ -191,3 +202,64 @@ Spell Slots
 	Spell Level
 	Total Slots
 	Slots Expended
+
+*********************************************************************************
+**V3 (Rough Tables: Check for Multi-Value)
+*********************************************************************************
+
+CHARACTERS
+	ID
+	ClassID
+	FirstName
+	LastName (Can be null)
+	
+CLASS
+	ID
+	Name
+	Description
+	
+	CHARACTER_STATS
+		ID
+		CharacterID
+		StatID
+		Value +1 +2 +3  7 11 15 
+		SpellcastingStat (bit - True/False)
+
+STATS
+	ID
+	Name
+
+STATS_MODIFIER
+	ID
+	Modifier
+	Value
+
+SKILLS
+	ID
+	StatID
+	Name
+
+	CHARACTER_SPELLS
+		ID
+		CharacterID
+		SpellID
+
+SPELLS
+	ID
+	Name
+	Level
+
+
+
+
+
+
+
+
+*********************************************************************************
+**V4 (1NF: Non-key attributes depend on key. No MV attributes.)
+*********************************************************************************
+
+*********************************************************************************
+**V5 (2NF: No Partial Dependencies. Each non-key attribute depends on whole key.)
+*********************************************************************************

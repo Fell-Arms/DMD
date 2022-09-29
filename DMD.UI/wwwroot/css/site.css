@@ -16,18 +16,3 @@ html {
 body {
   margin-bottom: 60px;
 }
-
-
-/*-----CUSTOM CSS------*/
-.btnLogin {
-    padding: 4px 8px 4px 8px;
-    margin:10px;
-    background-color:gold;
-    color:white;
-    text-align:center;
-}
-
-.btnLogin:hover {
-    background-color: yellow;
-    color: black;
-}

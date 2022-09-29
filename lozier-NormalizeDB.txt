@@ -207,11 +207,16 @@ Spell Slots
 **V3 (Rough Tables: Check for Multi-Value)
 *********************************************************************************
 
-CHARACTERS
+CHARACTER
 	ID
 	ClassID
 	FirstName
 	LastName (Can be null)
+
+	CHARACTER_CLASSES
+		ID
+		CharacterID
+		ClassID
 	
 CLASS
 	ID
@@ -222,17 +227,18 @@ CLASS
 		ID
 		CharacterID
 		StatID
-		Value +1 +2 +3  7 11 15 
+		Value 
 		SpellcastingStat (bit - True/False)
 
 STATS
 	ID
 	Name
+	Description
 
 STATS_MODIFIER
 	ID
-	Modifier
 	Value
+	Modifier
 
 SKILLS
 	ID
@@ -247,10 +253,92 @@ SKILLS
 SPELLS
 	ID
 	Name
+	SpellLevel
+	ElementID
+	Targets
+	DamageDie
+	Description
+
+	ELEMENT
+		ID
+		Name
+
+LANGUAGES
+	ID
+	Name
+	Description
+
+	CHARACTER_LANGUAGES
+		ID
+		CharacterID
+		LanguageID
+
+LEVEL_TABLE
+	ID
 	Level
+	Experience
+	ProficiencyBonus (derived from Level)
+	
+SPELL_SLOTS_TABLE
+	ID
+	LevelID
+	Cantrip
+	LevelOne
+	LevelTwo
+	LevelThree
+	LevelFour
+	LevelFive
+	LevelSix
+	LevelSeven
+	LevelEight
+	LevelNine
+
+	CHARACTER_SPELL_SLOTS --- Not sure if right
+		ID
+		CharacterID
+
+WEAPONS
+	ID
+	StatID
+	Name
+	WeaponType
+	DamageType
+	DamageDie
+	Cost
+
+	CHARACTER_WEAPONS
+		ID
+		CharacterID
+		WeaponID
+		Proficient (bit)
+
+ARMOR
+	ID
+	Style
+	Type
+	ACBonus
+	Cost
+
+	CHARACTER_ARMOR
+		ID
+		CharacterID
+		ArmorID
 
 
+AttackSkills
+	ID
+	ClassID
+	Name
+	Description
+	Targets
+	Damage
+	MaxUses
+	UseWeapon (bit)
 
+CharacterAttackSkillUses
+	CharacterID
+	AttackSkillsID
+	UsesSinceRest
 
 
 

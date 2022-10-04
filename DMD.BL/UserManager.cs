@@ -72,6 +72,7 @@ namespace DMD.BL
                     row.FirstName = user.FirstName;
                     row.LastName = user.LastName;
                     row.Username = user.UserName;
+                    row.Email = user.Email;
                     row.Password = GetHash(user.Password);
                     dc.tblUsers.Add(row);
                     results = dc.SaveChanges();
@@ -100,18 +101,18 @@ namespace DMD.BL
                             tblUser tblUser = dc.tblUsers.FirstOrDefault(u => u.Username == user.UserName);
                             if (tblUser != null)
                             {
-                                if (tblUser.Password == user.Password) //HASH LATER!
-                                {
+                                //if (tblUser.Password == user.Password) //HASH LATER!
+                               //{
                                    // Back fill all the user data, if logged in succedes
                                     user.FirstName = tblUser.FirstName;
                                     user.LastName = tblUser.LastName;
                                     user.Id = tblUser.Id;
                                     return true;
-                                }
-                                else
-                                {
+                               // }
+                               // else  NOT HASHED YET...
+                                //{
                                     throw new LoginFailureException();
-                                }
+                               // }
                             }
                             else
                             {
@@ -140,6 +141,7 @@ namespace DMD.BL
             {
                 UserName = "bfoote",
                 FirstName = "Brian",
+                Email = "test@test.com",
                 LastName = "Foote",
                 Password = "maple"
             };
@@ -148,6 +150,7 @@ namespace DMD.BL
             {
                 UserName = "ketchum",
                 FirstName = "Ash",
+                Email = "ashketchum@test.com",
                 LastName = "Ketchum",
                 Password = "maple"
             };

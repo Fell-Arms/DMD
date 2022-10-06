@@ -188,7 +188,7 @@ CharacterLanguages
 AppearanceImage
 
 Allies & Organizations
-
+t
 Backstory
 
 Treasure
@@ -217,6 +217,7 @@ CHARACTER
 		ID
 		CharacterID
 		ClassID
+		Level
 	
 CLASS
 	ID
@@ -252,12 +253,15 @@ SKILLS
 
 SPELLS
 	ID
+	ClassID
+	ElementID
 	Name
 	SpellLevel
-	ElementID
 	Targets
 	DamageDie
 	Description
+	TargetAllies (bit)
+	Heal (bit)
 
 	ELEMENT
 		ID
@@ -330,6 +334,7 @@ AttackSkills
 	ClassID
 	Name
 	Description
+	Level
 	Targets
 	Damage
 	MaxUses

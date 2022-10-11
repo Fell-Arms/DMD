@@ -14,13 +14,24 @@ namespace DMD.BL.Test
             Assert.AreEqual(2, users.Count);
         }
 
+        //Test The Update Function
+        [TestMethod]
+        public void UpdateTest()
+        {
+            List<User> users = UserManager.Load();     //Create a load method.
+            User user = users[0];
+            user.UserName = "Test1";
 
-        //Adjust to properly test delete function.
-        
+            int results = UserManager.Delete(user.Id, true);
+            Assert.AreEqual(1, results);
+        }
+
+        //Test The Delete Function
         [TestMethod]
         public void DeleteTest()
         {
-            List<User> user = UserManager.Load();     //Create a load method.
+            List<User> users = UserManager.Load();     //Create a load method.
+            User user = users[0];
 
             int results = UserManager.Delete(user.Id, true);
             Assert.AreEqual(1, results);

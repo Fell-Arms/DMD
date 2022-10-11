@@ -105,11 +105,11 @@ namespace DMD.BL
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
 
-                    //Make a new row in the User Table.
+                    //Get current row from user User Table.
                     tblUser row = dc.tblUsers.Where(dt => dt.Id == user.Id).FirstOrDefault();
 
                     //Set the data for the new row in User Table
-                    row.Id = dc.tblUsers.Any() ? dc.tblUsers.Max(s => s.Id) : user.Id; //This part needs fixing!!
+                    row.Id = user.Id;
                     row.Username = user.UserName;
                     row.Password = user.Password;
                     row.Email = user.Email;
@@ -177,11 +177,11 @@ namespace DMD.BL
         {
             try
             {
-                //Sets List of Customers with the name of "rows" to the value of a list of customers.
+                //Sets List of Users with the name of "rows" to the value of a list of Users.
                 List<User> rows = new List<User>();
                 using (DMDEntities dc = new DMDEntities())
                 {
-                    // select * from tblCustomers
+                    // select * from tblUsers
                     dc.tblUsers
                         .ToList()
                         .ForEach(dt => rows.Add(new User
@@ -207,13 +207,14 @@ namespace DMD.BL
         //NEED TO FINISH FOR TESTING TO BE DONE.
 
         //Load By ID Method.
-        //public static User LoadById(Guid id)
-        //{
-        //    try
-        //    {
-        //        using (DMDEntities)
-        //    }
-        //}
+       /* public static User LoadById(Guid Id)
+        {
+            try
+            {
+                using (DMDEntities)
+            }
+        }
+       */
 
 
 

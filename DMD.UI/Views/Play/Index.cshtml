@@ -1,7 +1,196 @@
-﻿@{
-    ViewData["Title"] = "Play";
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    Layout = null;
 }
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Play</title>
+    <link rel="stylesheet" href="~/css/playStylesheet/styles.css" />
+    <link rel="stylesheet" href="~/css/jQueryUI/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script href="~/js/jQueryUI/jquery-ui.min.js"></script>
+    <script href="~/js/jQueryUI/jquery.js"></script>
+
+</head>
+
+<script>
+        var currentZoom = 1.0;
+
+        function zoomOut() {
+            if(currentZoom >= .6){
+                $(".zoomable").animate({ 'zoom': currentZoom -= .1 }, 'fast');
+                if(currentZoom == 1){
+                    $("#zoomLabel").text("")
+                }
+                else{
+                    $("#zoomLabel").text("Zoom:" + Math.round(currentZoom * 100) + "%");
+                }
+            }
+        }
+
+        function zoomIn() {
+            if (currentZoom <= 1.5) {
+                $(".zoomable").animate({ 'zoom': currentZoom += .1 }, 'fast');
+                if (currentZoom == 1) {
+                    $("#zoomLabel").text("")
+                }
+                else {
+                    $("#zoomLabel").text("Zoom:" + Math.round(currentZoom * 100) + "%");
+                }
+            }
+        }
+
+        function closeNav() {
+            $("#navbar").animate({ height: "0px" });
+            $(".navitem").hide("slow");
+        }
+        function openNav() {
+            $("#navbar").animate({ height: "50px" });
+            $(".navitem").show("slow");
+        }
+
+        function openForm() {
+          document.getElementById("chatBox").style.display = "block";
+        }
+
+        function closeForm() {
+          document.getElementById("chatBox").style.display = "none";
+        }
+        
+        $(function(){
+            $(".draggable-ui").draggable({ scroll: true, scrollSensitivity: 200});
+            
+            $("#toolbar").draggable({ containment: "#toolWindow", snap: "true", snap: "#toolWindow", snapMode: "inner", stack: ".draggable-ui" });
+            
+            $("#chatBox").draggable({ containment: "#toolWindow", snap: "true", snap: "#toolWindow", snapMode: "inner", stack: ".draggable-ui" });
+            
+            $("#grid20").draggable({ grid: [ 20, 20 ] });
+            $("#grid80").draggable({ grid: [ 80, 80 ] });
+            
+            $( "#chatBox" ).resizable({
+              maxHeight: 750,
+              maxWidth: 400,
+              minHeight: 400,
+              minWidth: 200
+            });
+        });
+    </script>
+    
+
+    <!----------------------- NAV DIV-------------------------->
+            <div id="navbar">
+                <a class="navitem" id="homeicon" href="../Home">DMD</a>
+                <a class="navitem" href="../User/Login">Login</a>
+                <a class="navitem" href="../User/Logout">Logout</a>
+                <a class="navitem" href="../Landing">Landing</a>
+                <a class="navitem" href="../Account">Account</a>
+                <a class="navitem" href="../Play">Play</a>
+                <a class="navitem" href="../Sheets">Sheets</a>
+
+                @{
+                    var fullname = @HttpContextAccessor.HttpContext?.Session.GetString("fullname");
+                    if (fullname != null) fullname = fullname.Replace("\"", "");
+                }
+                <a class="navitem" id="username">@fullname</a>
+                <button class="navitem open-button" onclick="closeNav()">5</button>
+            </div>
+    <!--------------------------------------------------------->
+
+    <div id="page">
+
+        <div class="controlbtns">
+        <!----------------Button that opens the CHAT ------------------------>
+        <button class="open-button" onclick="openForm()">^</button>
+        <!------------------------------------------------------------------->
+
+        <!----------------Button that opens the NAV ------------------------>
+        <button class="open-button" onclick="openNav()">6</button>
+        <!------------------------------------------------------------------->
+        <!----------------Button that ZOOMS OUT ------------------------>
+        <button class="open-button" onclick="zoomOut()">+</button>
+        <!------------------------------------------------------------------->
+        <!----------------Button that ZOOMS IN ------------------------>
+        <button class="open-button" onclick="zoomIn()">-</button>
+        <!------------------------------------------------------------------->
+        <!----------------Button that ZOOMS IN ------------------------>
+        <p id="zoomLabel"></p>
+        <!------------------------------------------------------------------->
+        </div>
+        
+        <!--------- DO NOT ADD ANYTHING INSIDE TOOLWINDOW DIV------>
+        <div id="toolWindow"></div>
+        <!--------------------------------------------------------->
+        
+        
+        <!--This is a draggable and resizable CHAT WINDOW. Chat window can be also be closed and reopened -->
+        <div id="chatBox">
+            <form action="/" class="form-container">
+                
+                    <!-- Div with Previously sent messages. Empty for now -->
+                    <div id="messageBox">
+                        
+                    </div>
+                    <!------------------------------------------------------>
+                
+                    <!-------- SEND BOX where user sends their message to the chat ------>
+                    <div id="sendBox">
+                        <textarea id="sendBar" placeholder="Send message..." name="msg" required></textarea>
+                        <br />
+                        <button class="btnChat" type="submit">Send</button>
+                        <button class="btnChat" type="button" onclick="closeForm()">Close</button>
+                    </div>
+                    <!-------------------------------------------------------------------->
+                
+            </form>
+        </div>
+        <!---------------------------------------------------------------------------------------------------->
+        
+        
+        <!--This is the TOOLBAR. It is draggable and contains buttons for the DM Developer Tools -->
+            <div id="toolbar" class="draggable-ui">
+                <ul>
+                    <br />
+                    <br />
+                    <li><button class="btnTools">P</button></li>
+                    <li><button class="btnTools">P</button></li>
+                    <li><button class="btnTools">%</button></li>
+                    <li><button class="btnTools">7</button></li>
+                    <li><button class="btnTools">q</button></li>
+                </ul>
+            </div>
+        <!---------------------------------------------------------------------------------------------------->
+        
+        
+        <!-- This is the PLAY WINDOW. Allows for Grid Snapping and moving the view with scroll bars. *Play window 
+                still needs modification -->
+        
+        <div id="playWindow" class="playWindow">
+            
+            <div id="grid20" class="draggable-ui zoomable">
+                <p>I snap to a 20x20 grid</p>
+            </div>
+            <div id="grid80" class="draggable-ui zoomable">
+                <p>I snap to a 80x80 grid</p>
+            </div>
+            
+        </div>
+        <!----------------------------------------------------------------------------------------------------->
+        
+        
+    </div>
+</html>
+
+
+
+<!--
 <div class="text-center">
     <h1 class="display-4">Play</h1>
     <p>
@@ -17,3 +206,4 @@
     <br />
     <a class="btn btn-danger" asp-area="" asp-controller="Play" asp-action="Delete">Delete Game</a>
 </div>
+-->

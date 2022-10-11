@@ -71,10 +71,12 @@ namespace DMD.UI.Controllers
         {
             return View();
         }
+
         // GET: UserController/Create
         public ActionResult Create()
         {
-            return View();
+            User user = new User(); //New instance of user
+            return View(user);
         }
         // POST: UserController/Create
         [HttpPost]
@@ -83,7 +85,15 @@ namespace DMD.UI.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                UserManager.Insert(user);
+                if (TempData["returnurl"] != null)
+                {
+                    return Redirect(TempData["returnurl"]?.ToString());
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {

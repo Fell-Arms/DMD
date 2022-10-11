@@ -73,7 +73,7 @@ namespace DMD.BL
                     row.LastName = user.LastName;
                     row.Username = user.UserName;
                     row.Email = user.Email;
-                    row.Password = GetHash(user.Password);
+                    row.Password = user.Password; //getHash goes back here later(?)
                     dc.tblUsers.Add(row);
                     results = dc.SaveChanges();
                     if (rollback) transaction.Rollback();

@@ -203,6 +203,8 @@ namespace DMD.BL
         }
 
 
+        //NEED TO FINISH FOR TESTING TO BE DONE.
+
         //Load By ID Method.
         //public static User LoadById(Guid id)
         //{
@@ -228,7 +230,7 @@ namespace DMD.BL
                             tblUser tblUser = dc.tblUsers.FirstOrDefault(u => u.Username == user.UserName);
                             if (tblUser != null)
                             {
-                                if (tblUser.Password == GetHash(user.Password)) //HASH LATER!
+                                if (tblUser.Password == GetHash(user.Password)) //Password Hash.
                                 {
                                    // Back fill all the user data, if logged in succedes
                                     user.FirstName = tblUser.FirstName;

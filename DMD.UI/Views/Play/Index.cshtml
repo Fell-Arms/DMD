@@ -53,7 +53,7 @@
             $(".navitem").hide("slow");
         }
         function openNav() {
-            $("#navbar").animate({ height: "50px" });
+            $("#navbar").animate({ height: "65px" });
             $(".navitem").show("slow");
         }
 
@@ -95,13 +95,15 @@
                     <a class="navitem" href="../Account">Account</a>
                     <a class="navitem" href="../Play">Play</a>
                     <a class="navitem" href="../Sheets">Sheets</a>
-                </div>          
-                @{
+
+                    @{
                     var fullname = @HttpContextAccessor.HttpContext?.Session.GetString("fullname");
                     if (fullname != null) fullname = fullname.Replace("\"", "");
                 }
                 <a class="navitem" id="username">@fullname</a>
                 <button class="navitem open-button" onclick="closeNav()">5</button>
+
+                </div>          
             </div>
     <!--------------------------------------------------------->
 

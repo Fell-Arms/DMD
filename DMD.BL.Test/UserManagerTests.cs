@@ -11,7 +11,7 @@ namespace DMD.BL.Test
         public void LoadTest()
         {
             List<User> users = UserManager.Load();
-            Assert.AreEqual(2, users.Count);
+            Assert.AreEqual(3, users.Count);
         }
 
         //Test The Update Function

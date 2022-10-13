@@ -10,6 +10,7 @@
 <head>
     <meta charset="utf-8">
     <title>Play</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/playStylesheet/styles.css" />
     <link rel="stylesheet" href="~/css/jQueryUI/jquery-ui.min.css" />
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
@@ -53,7 +54,7 @@
             $(".navitem").hide("slow");
         }
         function openNav() {
-            $("#navbar").animate({ height: "50px" });
+            $("#navbar").animate({ height: "65px" });
             $(".navitem").show("slow");
         }
 
@@ -64,14 +65,21 @@
         function closeForm() {
           document.getElementById("chatBox").style.display = "none";
         }
-        
+
+        function toggleCharSheet() {
+            $("#charSheet").toggle();
+        }
+
         $(function(){
             $(".draggable-ui").draggable({ scroll: true, scrollSensitivity: 200});
             
             $("#toolbar").draggable({ containment: "#toolWindow", snap: "true", snap: "#toolWindow", snapMode: "inner", stack: ".draggable-ui" });
             
             $("#chatBox").draggable({ containment: "#toolWindow", snap: "true", snap: "#toolWindow", snapMode: "inner", stack: ".draggable-ui" });
-            
+
+            $("#charSheet").draggable({ containment: "#toolWindow", snap: "true", snap: "#toolWindow", snapMode: "inner", stack: ".draggable-ui" });
+
+
             $("#grid20").draggable({ grid: [ 20, 20 ] });
             $("#grid80").draggable({ grid: [ 80, 80 ] });
             
@@ -81,6 +89,7 @@
               minHeight: 400,
               minWidth: 200
             });
+
         });
     </script>
     
@@ -96,19 +105,21 @@
                     <a class="navitem" href="../Play">Play</a>
                     <a class="navitem" href="../Sheets">Character Sheets</a>
                     <a class="navitem" href="../About">About the Developers</a>
+                    <button class="navitem open-button" onclick="closeNav()">5</button>
                 </div>          
                 @{
                     var fullname = @HttpContextAccessor.HttpContext?.Session.GetString("fullname");
                     if (fullname != null) fullname = fullname.Replace("\"", "");
                 }
                 <a class="navitem" id="username">@fullname</a>
-                <button class="navitem open-button" onclick="closeNav()">5</button>
+                
             </div>
     <!--------------------------------------------------------->
 
     <div id="page">
 
         <div class="controlbtns">
+
         <!----------------Button that opens the CHAT ------------------------>
         <button class="open-button" onclick="openForm()">^</button>
         <!------------------------------------------------------------------->
@@ -122,20 +133,51 @@
         <!----------------Button that ZOOMS IN ------------------------>
         <button class="open-button" onclick="zoomIn()">-</button>
         <!------------------------------------------------------------------->
-        <!----------------Button that ZOOMS IN ------------------------>
-        <p id="zoomLabel"></p>
+        <!----------------Button that opens CHARACTER SHEET ------------------------>
+        <button class="open-button" onclick="toggleCharSheet()">H</button>
         <!------------------------------------------------------------------->
         </div>
-        
+
+
         <!--------- DO NOT ADD ANYTHING INSIDE TOOLWINDOW DIV------>
         <div id="toolWindow"></div>
         <!--------------------------------------------------------->
-        
+
+
+        <!-----------------------CHARACTER SHEET ------------------------>
+        <div id="charSheet">
+            <button class="btnClose" onclick="toggleCharSheet()">X</button>
+
+            <div id="charForm">
+                <div class="card">
+                    <div class="card-header header">
+                        <h5>Title</h5>
+                    </div>
+
+                    <div class="card-body card-content">
+                        <div class="col-1">
+                        <h5>Content</h5>
+                        <br />
+                        </div>
+                        <div class="col-3">
+                            <h5>More Content</h5>
+                            <br />
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                       <p>Links</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--------------------------------------------------------->
         
         <!--This is a draggable and resizable CHAT WINDOW. Chat window can be also be closed and reopened -->
         <div id="chatBox">
             <form action="/" class="form-container">
-                
+                <button class="btnClose" type="button" onclick="closeForm()">X</button>
                     <!-- Div with Previously sent messages. Empty for now -->
                     <div id="messageBox">
                         
@@ -147,7 +189,8 @@
                         <textarea id="sendBar" placeholder="Send message..." name="msg" required></textarea>
                         <br />
                         <button class="btnChat" type="submit">Send</button>
-                        <button class="btnChat" type="button" onclick="closeForm()">Close</button>
+                        
+                        
                     </div>
                     <!-------------------------------------------------------------------->
                 
@@ -189,23 +232,3 @@
         
     </div>
 </html>
-
-
-
-<!--
-<div class="text-center">
-    <h1 class="display-4">Play</h1>
-    <p>
-        This page will be the main play window. Might include options like viewing details 
-        about current games, creating new games, and deleting games.
-    </p>
-
-    <br />
-    <a class="btn btn-secondary" asp-area="" asp-controller="Play" asp-action="Details">Game Details</a>
-    <a class="btn btn-secondary" asp-area="" asp-controller="Play" asp-action="Edit">Edit Game</a>
-    <a class="btn btn-secondary" asp-area="" asp-controller="Play" asp-action="Create">Create Game</a>
-    <br />
-    <br />
-    <a class="btn btn-danger" asp-area="" asp-controller="Play" asp-action="Delete">Delete Game</a>
-</div>
--->

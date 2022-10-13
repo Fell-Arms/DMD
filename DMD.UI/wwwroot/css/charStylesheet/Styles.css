@@ -1,0 +1,46 @@
+﻿body {
+    margin-bottom:500px;
+}
+
+#characterForm {
+    padding:20px;
+    background-color:lightgrey;
+}
+
+.stat-header {
+    font-size: 14px;
+    text-align: center;
+    margin: auto;
+}
+
+.base-stat {
+    margin: 0;
+    font-size: 12px;
+    border-style: none;
+}
+
+.stat-modifier {
+    margin: 0;
+    font-size: 18px;
+    border-style: none;
+}
+
+.basic-info {
+    margin:auto;
+}
+
+.section1 {
+    margin-bottom: 20px;
+}
+
+.char-check-text {
+    font-size: 10px;
+}
+
+.top-push {
+    margin-top:10px;
+}
+
+.top-push-extra {
+    margin-top: 30px;
+}

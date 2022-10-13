@@ -234,13 +234,13 @@ namespace DMD.BL
                             {
                                 if (tblUser.Password == user.Password) //HASH LATER!
                                 {
-                                   // Back fill all the user data, if logged in succedes
+                                    // Back fill all the user data, if logged in succedes
                                     user.FirstName = tblUser.FirstName;
                                     user.LastName = tblUser.LastName;
                                     user.Id = tblUser.Id;
                                     return true;
                                 }
-                                else //NOT HASHED YET...
+                                else // NOT HASHED YET...
                                 {
                                     throw new LoginFailureException();
                                 }

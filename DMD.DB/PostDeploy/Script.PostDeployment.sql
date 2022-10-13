@@ -10,4 +10,6 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+/* Create the tables that do not have foreign keys first. */
+
 :r .\DefaultData\Users.sql

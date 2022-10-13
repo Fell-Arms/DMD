@@ -10,4 +10,6 @@
 --------------------------------------------------------------------------------------
 */
 
+/* Drop the Foreign Key table first, then the one that uses the Foreign Keys. */
+
 DROP TABLE IF EXISTS dbo.tblUser

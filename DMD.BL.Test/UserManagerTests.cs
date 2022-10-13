@@ -22,7 +22,7 @@ namespace DMD.BL.Test
             User user = users[0];
             user.UserName = "Test1";
 
-            int results = UserManager.Delete(user.Id, true);
+            int results = UserManager.Update(user, true);
             Assert.AreEqual(1, results);
         }
 

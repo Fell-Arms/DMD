@@ -20,5 +20,6 @@
     [Weight] FLOAT NULL, 
     [EyeColor] VARCHAR(15) NULL, 
     [HairColor] NCHAR(10) NULL, 
-    [HairStyle] NCHAR(10) NULL
+    [HairStyle] NCHAR(10) NULL, 
+    [UserId] UNIQUEIDENTIFIER NULL
 )

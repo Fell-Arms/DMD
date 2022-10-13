@@ -71,6 +71,7 @@
   <ItemGroup>
     <Build Include="Tables\tblUser.sql" />
     <Build Include="Tables\tblCharacter.sql" />
+    <Build Include="ForeignKeys\fkUserId.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PostDeploy\DefaultData\Users.sql" />

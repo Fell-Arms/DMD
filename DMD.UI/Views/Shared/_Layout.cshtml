@@ -13,22 +13,29 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/DMD.UI.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DMD</a>
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
+                            <li>
+                                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/img/DMD-Main-Logo.jpg" width="100" height="55"/></a>
+                            </li>
+                            <li style="margin-top:8px;">
                                 <a class="nav-link text-dark" class="text-right" asp-area="" asp-controller="User" asp-action="Login">Login</a>
                             </li>
-                            <li class="nav-item">
+                            <li style="margin-top:8px;">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
                             </li>
                                     @*                        <li class="nav-item">
@@ -39,19 +46,22 @@
                                     <a class="nav-link text-dark" asp-controller="User"
                                     asp-action="Logout">Logout</a>
                                     </li>*@
-                            <li class="nav-item">
+                            <li style ="margin-top:8px;">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Landing" asp-action="Index">Landing(Test Link)</a>
                             </li>
-                            <li class="nav-item">
+                            <li style ="margin-top:8px;">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index">Account(Test Link)</a>
                             </li>
-                            <li class="nav-item">
+                            <li style ="margin-top:8px;">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Play" asp-action="Index">Play</a>
                             </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Sheets" asp-action="Index">Character Sheets</a>
-                        </li>
-                        </ul>
+                            <li style ="margin-top:8px;">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Sheets" asp-action="Index">Character Sheets</a>
+                            </li>
+                            <li style ="margin-top:8px;">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="About" asp-action="Index">About the Developers</a>
+                            </li>
+                            </ul>
                     
                      <ul class="navbar-nav">
                         <li class="nav-item">
@@ -73,10 +83,26 @@
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - DMD.UI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer>
+        <div class="footer">
+            &copy; Dungeon Master Developers LLC <br /> 
+            <div class="w3-row w3-section">
+                <div>
+                    <div>
+                        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xsmall "></i> Appleton Wi, US<br>
+                        <i class="fa fa-phone fa-fw w3-hover-text-black"></i> Phone: 715-420-6969<br>
+                        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xsmall "></i> Email: Devs@DMDmail.com<br>
+                    </div>
+                </div>
+            </div>
+            <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Acknowledgments</a> |
+            <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Terms of Service</a> |
+            <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Privacy Policy</a> |
+            <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Support</a> |
+            <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Contact Us</a> |
+         
         </div>
+      
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -12,6 +12,6 @@
         {
             get { return FirstName + " " + LastName; }
         }
-        public string? Address { get; set; }
+        //public string? Address { get; set; }
     }
 }

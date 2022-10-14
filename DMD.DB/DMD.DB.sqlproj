@@ -72,10 +72,47 @@
     <Build Include="Tables\tblUser.sql" />
     <Build Include="Tables\tblCharacter.sql" />
     <Build Include="ForeignKeys\fkUserId.sql" />
+    <Build Include="Tables\tblCharacterLevel.sql" />
+    <Build Include="Tables\tblCharacterCurrency.sql" />
+    <Build Include="Tables\tblCurrency.sql" />
+    <Build Include="Tables\tblCharacterArmor.sql" />
+    <Build Include="Tables\tblArmor.sql" />
+    <Build Include="Tables\tblArmorStyle.sql" />
+    <Build Include="Tables\tblArmorType.sql" />
+    <Build Include="Tables\tblRace.sql" />
+    <Build Include="Tables\tblUserMaps.sql" />
+    <Build Include="Tables\tblMap.sql" />
+    <Build Include="Tables\tblCharacterLanguages.sql" />
+    <Build Include="Tables\tblLanguage.sql" />
+    <Build Include="Tables\tblCharacterSkillProficiency.sql" />
+    <Build Include="Tables\tblSkill.sql" />
+    <Build Include="Tables\tblCharacterStats.sql" />
+    <Build Include="Tables\tblStatModifier.sql" />
+    <Build Include="Tables\tblCharacterWeapons.sql" />
+    <Build Include="Tables\tblWeapon.sql" />
+    <Build Include="Tables\tblWeaponType.sql" />
+    <Build Include="Tables\tblCharacterWeaponTypeProficiency.sql" />
+    <Build Include="Tables\tblCharacterSpellCharges.sql" />
+    <Build Include="Tables\tblSpellChargesByLevel.sql" />
+    <Build Include="Tables\tblCharacterSpells.sql" />
+    <Build Include="Tables\tblWeaponDamageTypes.sql" />
+    <Build Include="Tables\tblSpellDamageTypes.sql" />
+    <Build Include="Tables\tblSpell.sql" />
+    <Build Include="Tables\tblCharacterClasses.sql" />
+    <Build Include="Tables\tblClass.sql" />
+    <Build Include="Tables\tblClassSpells.sql" />
+    <Build Include="Tables\tblAttack.sql" />
+    <Build Include="Tables\tblDamageType.sql" />
+    <Build Include="Tables\tblCharacterAttacks.sql" />
+    <Build Include="Tables\tblAttackDamageTypes.sql" />
+    <Build Include="Tables\tblStat.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PostDeploy\DefaultData\Users.sql" />
     <None Include="local.publish.xml" />
     <None Include="remote.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DMD.DB.refactorlog" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[tblRace]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [Race] VARCHAR(45) NOT NULL, 
+    [Description] VARCHAR(45) NOT NULL
+)

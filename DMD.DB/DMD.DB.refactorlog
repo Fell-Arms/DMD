@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="8a7afd65-2b97-4aa8-81bf-01de3111f01f" ChangeDateTime="10/14/2022 01:43:09">
+    <Property Name="ElementName" Value="[dbo].[tblArmor].[ArmotType_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblArmor]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ArmorType_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0e606544-3b3b-4d33-9916-e5eb2746fe7a" ChangeDateTime="10/14/2022 02:10:43">
+    <Property Name="ElementName" Value="[dbo].[tblStatModifier].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblStatModifier]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Value" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="133904bd-0c99-4d85-bbcd-cf492445014c" ChangeDateTime="10/14/2022 02:45:02">
+    <Property Name="ElementName" Value="[dbo].[tblWeaponDamageTypes].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblWeaponDamageTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Weapon_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="65cfc1ca-bb51-4dc6-a2ab-9d2a45950712" ChangeDateTime="10/14/2022 02:47:41">
+    <Property Name="ElementName" Value="[dbo].[tblSpellDamageTypes].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblSpellDamageTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DamageType_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5daa1226-a719-48e8-b188-546eaca108b6" ChangeDateTime="10/14/2022 02:53:01">
+    <Property Name="ElementName" Value="[dbo].[tblSpell].[Targ]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblSpell]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TargetAllies" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="79c84b10-2642-4136-9e0c-30a6cdeddd5b" ChangeDateTime="10/14/2022 03:03:45">
+    <Property Name="ElementName" Value="[dbo].[tblClassSpells].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblClassSpells]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Spell_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4ee4819f-b96b-4ea2-8165-678157f1266c" ChangeDateTime="10/14/2022 03:17:06">
+    <Property Name="ElementName" Value="[dbo].[tblAttackDamageTypes].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblAttackDamageTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DamageType_Id" />
+  </Operation>
+</Operations>

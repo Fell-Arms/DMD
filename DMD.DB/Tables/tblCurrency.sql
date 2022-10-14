@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[tblCurrency]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [Name] VARCHAR(45) NOT NULL, 
+    [Value] VARCHAR(45) NOT NULL
+)

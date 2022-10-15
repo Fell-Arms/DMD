@@ -106,11 +106,46 @@
     <Build Include="Tables\tblCharacterAttacks.sql" />
     <Build Include="Tables\tblAttackDamageTypes.sql" />
     <Build Include="Tables\tblStat.sql" />
+    <None Include="PostDeploy\DefaultData\Races.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PostDeploy\DefaultData\Users.sql" />
     <None Include="local.publish.xml" />
     <None Include="remote.publish.xml" />
+    <None Include="PostDeploy\DefaultData\Armors.sql" />
+    <None Include="PostDeploy\DefaultData\ArmorStyles.sql" />
+    <None Include="PostDeploy\DefaultData\ArmorTypes.sql" />
+    <None Include="PostDeploy\DefaultData\Attacks.sql" />
+    <None Include="PostDeploy\DefaultData\AttackDamageTypes.sql" />
+    <None Include="PostDeploy\DefaultData\Characters.sql" />
+    <None Include="PostDeploy\DefaultData\CharacterArmor.sql" />
+    <None Include="PostDeploy\DefaultData\CharacterAttacks.sql" />
+    <None Include="PostDeploy\DefaultData\CharacterClasses.sql" />
+    <None Include="PostDeploy\DefaultData\CharacterCurrencies.sql" />
+    <None Include="PostDeploy\DefaultData\CharacterLanguages.sql" />
+    <None Include="PostDeploy\DefaultData\CharacterLevels.sql" />
+    <None Include="PostDeploy\DefaultData\CharacterSkillProficiencies.sql" />
+    <None Include="PostDeploy\DefaultData\CharacterSpellCharges.sql" />
+    <None Include="PostDeploy\DefaultData\CharacterSpells.sql" />
+    <None Include="PostDeploy\DefaultData\CharacterStats.sql" />
+    <None Include="PostDeploy\DefaultData\CharacterWeapons.sql" />
+    <None Include="PostDeploy\DefaultData\CharacterWeaponTypeProficiencies.sql" />
+    <None Include="PostDeploy\DefaultData\Classes.sql" />
+    <None Include="PostDeploy\DefaultData\ClassSpells.sql" />
+    <None Include="PostDeploy\DefaultData\Currencies.sql" />
+    <None Include="PostDeploy\DefaultData\DamageTypes.sql" />
+    <None Include="PostDeploy\DefaultData\Languages.sql" />
+    <None Include="PostDeploy\DefaultData\Maps.sql" />
+    <None Include="PostDeploy\DefaultData\Skills.sql" />
+    <None Include="PostDeploy\DefaultData\StatModifiers.sql" />
+    <None Include="PostDeploy\DefaultData\UserMaps.sql" />
+    <None Include="PostDeploy\DefaultData\Weapons.sql" />
+    <None Include="PostDeploy\DefaultData\WeaponDamageTypes.sql" />
+    <None Include="PostDeploy\DefaultData\WeaponType.sql" />
+    <None Include="PostDeploy\DefaultData\Stats.sql" />
+    <None Include="PostDeploy\DefaultData\Spells.sql" />
+    <None Include="PostDeploy\DefaultData\SpellDamageTypes.sql" />
+    <None Include="PostDeploy\DefaultData\SpellChargesByLevels.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DMD.DB.refactorlog" />

@@ -11,7 +11,7 @@
 	SELECT @Stat_Id2 = Id FROM tblStat WHERE Name = 'Wisdom'
 	SELECT @Stat_Id3 = Id FROM tblStat WHERE Name = 'Dexterity'
 
-	SELECT @WeaponType_Id1 = Id FROM tblWeaponType WHERE Type = 'Shortsword'
+	SELECT @WeaponType_Id1 = Id FROM tblWeaponType WHERE Type = 'Sword'
 	SELECT @WeaponType_Id2 = Id FROM tblWeaponType WHERE Type = 'Staff'
 	SELECT @WeaponType_Id3 = Id FROM tblWeaponType WHERE Type = 'Dagger'
 

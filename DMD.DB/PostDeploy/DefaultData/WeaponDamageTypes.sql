@@ -2,11 +2,11 @@
 	DECLARE @DamageType_Id1 uniqueindentifier, @DamageType_Id2 uniqueindentifier, @DamageType_Id3 uniqueindentifier,
 			@Weapon_Id1 uniqueindentifier, @Weapon_Id2 uniqueindentifier, @Weapon_Id3 uniqueindentifier;
 
-	SELECT @Weapon_Id1 = Id FROM tblWeapon WHERE Name = 'Steel Hammer'
-	SELECT @Weapon_Id2 = Id FROM tblWeapon WHERE Name = 'Oak Bow'
+	SELECT @Weapon_Id1 = Id FROM tblWeapon WHERE Name = 'Steel Sword'
+	SELECT @Weapon_Id2 = Id FROM tblWeapon WHERE Name = 'Bone Blade'
 	SELECT @Weapon_Id3 = Id FROM tblWeapon WHERE Name = 'Eye of Selune'
 
-	SELECT @DamageType_Id1 = Id FROM tblDamageType WHERE Name = 'Bludgeoning'
+	SELECT @DamageType_Id1 = Id FROM tblDamageType WHERE Name = 'Slashing'
 	SELECT @DamageType_Id2 = Id FROM tblDamageType WHERE Name = 'Poison'
 	SELECT @DamageType_Id3 = Id FROM tblDamageType WHERE Name = 'Thunder'
 

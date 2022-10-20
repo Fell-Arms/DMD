@@ -12,7 +12,7 @@
 
 	INSERT INTO dbo.tblWeapon (Id, WeaponType_Id, Stats_Id, Name, Cost)
 	VALUES
-	(NEWID(), @WeaponType_Id1, @Stat_Id1, 'Steel Hammer', 250),
-	(NEWID(), @WeaponType_Id3, @Stat_Id3, 'Oak Bow', 50),
+	(NEWID(), @WeaponType_Id1, @Stat_Id1, 'Steel Sword', 250),
+	(NEWID(), @WeaponType_Id3, @Stat_Id3, 'Bone Blade', 50),
 	(NEWID(), @WeaponType_Id2, @Stat_Id2, 'Eye of Selune', 10000)
 END

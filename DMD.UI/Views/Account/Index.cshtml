@@ -1,6 +1,392 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
     ViewData["Title"] = "Account";
 }
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="~/css/accountStylesheet/Styles.css" />
+</head>
+
+<script>
+    function openInfo() {
+        document.getElementById("settingsPage").style.display = "none";
+        document.getElementById("mapsPage").style.display = "none";
+        document.getElementById("charPage").style.display = "none";
+        document.getElementById("gamesPage").style.display = "none";
+        document.getElementById("friendsPage").style.display = "none";
+
+        document.getElementById("infoPage").style.display = "block";
+
+    }
+
+    function openSettings() {
+        document.getElementById("infoPage").style.display = "none";
+        document.getElementById("mapsPage").style.display = "none";
+        document.getElementById("charPage").style.display = "none";
+        document.getElementById("gamesPage").style.display = "none";
+        document.getElementById("friendsPage").style.display = "none";
+
+        document.getElementById("settingsPage").style.display = "block";
+    }
+
+    function openMaps() {
+        document.getElementById("infoPage").style.display = "none";
+        document.getElementById("settingsPage").style.display = "none";
+        document.getElementById("charPage").style.display = "none";
+        document.getElementById("gamesPage").style.display = "none";
+        document.getElementById("friendsPage").style.display = "none";
+
+        document.getElementById("mapsPage").style.display = "block";
+    }
+
+    function openChars() {
+        document.getElementById("infoPage").style.display = "none";
+        document.getElementById("mapsPage").style.display = "none";
+        document.getElementById("settingsPage").style.display = "none";
+        document.getElementById("gamesPage").style.display = "none";
+        document.getElementById("friendsPage").style.display = "none";
+
+        document.getElementById("charPage").style.display = "block";
+    }
+
+    function openFriends() {
+        document.getElementById("infoPage").style.display = "none";
+        document.getElementById("mapsPage").style.display = "none";
+        document.getElementById("settingsPage").style.display = "none";
+        document.getElementById("gamesPage").style.display = "none";
+        document.getElementById("charPage").style.display = "none";
+
+        document.getElementById("friendsPage").style.display = "block";
+    }
+
+    function openGames() {
+        document.getElementById("infoPage").style.display = "none";
+        document.getElementById("mapsPage").style.display = "none";
+        document.getElementById("settingsPage").style.display = "none";
+        document.getElementById("friendsPage").style.display = "none";
+        document.getElementById("charPage").style.display = "none";
+
+        document.getElementById("gamesPage").style.display = "block";
+    }
+    
+</script>
+
+<body class="w3-light-grey">
+
+    <!-- Page Container -->
+    <div class="w3-content w3-margin-top page-push" style="max-width:1400px;">
+
+        <!-- The Grid -->
+        <div class="w3-row-padding">
+
+            <!-- Left Column -->
+            <div class="w3-third">
+
+                <div class="w3-white w3-text-grey w3-card-4">
+                    <div class="w3-display-container">
+                        <!--User Profile Image-->
+                        <img src="~/img/DefaultUser.png" style="width:100%" alt="Avatar">
+                        <div class="w3-display-bottomleft w3-container w3-text-black">
+                            @{
+                                var fullname = @HttpContextAccessor.HttpContext?.Session.GetString("fullname");
+                            }
+                            <h3>@fullname</h3>
+                        </div>
+                    </div>
+                    <div class="w3-container container top-push">
+
+                        <!--Account Info-->
+                        <div class="row m-3">
+                            <span class="col-auto material-symbols-outlined">
+                                feed
+                            </span>
+                            <button class="col-auto btn-plain w3-opacity" onclick="openInfo()">Account Info</button>
+                        </div>
+                        
+                        <!--Friends-->
+                        <div class="row m-3">
+                            <span class="col-auto material-symbols-outlined">
+                                groups
+                            </span>
+                            <button class="col-auto btn-plain w3-opacity" onclick="openFriends()">Friends List</button>
+                        </div>
+
+                        <!--Character Gallery-->
+                        <div class="row m-3">
+                            <span class="col-auto material-symbols-outlined">
+                                switch_account
+                            </span>
+                            <button class="col-auto btn-plain w3-opacity" onclick="openChars()">Characters</button>
+                        </div>
+
+                        <!--Map Gallery-->
+                        <div class="row m-3">
+                            <span class="col-auto material-symbols-outlined">
+                                photo_library
+                            </span>
+                            <button class="col-auto btn-plain w3-opacity" onclick="openMaps()">Map Gallery</button>
+                        </div>
+
+                        <!--Current Games-->
+                        <div class="row m-3">
+                            <span class="col-auto material-symbols-outlined">
+                                casino
+                            </span>
+                            <button class="col-auto btn-plain w3-opacity" onclick="openGames()">Games</button>
+                        </div>
+
+                        <!--Account Settings-->
+                        <div class="row m-3">
+                            <span class="col-auto material-symbols-outlined">
+                                settings
+                            </span>
+                            <button class="col-auto btn-plain w3-opacity" onclick="openSettings()">Account Settings</button>
+                        </div>
+
+                    </div>
+                </div><br>
+
+                <!-- End Left Column -->
+            </div>
+
+            <!-- Right Column -->
+            <div class="w3-twothird">
+
+                <!----------------- CHARACTERS PAGE------------------->
+                    <div id="charPage">
+                    <div class="w3-container w3-card w3-white w3-margin-bottom">
+                        <h2 class="w3-text-grey w3-padding-16"><i class="w3-margin-right w3-xxlarge"></i>Maps Gallery</h2>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Wow exploring yay fun good times / w3schools.com</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
+                            <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                            <hr>
+                        </div>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Web Developer / something.com</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
+                            <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                            <hr>
+                        </div>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Graphic Designer / designsomething.com</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
+                        </div>
+                    </div>
+                    </div>
+                        <!------------------------------------------------------------->
+
+                <!----------------- MAPS PAGE------------------->
+                    <div id="mapsPage">
+
+                        <div class="w3-container w3-card w3-white w3-margin-bottom">
+                            <h2 class="w3-text-grey w3-padding-16"><i class="w3-margin-right w3-xxlarge"></i>Maps Gallery</h2>
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>Wow exploring yay fun good times / w3schools.com</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
+                                <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                                <hr>
+                            </div>
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>Web Developer / something.com</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
+                                <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                                <hr>
+                            </div>
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>Graphic Designer / designsomething.com</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
+                            </div>
+                        </div>
+                    </div>
+                        <!------------------------------------------------------------->
+
+                <!----------------- GAMES PAGE------------------->
+                    <div id="gamesPage">
+
+                        <div class="w3-container w3-card w3-white w3-margin-bottom">
+                            <h2 class="w3-text-grey w3-padding-16"><i class="w3-margin-right w3-xxlarge"></i>Games</h2>
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>so many games / w3schools.com</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
+                                <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                                <hr>
+                            </div>
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>Web Developer / something.com</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
+                                <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                                <hr>
+                            </div>
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>Graphic Designer / designsomething.com</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
+                            </div>
+                        </div>
+                    </div>
+                        <!------------------------------------------------------------->
+
+                <!----------------- FRIENDS PAGE------------------->
+                <div id="friendsPage">
+
+                    <div class="w3-container w3-card w3-white w3-margin-bottom">
+                        <h2 class="w3-text-grey w3-padding-16"><i class="w3-margin-right w3-xxlarge"></i>Friends List</h2>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Friends are good to have / w3schools.com</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
+                            <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                            <hr>
+                        </div>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Web Developer / something.com</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
+                            <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                            <hr>
+                        </div>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Graphic Designer / designsomething.com</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
+                        </div>
+                    </div>
+                </div>
+                <!------------------------------------------------------------->
+
+                <!----------------- ACCOUNT INFO PAGE------------------->
+                <div id="infoPage">
+
+                    <div class="w3-container w3-card w3-white w3-margin-bottom">
+                        <h2 class="w3-text-grey w3-padding-16"><i class="w3-margin-right w3-xxlarge"></i>Account Info</h2>
+                        <div class="w3-container">
+
+                            <!--GENERAL-->
+                            <div class="card m-3">
+                                <div class="card-body">
+                                    <h5 class="row m-3 w3-opacity"><b>Username: OgreSlayer34</b></h5>
+                                    <h5 class="row m-3 w3-opacity"><b>Email:"Billybob.Hates.Ogres@gmail.com"</b></h5>
+                                    <h5 class="row m-3 w3-opacity"><b>First Name: Johnny</b></h5>
+                                    <h5 class="row m-3 w3-opacity"><b>Last Name: Billybob</b></h5>
+                                    <h5 class="row m-3 w3-opacity"><b>Join Date: 10/10/2022</b></h5>
+                                    <a class="row justify-content-center m-4 btn btn-custom" asp-area="" asp-controller="Account" asp-action="Edit">Edit Account Info</a>
+                                </div> 
+                            </div>
+
+                            <!--STATS-->
+                            <div class="card m-3">
+                                <div class="card-header">
+                                    <h5 class="w3-opacity"><b>Player Lifetime Stats</b></h5>
+                                </div>
+                                <hr />
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col card m-3">
+                                            <div class="card-header">
+                                                <h5 class="w3-opacity">Total Games Played</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>12<!--HARD CODE swap for variable later?--></p>
+                                            </div>
+                                        </div>
+                                        <div class="col card m-3">
+                                            <div class="card-header">
+                                                <h5 class="w3-opacity">Characters Created </h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>4<!--HARD CODE swap for variable later?--></p>
+                                            </div>
+                                        </div>
+                                        <div class="col card m-3">
+                                            <div class="card-header">
+                                                <h5 class="w3-opacity">Total Gold Earned</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>23,504<!--HARD CODE swap for variable later?--></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="w3-light-grey w3-round-xlarge w3-small">
+                                        <div class="w3-container w3-center w3-round-xlarge custom-bg-color" style="width:90%">90%</div>
+                                    </div>
+                                    <p>Total Characters</p>
+                                    <div class="w3-light-grey w3-round-xlarge w3-small">
+                                        <div class="w3-container w3-center w3-round-xlarge custom-bg-color" style="width:80%">
+                                            <div class="w3-center w3-text-white">80%</div>
+                                        </div>
+                                    </div>
+                                    <p>Illustrator</p>
+                                    <div class="w3-light-grey w3-round-xlarge w3-small">
+                                        <div class="w3-container w3-center w3-round-xlarge custom-bg-color" style="width:75%">75%</div>
+                                    </div>
+                                    <p>Media</p>
+                                    <div class="w3-light-grey w3-round-xlarge w3-small">
+                                        <div class="w3-container w3-center w3-round-xlarge custom-bg-color" style="width:50%">50%</div>
+                                    </div>
+                                    <br>
+
+                                    <br>
+                                    <hr>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!------------------------------------------------------------->
+
+                    <!----------------- ACCOUNT SETTINGS PAGE------------------->
+                    <div id="settingsPage">
+
+                        <div class="w3-container w3-card w3-white w3-margin-bottom">
+                            <h2 class="w3-text-grey w3-padding-16"><i class="w3-margin-right w3-xxlarge"></i>Account Settings</h2>
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>WEeeee toggle it MORE / w3schools.com</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
+                                <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                                <hr>
+                            </div>
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>Web Developer / something.com</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
+                                <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+                                <hr>
+                            </div>
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>Graphic Designer / designsomething.com</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
+                            </div>
+                        </div>
+                    </div>
+                        <!------------------------------------------------------------->
+
+                <!-- End Right Column -->
+            </div>
+
+            <!-- End Grid -->
+        </div>
+
+        <!-- End Page Container -->
+    </div>
+
+</body>
+
+
+
+
+
+
+
+<!--
 <style>
     body{
         background-color: black;
@@ -23,3 +409,4 @@
     <a class="btn btn-danger" asp-area="" asp-controller="Account" asp-action="Delete">Delete Account</a>
 </div>
 </body>
+-->

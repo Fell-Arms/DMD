@@ -1,0 +1,64 @@
+﻿.material-symbols-outlined {
+    font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 48;
+    color: #7523B0;
+    font-size:28px;
+}
+
+.page-push {
+    margin-bottom: 700px;
+    margin-top: 20px;
+}
+
+.icon-bg {
+    background-color: #7523B0;
+}
+
+.btn-plain {
+    font-size:18px;
+    font-weight:600;
+    font-family: "Segoe UI",Arial,sans-serif;
+    background: none;
+    border-style: none;
+    color: black;
+}
+
+    .btn-plain:hover {
+        color: #7523B0;
+    }
+
+.top-push {
+    margin-top:20px;
+}
+
+.btn-custom {
+    padding: 12px,20px,12px,20px;
+    font-size:16px;
+    color: white;
+    background-color: #7523B0;
+    border-radius:10px;
+}
+    .btn-custom:hover {
+        background-color: #FF3366;
+        color:white;
+    }
+
+.custom-bg-color {
+    background-color: #7523B0;
+    color: white;
+}
+
+#friendsPage {
+    display: none;
+}
+#settingsPage {
+    display:none;
+}
+#charPage {
+    display: none;
+}
+#mapsPage {
+    display: none;
+}
+#gamesPage {
+    display: none;
+}

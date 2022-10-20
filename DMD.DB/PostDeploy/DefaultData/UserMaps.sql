@@ -1,7 +1,18 @@
 ﻿BEGIN
+	DECLARE @User_Id1 uniqueindentifier, @User_Id2 uniqueindentifier, @User_Id3 uniqueindentifier,
+			@Map_Id1 uniqueindentifier, @Map_Id2 uniqueindentifier, @Map_Id3 uniqueindentifier;
+
+	SELECT @User_Id1 = Id FROM tblUser WHERE Username = 'bfoote'
+	SELECT @User_Id2 = Id FROM tblUser WHERE Username = 'ketchum'
+	SELECT @User_Id3 = Id FROM tblUser WHERE Username = 'admin'
+
+	SELECT @Map_Id1 = Id FROM tblMap WHERE Type = 'Combat'
+	SELECT @Map_Id2 = Id FROM tblMap WHERE Type = 'Adventure'
+	SELECT @Map_Id3 = Id FROM tblMap WHERE Type = 'Overview'
+
 	INSERT INTO dbo.tblUserMaps (Id, User_Id, Map_Id)
 	VALUES
-	(NEWID(), 'FK-UserID_GUID', 'FK-MapID_GUID', 5, 2, 20),
-	(NEWID(), 'FK-UserID_GUID', 'FK-MapID', 7, 5, 50),
-	(NEWID(), 'FK-UserID-GUID', 'FK-MapID', 10, 8, 100)
+	(NEWID(), @User_Id1, @Map_Id1, 5, 2, 20),
+	(NEWID(), @User_Id2, @Map_Id2, 7, 5, 50),
+	(NEWID(), @User_Id3, @Map_Id3, 10, 8, 100)
 END

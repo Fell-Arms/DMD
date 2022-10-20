@@ -1,10 +1,32 @@
 ﻿BEGIN
+	DECLARE @Stat_Id1 uniqueindentifier, @Stat_Id2 uniqueindentifier, @Stat_Id3 uniqueindentifier,
+			@Stat_Id4 uniqueindentifier, @Stat_Id5 uniqueindentifier, @Stat_Id6 uniqueindentifier;
+
+	SELECT @Stat_Id1 = Id FROM tblStat WHERE Name = 'Strength'
+	SELECT @Stat_Id2 = Id FROM tblStat WHERE Name = 'Dexterity'
+	SELECT @Stat_Id3 = Id FROM tblStat WHERE Name = 'Constitution'
+	SELECT @Stat_Id4 = Id FROM tblStat WHERE Name = 'Wisdom'
+	SELECT @Stat_Id5 = Id FROM tblStat WHERE Name = 'Intelligence'
+	SELECT @Stat_Id6 = Id FROM tblStat WHERE Name = 'Charisma'
+
 	INSERT INTO dbo.tblSkill (Id, Stats_Id, Name, Description)
 	VALUES
-	(NEWID(), 'FK-StatsID_GUID', 'Strength', 'Strength is how hard you hit something, how much you can carry, and how well you tend to do with strength based skill checks.'),
-	(NEWID(), 'FK-StatsID_GUID', 'Dexterity', 'Dexterity determines your speed. It is how fast you are, as well as how successful you are with ranged attacks.'),
-	(NEWID(), 'FK-StatsID_GUID', 'Constitution', 'Strength is the stat that has a direct effect on your hit points, as well as your resistance to poisoning, how fast you sober up, and the likes.'),
-	(NEWID(), 'FK-StatsID_GUID', 'Intelligence', 'Intelligence is how smart you are. Intelligence is usually academic based intelligence – so how much you know about things.'),
-	(NEWID(), 'FK-StatsID_GUID', 'Wisdom', 'Wisdom is knowing about the world around you as well as how perceptive you are. It determines what you naturally notice.'),
-	(NEWID(), 'FK-StatsID_GUID', 'Charisma', 'Charisma is how good you are with people. It reflects your ability to persuade people or how well you get on with NPCs')
+	(NEWID(), @Stat_Id2, 'Acrobatics ', 'Uses DEX'),
+	(NEWID(), @Stat_Id4, 'Animal Handling', 'Uses WIS'),
+	(NEWID(), @Stat_Id5, 'Arcana ', 'Uses INT'),
+	(NEWID(), @Stat_Id1, 'Athletics', 'Uses STR'),
+	(NEWID(), @Stat_Id6, 'Deception ', 'Uses CHA'),
+	(NEWID(), @Stat_Id5, 'History ', 'Uses INT'),
+	(NEWID(), @Stat_Id4, 'Insight', 'Uses WIS'),
+	(NEWID(), @Stat_Id6, 'Intimidation ', 'Uses CHA'),
+	(NEWID(), @Stat_Id5, 'Investigation ', 'Uses INT'),
+	(NEWID(), @Stat_Id4, 'Medicine ', 'Uses WIS'),
+	(NEWID(), @Stat_Id5, 'Nature ', 'Uses INT'),
+	(NEWID(), @Stat_Id4, 'Perception ', 'Uses WIS'),
+	(NEWID(), @Stat_Id6, 'Performance ', 'Uses CHA'),
+	(NEWID(), @Stat_Id6, 'Persuasion', 'Uses CHA'),
+	(NEWID(), @Stat_Id5, 'Religion ', 'Uses INT'),
+	(NEWID(), @Stat_Id2, 'Sleight of Hand', 'Uses DEX'),
+	(NEWID(), @Stat_Id2, 'Stealth', 'Uses DEX'),
+	(NEWID(), @Stat_Id4, 'Survival ', 'Uses WIS')	
 END

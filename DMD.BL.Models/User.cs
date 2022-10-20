@@ -12,6 +12,8 @@
         {
             get { return FirstName + " " + LastName; }
         }
+
+        public List<Character> Characters { get; set; }
         //public string? Address { get; set; }
     }
 }

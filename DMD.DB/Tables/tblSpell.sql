@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[tblSpell]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
-    [Stat_Id] VARCHAR(36) NOT NULL, 
+    [Stat_Id] UNIQUEIDENTIFIER NOT NULL, 
     [Spell_Level] INT NOT NULL, 
     [Name] VARCHAR(45) NOT NULL, 
     [Description] TEXT NOT NULL, 

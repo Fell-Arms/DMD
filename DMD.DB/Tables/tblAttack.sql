@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [dbo].[tblAttack]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
-    [Class_Id] VARCHAR(36) NOT NULL, 
-    [Stat_Id] VARCHAR(36) NOT NULL, 
-    [WeaponType_Id] VARCHAR(36) NOT NULL, 
+    [Class_Id] UNIQUEIDENTIFIER NOT NULL, 
+    [Stat_Id] UNIQUEIDENTIFIER NOT NULL, 
+    [WeaponType_Id] UNIQUEIDENTIFIER NOT NULL, 
     [Name] VARCHAR(45) NOT NULL, 
     [Description] VARCHAR(45) NOT NULL, 
     [Targets] INT NOT NULL, 

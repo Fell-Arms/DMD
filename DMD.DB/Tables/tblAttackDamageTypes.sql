@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[tblAttackDamageTypes]
 (
-	[DamageType_Id] VARCHAR(36) NOT NULL PRIMARY KEY, 
-    [Attack_Id] VARCHAR(36) NOT NULL, 
+	[DamageType_Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [Attack_Id] UNIQUEIDENTIFIER NOT NULL, 
     [DamageDie] INT NULL, 
     [DamageModifier] INT NULL, 
     [DieCount] INT NULL

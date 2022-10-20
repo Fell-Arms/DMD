@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[tblArmor]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
-    [ArmorStyle_Id] VARCHAR(36) NOT NULL, 
-    [ArmorType_Id] VARCHAR(36) NOT NULL, 
+    [ArmorStyle_Id] UNIQUEIDENTIFIER NOT NULL, 
+    [ArmorType_Id] UNIQUEIDENTIFIER NOT NULL, 
     [ArmorClassBonus] INT NOT NULL, 
     [MovementPenalty] INT NOT NULL, 
     [Cost] INT NOT NULL

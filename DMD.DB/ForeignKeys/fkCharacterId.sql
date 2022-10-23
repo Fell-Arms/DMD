@@ -12,3 +12,66 @@ ALTER TABLE [dbo].[tblCharacterCurrency] -- Name of table to add constraint to (
 	REFERENCES [Characters] (Id) -- the table the foreign key is referring to (The primary key of tblCharacter is the foreign key in CharacterCurrency).
 GO; -- indicates this part is done, you can repeat this and GO; onto the next statement.
 
+--Character to CharacterWeapons Connection
+ALTER TABLE [dbo].[tblCharacterWeapons]
+	ADD CONSTRAINT [fkCharacterId-CharacterWeapons]
+	FOREIGN KEY (Character_Id)
+	REFERENCES [Characters] (Id)
+GO;
+
+--Character to CharacterSpells
+ALTER TABLE [dbo].[tblCharacterSpells]
+	ADD CONSTRAINT [fkCharacterId-CharacterSpells]
+	FOREIGN KEY (Character_Id)
+	REFERENCES [Characters] (Id)
+GO;
+
+--Character to CharacterSpellCharges
+ALTER TABLE [dbo].[tblCharacterSpellCharges]
+	ADD CONSTRAINT [fkCharacterId-CharacterSpellCharges]
+	FOREIGN KEY (Character_Id)
+	REFERENCES [Characters] (Id)
+GO;
+
+--Character to CharacterWeaponTypeProficiency
+ALTER TABLE [dbo].[tblCharacterWeaponTypeProficiency]
+	ADD CONSTRAINT [fkCharacterId-CharacterWeaponTypeProficiency]
+	FOREIGN KEY (Character_Id)
+	REFERENCES [Characters] (Id)
+GO;
+
+
+--Character to CharacterSKillProficiency
+ALTER TABLE [dbo].[tblCharacterSkillProficiency]
+	ADD CONSTRAINT [fkCharacterId-CharacterSkillProficiency]
+	FOREIGN KEY (Character_Id)
+	REFERENCES [Characters] (Id)
+GO;
+
+--Character to CharacterAttacks
+ALTER TABLE [dbo].[tblCharacterAttacks]
+	ADD CONSTRAINT [fkCharacterId-CharacterAttacks]
+	FOREIGN KEY (Character_Id)
+	REFERENCES [Characters] (Id)
+GO;
+
+--Character to CharacterStats
+ALTER TABLE [dbo].[tblCharacterStats]
+	ADD CONSTRAINT [fkCharacterId-CharacterStats]
+	FOREIGN KEY (Character_Id)
+	REFERENCES [Characters] (Id)
+GO;
+
+--Character to CharacterClasses
+ALTER TABLE [dbo].[tblCharacterClasses]
+	ADD CONSTRAINT [fkCharacterId-CharacterClasses]
+	FOREIGN KEY (Character_Id)
+	REFERENCES [Characters] (Id)
+GO;
+
+--Character to CharacterLanguages
+ALTER TABLE [dbo].[tblCharacterLanguages]
+	ADD CONSTRAINT [fkCharacterId-CharacterLanguages]
+	FOREIGN KEY (Character_Id)
+	REFERENCES [Characters] (Id)
+GO;

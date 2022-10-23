@@ -1,4 +1,5 @@
-﻿ALTER TABLE [dbo].[SomeTableOrView]
-	ADD CONSTRAINT [fkLanguageId]
-	FOREIGN KEY (SomeColumn)
-	REFERENCES [SomeTable] (SomeColumn)
+﻿--CharacterLanguages to Language Connection
+ALTER TABLE [dbo].[tblCharacterLanguages]
+	ADD CONSTRAINT [fkLanguageId-Language]
+	FOREIGN KEY (Language_Id)
+	REFERENCES [tblLanguage] (Id)

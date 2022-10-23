@@ -112,6 +112,10 @@
     <Build Include="ForeignKeys\fkLanguageId.sql" />
     <Build Include="ForeignKeys\fkStatId.sql" />
     <Build Include="ForeignKeys\fkAttacksId.sql" />
+    <Build Include="ForeignKeys\fkArmorId.sql" />
+    <Build Include="ForeignKeys\fkArmorType.sql" />
+    <Build Include="ForeignKeys\fkArmorStyle.sql" />
+    <Build Include="ForeignKeys\fkMapId.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PostDeploy\DefaultData\Users.sql" />

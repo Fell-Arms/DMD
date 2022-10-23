@@ -116,6 +116,7 @@
     <Build Include="ForeignKeys\fkArmorType.sql" />
     <Build Include="ForeignKeys\fkArmorStyle.sql" />
     <Build Include="ForeignKeys\fkMapId.sql" />
+    <Build Include="ForeignKeys\fkCurrencyId.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PostDeploy\DefaultData\Users.sql" />

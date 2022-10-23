@@ -49,4 +49,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="DamageType_Id" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="218d0d9b-be61-498a-b629-97d9c1af4fe1" ChangeDateTime="10/23/2022 19:25:46">
+    <Property Name="ElementName" Value="[dbo].[tblCharacterCurrency].[Curreny_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblCharacterCurrency]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Currency_Id" />
+  </Operation>
 </Operations>

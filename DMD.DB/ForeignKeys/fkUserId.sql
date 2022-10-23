@@ -15,9 +15,3 @@ GO; -- indicates this part is done, you can repeat this and GO; onto the next st
 
 
 --REMOVE THIS ONE. NEEDS TO BE CHANGED TO REFERENCE CHARACTER ID.
---Character to CharacterArmor Connection
-ALTER TABLE [dbo].[Characters] -- Name of table to add constraint to (Characters)
-	ADD CONSTRAINT [fkUserId-CharacterArmor] -- The name of the constraint ("fkUserId-CharacterArmor") - indicating a foreign key constraint of UserId in the CharacterArmor table.
-	FOREIGN KEY (UserId) -- the foreign key in the Characters table
-	REFERENCES [tblCharacterArmor] (Id) -- the table the foreign key is referring to (The primary key of tblUser is the foreign key in Characters).
-GO; -- indicates this part is done, you can repeat this and GO; onto the next statement.

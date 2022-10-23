@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[tblCharacterCurrency]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
-    [Curreny_Id] UNIQUEIDENTIFIER NOT NULL, 
+    [Currency_Id] UNIQUEIDENTIFIER NOT NULL, 
     [Character_Id] UNIQUEIDENTIFIER NOT NULL, 
     [Amount] INT NOT NULL
 )

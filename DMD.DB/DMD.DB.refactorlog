@@ -91,4 +91,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="CharacterLevel_Id" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="8ff24ab6-25ed-4820-8535-955db60beed4" ChangeDateTime="10/24/2022 15:54:49">
+    <Property Name="ElementName" Value="[dbo].[Characters].[User_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Characters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0e962f5b-47cf-4c8e-b433-6db423919d53" ChangeDateTime="10/24/2022 15:54:52">
+    <Property Name="ElementName" Value="[dbo].[Characters].[Race_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Characters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RaceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ae7de940-4553-40c2-8164-9ea31a9080c3" ChangeDateTime="10/24/2022 16:03:30">
+    <Property Name="ElementName" Value="[dbo].[Characters].[UserId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Characters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="User_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dd7cee8a-e855-4cfd-9454-8f1a94d37f60" ChangeDateTime="10/24/2022 16:03:33">
+    <Property Name="ElementName" Value="[dbo].[Characters].[RaceId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Characters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Race_Id" />
+  </Operation>
 </Operations>

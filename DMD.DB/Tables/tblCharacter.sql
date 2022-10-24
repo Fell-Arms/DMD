@@ -1,27 +1,15 @@
 ﻿CREATE TABLE [dbo].[Characters]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
-    [UserId] UNIQUEIDENTIFIER NOT NULL,
-    [RaceId] UNIQUEIDENTIFIER NOT NULL,
+    [User_Id] UNIQUEIDENTIFIER NOT NULL,
+    [Race_Id] UNIQUEIDENTIFIER NOT NULL,
     [CharacterLevel_Id] UNIQUEIDENTIFIER NOT NULL,
     [FirstName] VARCHAR(30) NOT NULL, 
-    [LastName] VARCHAR(30) NULL, 
-    [Race] VARCHAR(20) NOT NULL, 
-    [Class] VARCHAR(20) NOT NULL, 
-    [Level] INT NOT NULL, 
-    [ArmorClass] INT NOT NULL, 
-    [MaxHealth] NCHAR(10) NOT NULL, 
-    [CurrentHealth] NCHAR(10) NOT NULL, 
-    [CreationDate] DATETIME NOT NULL, 
-    [LanguageId] UNIQUEIDENTIFIER NOT NULL, 
-    [StatsId] UNIQUEIDENTIFIER NOT NULL, 
-    [AttacksId] UNIQUEIDENTIFIER NOT NULL, 
-    [Alignment] VARCHAR(20) NOT NULL, 
-    [Portrait] VARCHAR(50) NULL, 
-    [Age] INT NULL, 
-    [Height] VARCHAR(10) NULL, 
-    [Weight] FLOAT NULL, 
-    [EyeColor] VARCHAR(15) NULL, 
-    [HairColor] NCHAR(10) NULL, 
-    [HairStyle] NCHAR(10) NULL 
+    [LastName] VARCHAR(30) NOT NULL, 
+    [MaxHitpoints] INT NOT NULL,
+    [CurrentHitpoints] INT NOT NULL,
+    [Background] TEXT NOT NULL,
+    [Experience] INT NOT NULL,
+    [Image] VARCHAR(30)
+    
 )

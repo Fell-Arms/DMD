@@ -1,6 +1,9 @@
 ﻿CREATE TABLE [dbo].[Characters]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [UserId] UNIQUEIDENTIFIER NOT NULL,
+    [RaceId] UNIQUEIDENTIFIER NOT NULL,
+    [CharacterLevel_Id] UNIQUEIDENTIFIER NOT NULL,
     [FirstName] VARCHAR(30) NOT NULL, 
     [LastName] VARCHAR(30) NULL, 
     [Race] VARCHAR(20) NOT NULL, 
@@ -20,6 +23,5 @@
     [Weight] FLOAT NULL, 
     [EyeColor] VARCHAR(15) NULL, 
     [HairColor] NCHAR(10) NULL, 
-    [HairStyle] NCHAR(10) NULL, 
-    [UserId] UNIQUEIDENTIFIER NULL
+    [HairStyle] NCHAR(10) NULL 
 )

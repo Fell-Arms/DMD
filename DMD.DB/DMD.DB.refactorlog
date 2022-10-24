@@ -70,4 +70,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Stat_Id" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="468453f9-9cf6-4d5f-a611-2e53f4029be9" ChangeDateTime="10/24/2022 15:14:26">
+    <Property Name="ElementName" Value="[dbo].[Characters].[User_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Characters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="acbdf86f-3e1f-4db3-87fd-c442f3969961" ChangeDateTime="10/24/2022 15:17:51">
+    <Property Name="ElementName" Value="[dbo].[Characters].[Race_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Characters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RaceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="248978b6-3f40-46db-84e4-5f216e41305f" ChangeDateTime="10/24/2022 15:18:00">
+    <Property Name="ElementName" Value="[dbo].[Characters].[Character_Level_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Characters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CharacterLevel_Id" />
+  </Operation>
 </Operations>

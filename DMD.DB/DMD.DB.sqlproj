@@ -107,6 +107,24 @@
     <Build Include="Tables\tblAttackDamageTypes.sql" />
     <Build Include="Tables\tblStat.sql" />
     <None Include="PostDeploy\DefaultData\Races.sql" />
+    <Build Include="ForeignKeys\fkCharacterId.sql" />
+    <Build Include="ForeignKeys\fkRaceId.sql" />
+    <Build Include="ForeignKeys\fkLanguageId.sql" />
+    <Build Include="ForeignKeys\fkStatId.sql" />
+    <Build Include="ForeignKeys\fkAttacksId.sql" />
+    <Build Include="ForeignKeys\fkArmorId.sql" />
+    <Build Include="ForeignKeys\fkArmorType.sql" />
+    <Build Include="ForeignKeys\fkArmorStyle.sql" />
+    <Build Include="ForeignKeys\fkMapId.sql" />
+    <Build Include="ForeignKeys\fkCurrencyId.sql" />
+    <Build Include="ForeignKeys\fkSkillId.sql" />
+    <Build Include="ForeignKeys\fkClassId.sql" />
+    <Build Include="ForeignKeys\fkSpellId.sql" />
+    <Build Include="ForeignKeys\fkDamageTypeId.sql" />
+    <Build Include="ForeignKeys\fkWeaponId.sql" />
+    <Build Include="ForeignKeys\fkWeaponTypeId.sql" />
+    <Build Include="ForeignKeys\fkSpellChargesByLevel.sql" />
+    <Build Include="ForeignKeys\fkCharacterLevelId.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PostDeploy\DefaultData\Users.sql" />

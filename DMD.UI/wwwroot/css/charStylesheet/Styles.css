@@ -1,10 +1,18 @@
-﻿body {
+﻿html {
+    font-family:'MS Gothic';
+}
+
+body {
     margin-bottom:500px;
 }
 
-#characterForm {
-    padding:20px;
-    background-color:lightgrey;
+.characterForm {
+    padding: 20px;
+    background-color: lightgrey;
+}
+
+.active {
+    background-color: lightgrey;
 }
 
 .stat-header {

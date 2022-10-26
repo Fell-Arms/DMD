@@ -78,29 +78,26 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div id="page-container">
+        <div id="content-wrap">
+   
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
+    
     <footer>
-        <div class="footer">
+        <div id="Footer">
             &copy; Dungeon Master Developers LLC <br /> 
-            <div class="w3-row w3-section">
-                <div>
-                    <div>
-                        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xsmall "></i> Appleton Wi, US<br>
-                        <i class="fa fa-phone fa-fw w3-hover-text-black"></i> Phone: 715-420-6969<br>
-                        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xsmall "></i> Email: Devs@DMDmail.com<br>
-                    </div>
-                </div>
-            </div>
+         
+            <i class="fa fa-map-marker"></i> Appleton Wi, US<br>
+            <i class="fa fa-phone"></i> Phone: 715-420-6969<br>
+            <i class="fa fa-envelope "></i> Email: Devs@DMDmail.com<br>
+                   <br/>
             <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Acknowledgments</a> |
             <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Terms of Service</a> |
             <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Privacy Policy</a> |
             <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Support</a> |
             <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Contact Us</a> |
-         
         </div>
       
     </footer>
@@ -108,5 +105,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    </div>
+    </div>
 </body>
 </html>

@@ -24,7 +24,5 @@ namespace DMD.BL.Models
         public List<SpellDamageTypes> SpellDamageTypes { get; set; }
         public List<CharacterCurrency> CharacterCurrency { get; set; }
         public List<CharacterLanguages> CharacterLanguages { get; set; }
-        
-        
     }
 }

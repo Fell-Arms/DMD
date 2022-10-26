@@ -11,7 +11,7 @@ namespace DMD.BL.Models
         public List<User> Users { get; set; }
         public List<Character> Characters { get; set; }
         public List<Race> Race { get; set; }
-        public List<Class> Classes { get; set; }
+        public List<CharacterClasses> CharacterClasses { get; set; }
         public List<CharacterLevel> CharacterLevel { get; set; }
         public List<CharacterWeapon> CharactersWeapon { get; set; }
         public List<CharacterWeaponTypeProficiency> CharacterWeaponTypeProficiencies { get; set; }
@@ -24,7 +24,7 @@ namespace DMD.BL.Models
         public List<SpellDamageTypes> SpellDamageTypes { get; set; }
         public List<CharacterCurrency> CharacterCurrency { get; set; }
         public List<CharacterLanguages> CharacterLanguages { get; set; }
-        public List<Currency> Currency { get; set; }
+        
         
     }
 }

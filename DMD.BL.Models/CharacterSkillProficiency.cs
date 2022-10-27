@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DMD.BL.Models
 {
-    public class CharacterSKillProficiency
+    public class CharacterSkillProficiency
     {
         public Guid Id { get; set; } // use guid for id
         public Guid Skill_Id { get; set; }

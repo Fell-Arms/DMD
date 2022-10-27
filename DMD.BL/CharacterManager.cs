@@ -202,6 +202,8 @@ namespace DMD.BL
             }
         }
 
+
+
         public async static Task<int> Insert(Character character, bool rollback = false)
         {
             try
@@ -214,15 +216,23 @@ namespace DMD.BL
                         IDbContextTransaction transaction = dc.Database.BeginTransaction();
                         tblCharacter newrow = new tblCharacter();
                         newrow.Id = Guid.NewGuid();
-                        newrow.User_Id = Guid.NewGuid();
-                        character.Id = newrow.Id;
+                        newrow.User_Id = character.UserId;
+                        newrow.Race_Id = character.RaceId;
+                        newrow.CharacterLevel_Id = character.CharacterLevelId;
+                        newrow.FirstName = character.FirstName;
+                        newrow.LastName = character.LastName;
+                        newrow.MaxHitpoints = character.MaxHitpoints;
+                        newrow.CurrentHitpoints = character.CurrentHitpoints;
+                        newrow.Background = character.Background;
+                        newrow.Experience = character.Experience;
+                        newrow.Image = character.ImagePath;
                         dc.tblCharacters.Add(newrow);
 
                         if (character.CharacterCurrency != null && character.CharacterCurrency.Any())
                         {
                             foreach (CharacterCurrency characterCurrency in character.CharacterCurrency)
                             {
-                                tblCharacterCurrency? tblCharacterCurrency = dc.tblCharacterCurrencies.FirstOrDefault(a => a.Currency_Id == characterCurrency.Currency_Id && a.Character_Id == characterCurrency.Character_Id);
+                                tblCharacterCurrency? tblCharacterCurrency = dc.tblCharacterCurrencies.FirstOrDefault(cc => cc.Currency_Id == characterCurrency.Currency_Id && cc.Character_Id == characterCurrency.Character_Id);
                                 if ( tblCharacterCurrency != null)
                                 {
                                     throw new Exception("No duplicate currency!!");
@@ -247,7 +257,7 @@ namespace DMD.BL
                         {
                             foreach (CharacterArmor characterArmor in character.CharacterArmors)
                             {
-                                tblCharacterArmor? tblCharacterArmor = dc.tblCharacterArmors.FirstOrDefault(a => a.Armor_Id == characterArmor.Armor_Id && a.Character_Id == characterArmor.Character_Id);
+                                tblCharacterArmor? tblCharacterArmor = dc.tblCharacterArmors.FirstOrDefault(ca => ca.Armor_Id == characterArmor.Armor_Id && ca.Character_Id == characterArmor.Character_Id);
                                 if (tblCharacterArmor != null)
                                 {
                                     throw new Exception("No duplicate armor!!");
@@ -270,7 +280,7 @@ namespace DMD.BL
                         {
                             foreach (CharacterWeapon characterWeapons in character.CharacterWeapons)
                             {
-                                tblCharacterWeapon? tblCharacterWeapon = dc.tblCharacterWeapons.FirstOrDefault(a => a.Weapon_Id == characterWeapons.Weapon_Id && a.Character_Id == characterWeapons.Character_Id);
+                                tblCharacterWeapon? tblCharacterWeapon = dc.tblCharacterWeapons.FirstOrDefault(cw => cw.Weapon_Id == characterWeapons.Weapon_Id && cw.Character_Id == characterWeapons.Character_Id);
                                 if (tblCharacterWeapon != null)
                                 {
                                     throw new Exception("No duplicate weapons!!");
@@ -293,23 +303,44 @@ namespace DMD.BL
 
                         if (character.CharacterWeaponTypeProficiencies != null && character.CharacterWeaponTypeProficiencies.Any())
                         {
-                            foreach (CharacterWeapon characterWeapons in character.CharacterWeapons)
+                            foreach (CharacterWeaponTypeProficiency characterWeaponTypeProficiency in character.CharacterWeaponTypeProficiencies)
                             {
-                                tblCharacterWeapon? tblCharacterWeapon = dc.tblCharacterWeapons.FirstOrDefault(a => a.Weapon_Id == characterWeapons.Weapon_Id && a.Character_Id == characterWeapons.Character_Id);
-                                if (tblCharacterWeapon != null)
+                                tblCharacterWeaponTypeProficiency? tblCharacterWeaponTypeProficiency = dc.tblCharacterWeaponTypeProficiencies.FirstOrDefault(wtp => wtp.WeaponType_Id == characterWeaponTypeProficiency.WeaponType_Id && wtp.Character_Id == characterWeaponTypeProficiency.Character_Id);
+                                if (tblCharacterWeaponTypeProficiency != null)
                                 {
                                     throw new Exception("No duplicate armor!!");
                                 }
                                 else
                                 {
-                                    tblCharacterWeapon = new tblCharacterWeapon();
-                                    tblCharacterWeapon.Id = Guid.NewGuid();
-                                    tblCharacterWeapon.Weapon_Id = characterWeapons.Weapon_Id;
-                                    tblCharacterWeapon.Character_Id = characterWeapons.Character_Id;
-                                    tblCharacterWeapon.Equipped = characterWeapons.Equipped;
+                                    tblCharacterWeaponTypeProficiency = new tblCharacterWeaponTypeProficiency();
+                                    tblCharacterWeaponTypeProficiency.Id = Guid.NewGuid();
+                                    tblCharacterWeaponTypeProficiency.WeaponType_Id = tblCharacterWeaponTypeProficiency.WeaponType_Id;
+                                    tblCharacterWeaponTypeProficiency.Character_Id = tblCharacterWeaponTypeProficiency.Character_Id;
 
-                                    characterWeapons.Id = tblCharacterWeapon.Id;
-                                    dc.tblCharacterWeapons.Add(tblCharacterWeapon);
+                                    characterWeaponTypeProficiency.Id = tblCharacterWeaponTypeProficiency.Id;
+                                    dc.tblCharacterWeaponTypeProficiencies.Add(tblCharacterWeaponTypeProficiency);
+                                }
+                            }
+                        }
+
+                        if (character.CharacterSpellCharges != null && character.CharacterSpellCharges.Any())
+                        {
+                            foreach (CharacterSpellCharges characterSpellCharges in character.CharacterSpellCharges)
+                            {
+                                tblCharacterSpellCharge? tblCharacterSpellCharge = dc.tblCharacterSpellCharges.FirstOrDefault(sc => sc.Spell_Charges_By_Level_Id == characterSpellCharges.Spell_Charges_By_Level_Id && sc.Character_Id == characterSpellCharges.Character_Id);
+                                if (tblCharacterSpellCharge != null)
+                                {
+                                    throw new Exception("No duplicate spell charges!!");
+                                }
+                                else
+                                {
+                                    tblCharacterSpellCharge = new tblCharacterSpellCharge();
+                                    tblCharacterSpellCharge.Id = Guid.NewGuid();
+                                    tblCharacterSpellCharge.Spell_Charges_By_Level_Id = characterSpellCharges.Spell_Charges_By_Level_Id;
+                                    tblCharacterSpellCharge.Character_Id = characterSpellCharges.Character_Id;
+
+                                    characterSpellCharges.Id = tblCharacterSpellCharge.Id;
+                                    dc.tblCharacterSpellCharges.Add(tblCharacterSpellCharge);
                                 }
                             }
                         }
@@ -318,10 +349,138 @@ namespace DMD.BL
 
 
 
+                        if (character.CharacterSpells != null && character.CharacterSpells.Any())
+                        {
+                            foreach (CharacterSpells characterSpells in character.CharacterSpells)
+                            {
+                                tblCharacterSpell? tblCharacterSpell = dc.tblCharacterSpells.FirstOrDefault(cspl => cspl.Spell_Id == characterSpells.Spell_Id && cspl.Character_Id == characterSpells.Character_Id);
+                                if (tblCharacterSpell != null)
+                                {
+                                    throw new Exception("No duplicate spells!!");
+                                }
+                                else
+                                {
+                                    tblCharacterSpell = new tblCharacterSpell();
+                                    tblCharacterSpell.Id = Guid.NewGuid();
+                                    tblCharacterSpell.Spell_Id = tblCharacterSpell.Spell_Id;
+
+                                    characterSpells.Id = tblCharacterSpell.Id;
+                                    dc.tblCharacterSpells.Add(tblCharacterSpell);
+                                }
+                            }
+                        }
 
 
 
+                        if (character.CharacterClasses != null && character.CharacterClasses.Any())
+                        {
+                            foreach (CharacterClasses characterClasses in character.CharacterClasses)
+                            {
+                                tblCharacterClass? tblCharacterClass = dc.tblCharacterClasses.FirstOrDefault(cca => cca.Class_Id == characterClasses.Class_Id && cca.Character_Id == characterClasses.Character_Id);
+                                if (tblCharacterClass != null)
+                                {
+                                    throw new Exception("No duplicate spells!!");
+                                }
+                                else
+                                {
+                                    tblCharacterClass = new tblCharacterClass();
+                                    tblCharacterClass.Id = Guid.NewGuid();
+                                    tblCharacterClass.Class_Level = tblCharacterClass.Class_Level;
+                                    tblCharacterClass.Class_Id = tblCharacterClass.Class_Id;
 
+                                    characterClasses.Id = tblCharacterClass.Id;
+                                    dc.tblCharacterClasses.Add(tblCharacterClass);
+                                }
+                            }
+                        }
+
+
+                        if (character.CharacterAttacks != null && character.CharacterAttacks.Any())
+                        {
+                            foreach (CharacterAttacks characterAttacks in character.CharacterAttacks)
+                            {
+                                tblCharacterAttack? tblCharacterAttack = dc.tblCharacterAttacks.FirstOrDefault(caa => caa.Attack_Id == characterAttacks.Attack_Id && caa.Character_Id == characterAttacks.Character_Id);
+                                if (tblCharacterAttack != null)
+                                {
+                                    throw new Exception("No duplicate attacks!!");
+                                }
+                                else
+                                {
+                                    tblCharacterAttack = new tblCharacterAttack();
+                                    tblCharacterAttack.Id = Guid.NewGuid();
+                                    tblCharacterAttack.Attack_Id = tblCharacterAttack.Attack_Id;
+                                    tblCharacterAttack.CurrentUses = tblCharacterAttack.CurrentUses;
+
+                                    characterAttacks.Id = tblCharacterAttack.Id;
+                                    dc.tblCharacterAttacks.Add(tblCharacterAttack);
+                                }
+                            }
+                        }
+
+
+                        if (character.CharacterStats != null && character.CharacterStats.Any())
+                        {
+                            foreach (CharacterStats CharacterStats in character.CharacterStats)
+                            {
+                                tblCharacterStat? tblCharacterStat = dc.tblCharacterStats.FirstOrDefault(cst => cst.Stats_Id == cst.Stats_Id && cst.Character_Id == CharacterStats.Character_Id);
+                                if (tblCharacterStat != null)
+                                {
+                                    throw new Exception("No duplicate stats!!");
+                                }
+                                else
+                                {
+                                    tblCharacterStat = new tblCharacterStat();
+                                    tblCharacterStat.Id = Guid.NewGuid();
+                                    tblCharacterStat.Stats_Id = tblCharacterStat.Stats_Id;
+                                    tblCharacterStat.Value = tblCharacterStat.Value;
+
+                                    CharacterStats.Id = tblCharacterStat.Id;
+                                    dc.tblCharacterStats.Add(tblCharacterStat);
+                                }
+                            }
+                        }
+
+                        if (character.CharacterSkillProficiencies != null && character.CharacterSkillProficiencies.Any())
+                        {
+                            foreach (CharacterSKillProficiency characterSKillProficiency in character.CharacterSkillProficiencies)
+                            {
+                                tblCharacterSkillProficiency? tblCharacterSkillProficiency = dc.tblCharacterSkillProficiencies.FirstOrDefault(csp => csp.Skill_Id == csp.Skill_Id && csp.Character_Id == characterSKillProficiency.Character_Id);
+                                if (tblCharacterSkillProficiency != null)
+                                {
+                                    throw new Exception("No duplicate skill proficiency!!");
+                                }
+                                else
+                                {
+                                    tblCharacterSkillProficiency = new tblCharacterSkillProficiency();
+                                    tblCharacterSkillProficiency.Id = Guid.NewGuid();
+                                    tblCharacterSkillProficiency.Skill_Id = tblCharacterSkillProficiency.Skill_Id;
+
+                                    characterSKillProficiency.Id = characterSKillProficiency.Id;
+                                    dc.tblCharacterSkillProficiencies.Add(tblCharacterSkillProficiency);
+                                }
+                            }
+                        }
+
+                        if (character.CharacterLanguages != null && character.CharacterLanguages.Any())
+                        {
+                            foreach (CharacterLanguages characterLanguages in character.CharacterLanguages)
+                            {
+                                tblCharacterLanguage? tblCharacterLanguage = dc.tblCharacterLanguages.FirstOrDefault(cl => cl.Language_Id == cl.Language_Id && cl.Character_Id == characterLanguages.Character_Id);
+                                if (characterLanguages != null)
+                                {
+                                    throw new Exception("No duplicate language!!");
+                                }
+                                else
+                                {
+                                    tblCharacterLanguage = new tblCharacterLanguage();
+                                    tblCharacterLanguage.Id = Guid.NewGuid();
+                                    tblCharacterLanguage.Language_Id = tblCharacterLanguage.Language_Id;
+
+                                    characterLanguages.Id = characterLanguages.Id;
+                                    dc.tblCharacterLanguages.Add(tblCharacterLanguage);
+                                }
+                            }
+                        }
 
 
 
@@ -338,6 +497,8 @@ namespace DMD.BL
                 throw;
             }
         }
+
+
 
 
 
@@ -410,6 +571,14 @@ namespace DMD.BL
                                 dc.tblActivations.Remove(activation);
                             }
                         }
+
+
+
+
+
+
+
+
                         dc.tblCharacters.Remove(row);
                         results = await dc.SaveChangesAsync().ConfigureAwait(false);
                         if (rollback) { await transaction.RollbackAsync().ConfigureAwait(false); }

@@ -8,6 +8,7 @@ namespace DMD.BL.Models
 {
     public class Character
     {
+        public Guid Id { get; set; }
         public string User { get; set; }
         public string Race { get; set; }
         public int CharacterLevel { get; set; }

@@ -28,13 +28,16 @@ namespace DMD.BL
                                 FirstName = c.FirstName,
                                 LastName = c.LastName,
                                 MaxHitpoints = c.MaxHitpoints,
-
+                                Background = c.Background,
+                                Experience = c.Experience,
+                                ImagePath = c.Image
                             };
-                            // Create the list of Answers
-                            character.Answers = new List<Answer>();
-                            foreach (tblCharacterAnswer qa in q.tblCharacterAnswers.ToList())
+
+                            // Create the list of Armors
+                            character.CharacterArmors = new List<CharacterArmor>();
+                            foreach (tblCharacterArmor ca in c.tblCharacterAnswers.ToList())
                             {
-                                Answer answer = new Answer
+                                Armor armor = new Armor
                                 {
                                     Id = qa.AnswerId,
                                     IsCorrect = qa.IsCorrect,

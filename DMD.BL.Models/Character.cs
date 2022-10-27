@@ -9,9 +9,9 @@ namespace DMD.BL.Models
     public class Character
     {
         public Guid Id { get; set; }
-        public string User { get; set; }
-        public string Race { get; set; }
-        public int CharacterLevel { get; set; }
+        public Guid UserId { get; set; }
+        public Guid RaceId { get; set; }
+        public Guid CharacterLevelId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int MaxHitpoints { get; set; }

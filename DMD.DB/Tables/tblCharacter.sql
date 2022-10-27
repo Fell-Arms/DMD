@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Characters]
+﻿CREATE TABLE [dbo].[tblCharacter]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
     [User_Id] UNIQUEIDENTIFIER NOT NULL,

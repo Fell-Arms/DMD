@@ -8,14 +8,15 @@ namespace DMD.BL.Models
 {
     public class Character
     {
-        public string User { get; set; }
-        public string Race { get; set; }
-        public int CharacterLevel { get; set; }
+        public Guid Id { get; set; }
+        public Guid UserId { get; set; }
+        public Guid RaceId { get; set; }
+        public Guid CharacterLevelId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string MaxHitpoints { get; set; }
-        public string CurrentHitpoints { get; set; }
-        public string Background { get; set; }
+        public int MaxHitpoints { get; set; }
+        public int CurrentHitpoints { get; set; }
+        public string? Background { get; set; }
         public int Experience { get; set; }
         public string? ImagePath { get; set; }
         public List<CharacterArmor> CharacterArmors { get; set; }

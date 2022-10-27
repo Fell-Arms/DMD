@@ -14,8 +14,8 @@ namespace DMD.BL.Models
         public int CharacterLevel { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string MaxHitpoints { get; set; }
-        public string CurrentHitpoints { get; set; }
+        public int MaxHitpoints { get; set; }
+        public int CurrentHitpoints { get; set; }
         public string? Background { get; set; }
         public int Experience { get; set; }
         public string? ImagePath { get; set; }

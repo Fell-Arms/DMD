@@ -20,9 +20,16 @@ namespace DMD.BL
                 {
                     using (DMDEntities dc = new DMDEntities())
                     {
-                        foreach (tblCharacter q in dc.tblCharacters.ToList())
+                        foreach (tblCharacter c in dc.tblCharacters.ToList())
                         {
-                            Character character = new Character { Id = q.Id, Text = q.Character };
+                            Character character = new Character 
+                            { 
+                                Id = c.Id,
+                                FirstName = c.FirstName,
+                                LastName = c.LastName,
+                                MaxHitpoints = c.MaxHitpoints,
+
+                            };
                             // Create the list of Answers
                             character.Answers = new List<Answer>();
                             foreach (tblCharacterAnswer qa in q.tblCharacterAnswers.ToList())

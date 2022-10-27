@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DMD.BL.Models
 {
-    internal class Stat
+    public class Stat
     {
         public Guid Id { get; set; } // use guid for id
         public string Name { get; set; }

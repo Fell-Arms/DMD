@@ -88,7 +88,9 @@ namespace DMD.UI.Controllers
                 UserManager.Insert(user);
                 if (TempData["returnurl"] != null)
                 {
-                    return Redirect(TempData["returnurl"]?.ToString());
+                    var returnurl = TempData["returnurl"];
+                    TempData["returnurl"] = null;
+                    return Redirect(returnurl?.ToString()); // Should make returnurl null after redirecting so it doesn't hijack their redirect later on
                 }
                 else
                 {

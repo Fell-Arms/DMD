@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 namespace DMD.BL
@@ -79,9 +80,25 @@ namespace DMD.BL
                         if (tblCharacter != null)
                         {
                             // Fill table row values into object
-                            character.Id = tblCharacter.Id;
-                            character.Text = tblCharacter.Character;
-                            character.Answers = new List<Answer>();
+                            
+
+
+
+                            character.CharacterArmors = new List<CharacterArmor>();
+                            character.CharacterCurrency = new List<CharacterCurrency>();
+                            character.CharacterWeapons = new List<CharacterWeapon>();
+                            character.CharacterWeaponTypeProficiencies = new List<CharacterWeaponTypeProficiency>();
+                            character.CharacterSpellCharges = new List<CharacterSpellCharges>();
+                            character.CharacterSpells = new List<CharacterSpells>();
+                            character.CharacterClasses = new List<CharacterClasses>();
+                            character.CharacterAttacks = new List<CharacterAttacks>();
+                            character.CharacterStats = new List<CharacterStats>();
+                            character.CharacterSkillProficiencies = new List<CharacterSKillProficiency>();
+                            character.CharacterLanguages = new List<CharacterLanguages>();
+
+                      
+
+
                             character.Activations = new();
                             try
                             {
@@ -129,7 +146,7 @@ namespace DMD.BL
                 throw;
             }
         }
-        public async static Task<Character> LoadByActivationCode(string activationCode)
+        public async static Task<Character> Load(string activationCode)
         {
             try
             {
@@ -174,6 +191,7 @@ namespace DMD.BL
                 throw;
             }
         }
+
         public async static Task<int> Insert(Character character, bool rollback = false)
         {
             try
@@ -186,55 +204,118 @@ namespace DMD.BL
                         IDbContextTransaction transaction = dc.Database.BeginTransaction();
                         tblCharacter newrow = new tblCharacter();
                         newrow.Id = Guid.NewGuid();
-                        newrow.Character = character.Text;
+                        newrow.User_Id = Guid.NewGuid();
                         character.Id = newrow.Id;
                         dc.tblCharacters.Add(newrow);
-                        if (character.Answers != null && character.Answers.Any())
+
+                        if (character.CharacterCurrency != null && character.CharacterCurrency.Any())
                         {
-                            foreach (Answer answer in character.Answers)
+                            foreach (CharacterCurrency characterCurrency in character.CharacterCurrency)
                             {
-                                tblAnswer? answerRow = dc.tblAnswers.FirstOrDefault(a => a.Answer == answer.Text);
-                                if (answerRow != null)
+                                tblCharacterCurrency? tblCharacterCurrency = dc.tblCharacterCurrencies.FirstOrDefault(a => a.Currency_Id == characterCurrency.Currency_Id && a.Character_Id == characterCurrency.Character_Id);
+                                if ( tblCharacterCurrency != null)
                                 {
-                                    answer.Id = answerRow.Id;
+                                    throw new Exception("No duplicate currency!!");
                                 }
                                 else
                                 {
-                                    answerRow = new tblAnswer();
-                                    answerRow.Id = Guid.NewGuid();
-                                    answerRow.Answer = answer.Text;
-                                    answer.Id = answerRow.Id;
-                                    dc.tblAnswers.Add(answerRow);
+                                    tblCharacterCurrency = new tblCharacterCurrency();
+                                    tblCharacterCurrency.Id = Guid.NewGuid();
+                                    tblCharacterCurrency.Character_Id = characterCurrency.Character_Id;
+                                    tblCharacterCurrency.Currency_Id = characterCurrency.Currency_Id;
+                                    tblCharacterCurrency.Amount = characterCurrency.Amount;
+
+                                    characterCurrency.Id = tblCharacterCurrency.Id;
+                                    dc.tblCharacterCurrencies.Add(tblCharacterCurrency);
                                 }
-                                tblCharacterAnswer characterAnswerRow = new tblCharacterAnswer();
-                                characterAnswerRow.Id = Guid.NewGuid();
-                                characterAnswerRow.CharacterId = character.Id;
-                                characterAnswerRow.AnswerId = answer.Id;
-                                characterAnswerRow.IsCorrect = answer.IsCorrect;
-                                dc.tblCharacterAnswers.Add(characterAnswerRow);
+                              
                             }
                         }
-                        if (character.Activations != null && character.Activations.Any())
+
+
+                        if (character.CharacterArmors != null && character.CharacterArmors.Any())
                         {
-                            foreach (Activation activation in character.Activations)
+                            foreach (CharacterArmor characterArmor in character.CharacterArmors)
                             {
-                                tblActivation? activationRow = dc.tblActivations.FirstOrDefault(a => a.ActivationCode == activation.ActivationCode);
-                                if (activationRow != null)
+                                tblCharacterArmor? tblCharacterArmor = dc.tblCharacterArmors.FirstOrDefault(a => a.Armor_Id == characterArmor.Armor_Id && a.Character_Id == characterArmor.Character_Id);
+                                if (tblCharacterArmor != null)
                                 {
-                                    throw new Exception("Activation code in use.");
+                                    throw new Exception("No duplicate armor!!");
                                 }
                                 else
                                 {
-                                    activationRow = new tblActivation();
-                                    activationRow.Id = Guid.NewGuid();
-                                    activationRow.CharacterId = character.Id;
-                                    activationRow.ActivationCode = activation.ActivationCode;
-                                    activationRow.StartDate = DateTime.Now;
-                                    activationRow.EndDate = DateTime.Now.AddDays(7);
-                                    dc.tblActivations.Add(activationRow);
+                                    tblCharacterArmor = new tblCharacterArmor();
+                                    tblCharacterArmor.Id = Guid.NewGuid();
+                                    tblCharacterArmor.Armor_Id = characterArmor.Armor_Id  ;
+                                    tblCharacterArmor.Character_Id = characterArmor.Character_Id;
+                                    tblCharacterArmor.Equipped = characterArmor.Equipped;
+
+                                    characterArmor.Id = tblCharacterArmor.Id;
+                                    dc.tblCharacterArmors.Add(tblCharacterArmor); 
+                                 }
+                            }
+                        }
+
+                        if (character.CharacterWeapons != null && character.CharacterWeapons.Any())
+                        {
+                            foreach (CharacterWeapon characterWeapons in character.CharacterWeapons)
+                            {
+                                tblCharacterWeapon? tblCharacterWeapon = dc.tblCharacterWeapons.FirstOrDefault(a => a.Weapon_Id == characterWeapons.Weapon_Id && a.Character_Id == characterWeapons.Character_Id);
+                                if (tblCharacterWeapon != null)
+                                {
+                                    throw new Exception("No duplicate weapons!!");
+                                }
+                                else
+                                {
+                                    tblCharacterWeapon = new tblCharacterWeapon();
+                                    tblCharacterWeapon.Id = Guid.NewGuid();
+                                    tblCharacterWeapon.Weapon_Id = characterWeapons.Weapon_Id;
+                                    tblCharacterWeapon.Character_Id = characterWeapons.Character_Id;
+                                    tblCharacterWeapon.Equipped = characterWeapons.Equipped;
+
+                                    characterWeapons.Id = tblCharacterWeapon.Id;
+                                    dc.tblCharacterWeapons.Add(tblCharacterWeapon);
                                 }
                             }
                         }
+
+
+
+                        if (character.CharacterWeaponTypeProficiencies != null && character.CharacterWeaponTypeProficiencies.Any())
+                        {
+                            foreach (CharacterWeapon characterWeapons in character.CharacterWeapons)
+                            {
+                                tblCharacterWeapon? tblCharacterWeapon = dc.tblCharacterWeapons.FirstOrDefault(a => a.Weapon_Id == characterWeapons.Weapon_Id && a.Character_Id == characterWeapons.Character_Id);
+                                if (tblCharacterWeapon != null)
+                                {
+                                    throw new Exception("No duplicate armor!!");
+                                }
+                                else
+                                {
+                                    tblCharacterWeapon = new tblCharacterWeapon();
+                                    tblCharacterWeapon.Id = Guid.NewGuid();
+                                    tblCharacterWeapon.Weapon_Id = characterWeapons.Weapon_Id;
+                                    tblCharacterWeapon.Character_Id = characterWeapons.Character_Id;
+                                    tblCharacterWeapon.Equipped = characterWeapons.Equipped;
+
+                                    characterWeapons.Id = tblCharacterWeapon.Id;
+                                    dc.tblCharacterWeapons.Add(tblCharacterWeapon);
+                                }
+                            }
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
                         results = dc.SaveChanges();
                         if (rollback) { transaction.RollbackAsync(); }
                         else { transaction.CommitAsync(); }
@@ -247,6 +328,9 @@ namespace DMD.BL
                 throw;
             }
         }
+
+
+
         public async static Task<int> Update(Character character, bool rollback = false)
         {
             try

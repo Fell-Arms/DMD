@@ -6,6 +6,10 @@ body {
   
 }
 
+.container {
+    margin-bottom: 150px;
+}
+
 .characterForm {
     padding: 20px;
     background-color: lightgrey;
@@ -13,7 +17,6 @@ body {
 
 .active {
     background-color: lightgrey;
-    margin-bottom:150px;
 }
 
 .stat-header {

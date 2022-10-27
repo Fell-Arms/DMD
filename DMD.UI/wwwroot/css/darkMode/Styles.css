@@ -1,0 +1,48 @@
+﻿.dark-nav-footer {
+    background-color: black;
+    color: white;
+}
+
+.dark-nav-links {
+    color: white;
+}
+
+    .dark-nav-links:visited {
+        color: white;
+    }
+
+    .dark-nav-links:hover {
+        color: #ff3366;
+    }
+
+.dark-mode {
+    background-color: #141414;
+    color: white;
+}
+
+.dark-mode-form {
+    background-color: #424242;
+    color: white;
+}
+
+.dark-mode-form-control {
+    background-color: #737373;
+    color: white;
+}
+
+    .dark-mode-form-control::placeholder {
+        color: white;
+    }
+
+.dark-mode-icon-toggle-pop {
+    background-color: #FF3366;
+}
+
+.dark-mode-btn-toggle-pop {
+    background-color: #FF3366;
+}
+
+    .dark-mode-btn-toggle-pop:hover {
+        background-color: #7523B0;
+    }
+

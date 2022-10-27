@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DMD.BL.Models
 {
-    internal class Weapon
+    public class Weapon
     {
         public Guid Id { get; set; } // use guid for id
         public Guid WeaponType_Id { get; set; }

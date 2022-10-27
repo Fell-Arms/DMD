@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DMD.BL.Models
 {
-    internal class UserMaps
+    public class UserMaps
     {
         public Guid Id { get; set; } // use guid for id
         public Guid User_Id { get; set; }

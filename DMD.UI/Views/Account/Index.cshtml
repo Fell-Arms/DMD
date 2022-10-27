@@ -103,7 +103,7 @@
 
                         <!--Account Info-->
                         <div class="row m-3">
-                            <span class="col-auto material-symbols-outlined">
+                            <span class="col-auto material-symbols-outlined icon-pop-toggle">
                                 feed
                             </span>
                             <button class="col-auto btn-plain w3-opacity" onclick="openInfo()">Account Info</button>
@@ -111,7 +111,7 @@
                         
                         <!--Friends-->
                         <div class="row m-3">
-                            <span class="col-auto material-symbols-outlined">
+                            <span class="col-auto material-symbols-outlined icon-pop-toggle">
                                 groups
                             </span>
                             <button class="col-auto btn-plain w3-opacity" onclick="openFriends()">Friends List</button>
@@ -119,7 +119,7 @@
 
                         <!--Character Gallery-->
                         <div class="row m-3">
-                            <span class="col-auto material-symbols-outlined">
+                            <span class="col-auto material-symbols-outlined icon-pop-toggle">
                                 switch_account
                             </span>
                             <button class="col-auto btn-plain w3-opacity" onclick="openChars()">Characters</button>
@@ -127,7 +127,7 @@
 
                         <!--Map Gallery-->
                         <div class="row m-3">
-                            <span class="col-auto material-symbols-outlined">
+                            <span class="col-auto material-symbols-outlined icon-pop-toggle">
                                 photo_library
                             </span>
                             <button class="col-auto btn-plain w3-opacity" onclick="openMaps()">Map Gallery</button>
@@ -135,7 +135,7 @@
 
                         <!--Current Games-->
                         <div class="row m-3">
-                            <span class="col-auto material-symbols-outlined">
+                            <span class="col-auto material-symbols-outlined icon-pop-toggle">
                                 casino
                             </span>
                             <button class="col-auto btn-plain w3-opacity" onclick="openGames()">Games</button>
@@ -143,7 +143,7 @@
 
                         <!--Account Settings-->
                         <div class="row m-3">
-                            <span class="col-auto material-symbols-outlined">
+                            <span class="col-auto material-symbols-outlined icon-pop-toggle">
                                 settings
                             </span>
                             <button class="col-auto btn-plain w3-opacity" onclick="openSettings()">Account Settings</button>
@@ -358,7 +358,7 @@
                                     <h5 class="row m-3 w3-opacity"><b>First Name: Johnny</b></h5>
                                     <h5 class="row m-3 w3-opacity"><b>Last Name: Billybob</b></h5>
                                     <h5 class="row m-3 w3-opacity"><b>Join Date: 10/10/2022</b></h5>
-                                    <a class="row justify-content-center m-4 btn btn-custom" asp-area="" asp-controller="Account" asp-action="Edit">Edit Account Info</a>
+                                    <a class="row justify-content-center m-4 btn btn-custom btn-pop-toggle" asp-area="" asp-controller="Account" asp-action="Edit">Edit Account Info</a>
                                 </div> 
                             </div>
 
@@ -431,8 +431,8 @@
                         <div class="w3-container w3-card w3-white w3-margin-bottom">
                             <h2 class="w3-text-grey w3-padding-16"><i class="w3-margin-right w3-xxlarge"></i>Account Settings</h2>
                         <h5 class="w3-opacity"><b>Edit account info, delete the account, set mode(maybe add later?)</b></h5>
-
-                        <a class="btn btn-secondary" asp-area="" asp-controller="Account" asp-action="Edit">Edit Account</a>
+                        <button class="" onclick="toggleMode()">Toggle Mode</button>
+                        <a class="btn btn-pop-toggle" asp-area="" asp-controller="Account" asp-action="Edit">Edit Account</a>
                         <a class="btn btn-danger" asp-area="" asp-controller="Account" asp-action="Delete">Delete Account</a>
                         
                         <hr>

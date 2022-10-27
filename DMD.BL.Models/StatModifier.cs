@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DMD.BL.Models
 {
-    internal class StatModifier
+    public class StatModifier
     {
         public int Value { get; set; } // use guid for id
         public int Modifier { get; set; }

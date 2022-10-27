@@ -8,7 +8,11 @@ namespace DMD.BL.Models
 {
     public class Character
     {
-        public List<User> Users { get; set; }
+        public string User { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MaxHitpoints { get; set; }
+        public string CurrentHitpoints { get; set; }
         public List<Character> Characters { get; set; }
         public List<Race> Race { get; set; }
         public List<CharacterClasses> CharacterClasses { get; set; }

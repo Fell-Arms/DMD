@@ -3,7 +3,7 @@
 }
 
 body {
-   
+  
 }
 
 .characterForm {
@@ -13,6 +13,7 @@ body {
 
 .active {
     background-color: lightgrey;
+    margin-bottom:150px;
 }
 
 .stat-header {

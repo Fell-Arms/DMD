@@ -28,7 +28,7 @@ namespace DMD.BL.Models
         public List<CharacterClasses> CharacterClasses { get; set; }
         public List<CharacterAttacks> CharacterAttacks { get; set; }
         public List<CharacterStats> CharacterStats { get; set; }
-        public List<CharacterSKillProficiency> CharacterSkillProficiencies { get; set; }
+        public List<CharacterSkillProficiency> CharacterSkillProficiencies { get; set; }
         public List<CharacterLanguages> CharacterLanguages { get; set; }
     }
 }

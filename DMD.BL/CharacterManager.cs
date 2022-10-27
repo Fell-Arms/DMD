@@ -449,7 +449,7 @@ namespace DMD.BL
 
                         if (character.CharacterSkillProficiencies != null && character.CharacterSkillProficiencies.Any())
                         {
-                            foreach (CharacterSKillProficiency characterSKillProficiency in character.CharacterSkillProficiencies)
+                            foreach (CharacterSkillProficiency characterSKillProficiency in character.CharacterSkillProficiencies)
                             {
                                 tblCharacterSkillProficiency? tblCharacterSkillProficiency = dc.tblCharacterSkillProficiencies.FirstOrDefault(csp => csp.Skill_Id == csp.Skill_Id && csp.Character_Id == characterSKillProficiency.Character_Id);
                                 if (tblCharacterSkillProficiency != null)
@@ -488,6 +488,7 @@ namespace DMD.BL
                                 }
                             }
                         }
+
 
 
 

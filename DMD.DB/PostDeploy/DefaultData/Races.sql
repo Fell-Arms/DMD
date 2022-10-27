@@ -1,5 +1,5 @@
 ﻿BEGIN
-	INSERT INTO dbo.tblRace (Id, Race, Description)
+	INSERT INTO dbo.tblRace (Id, Name, Description)
 	VALUES
 	(NEWID(), 'Dragonborn', ' Shaped by draconic gods or the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids.'),
 	(NEWID(), 'Dwarf', 'Bold and hardy, dwarves are known as skilled warriors, miners, and workers of stone and metal. '),

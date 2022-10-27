@@ -33,17 +33,24 @@ namespace DMD.BL
                                 ImagePath = c.Image
                             };
 
-                            // Create the list of Armors
+                            // Create the list of CharacterArmors
                             character.CharacterArmors = new List<CharacterArmor>();
-                            foreach (tblCharacterArmor ca in c.tblCharacterAnswers.ToList())
+                            foreach (tblCharacterArmor ca in c.tblCharacterArmors.ToList())
                             {
-                                Armor armor = new Armor
+                                CharacterArmor characterArmor = new CharacterArmor()
                                 {
-                                    Id = qa.AnswerId,
-                                    IsCorrect = qa.IsCorrect,
-                                    Text = qa.Answer.Answer
-                                };
-                                character.Answers.Add(answer);
+                                    Id = ca.Id,
+                                }
+                                //Armor armor = new Armor
+                                //{
+                                //    Id = ca.Armor_Id,
+                                //    ArmorStyle_Id = ca.Armor.ArmorStyle_Id,
+                                //    ArmorType_Id = ca.Armor.ArmorType_Id,
+                                //    ArmorClassBonus = ca.Armor.ArmorClassBonus,
+                                //    MovementPenalty = ca.Armor.MovementPenalty,
+                                //    Cost = ca.Armor.Cost
+                                //};
+                                character.CharacterArmors.Add(armor);
                             }
                             // Create a list of Activations
                             character.Activations = new List<Activation>();

@@ -40,9 +40,9 @@ footer a:hover {
     width: 100%;
     height: 5rem;
 }*/
-#Footer {
-    background-color: black;
-    color: white;
+.Footer {
+    background-color: white;
+    color:black;
     text-align: center;
     position: absolute;
     bottom: 0;

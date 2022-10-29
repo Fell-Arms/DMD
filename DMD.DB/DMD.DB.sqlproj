@@ -167,7 +167,4 @@
     <None Include="PostDeploy\DefaultData\SpellDamageTypes.sql" />
     <None Include="PostDeploy\DefaultData\SpellChargesByLevels.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="DMD.DB.refactorlog" />
-  </ItemGroup>
 </Project>

@@ -9,11 +9,11 @@ namespace DMD.PL
         {
             tblCharacterArmors = new HashSet<tblCharacterArmor>();
             tblCharacterAttacks = new HashSet<tblCharacterAttack>();
+            tblCharacterClassSpells = new HashSet<tblCharacterClassSpell>();
             tblCharacterClasses = new HashSet<tblCharacterClass>();
             tblCharacterCurrencies = new HashSet<tblCharacterCurrency>();
             tblCharacterLanguages = new HashSet<tblCharacterLanguage>();
             tblCharacterSpellCharges = new HashSet<tblCharacterSpellCharge>();
-            tblCharacterSpells = new HashSet<tblCharacterSpell>();
             tblCharacterStats = new HashSet<tblCharacterStat>();
             tblCharacterWeaponTypeProficiencies = new HashSet<tblCharacterWeaponTypeProficiency>();
             tblCharacterWeapons = new HashSet<tblCharacterWeapon>();
@@ -37,11 +37,11 @@ namespace DMD.PL
         public virtual tblUser User { get; set; } = null!;
         public virtual ICollection<tblCharacterArmor> tblCharacterArmors { get; set; }
         public virtual ICollection<tblCharacterAttack> tblCharacterAttacks { get; set; }
+        public virtual ICollection<tblCharacterClassSpell> tblCharacterClassSpells { get; set; }
         public virtual ICollection<tblCharacterClass> tblCharacterClasses { get; set; }
         public virtual ICollection<tblCharacterCurrency> tblCharacterCurrencies { get; set; }
         public virtual ICollection<tblCharacterLanguage> tblCharacterLanguages { get; set; }
         public virtual ICollection<tblCharacterSpellCharge> tblCharacterSpellCharges { get; set; }
-        public virtual ICollection<tblCharacterSpell> tblCharacterSpells { get; set; }
         public virtual ICollection<tblCharacterStat> tblCharacterStats { get; set; }
         public virtual ICollection<tblCharacterWeaponTypeProficiency> tblCharacterWeaponTypeProficiencies { get; set; }
         public virtual ICollection<tblCharacterWeapon> tblCharacterWeapons { get; set; }

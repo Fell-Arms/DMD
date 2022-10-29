@@ -25,10 +25,10 @@ namespace DMD.PL
         public virtual DbSet<tblCharacterArmor> tblCharacterArmors { get; set; } = null!;
         public virtual DbSet<tblCharacterAttack> tblCharacterAttacks { get; set; } = null!;
         public virtual DbSet<tblCharacterClass> tblCharacterClasses { get; set; } = null!;
+        public virtual DbSet<tblCharacterClassSpell> tblCharacterClassSpells { get; set; } = null!;
         public virtual DbSet<tblCharacterCurrency> tblCharacterCurrencies { get; set; } = null!;
         public virtual DbSet<tblCharacterLanguage> tblCharacterLanguages { get; set; } = null!;
         public virtual DbSet<tblCharacterLevel> tblCharacterLevels { get; set; } = null!;
-        public virtual DbSet<tblCharacterSpell> tblCharacterSpells { get; set; } = null!;
         public virtual DbSet<tblCharacterSpellCharge> tblCharacterSpellCharges { get; set; } = null!;
         public virtual DbSet<tblCharacterStat> tblCharacterStats { get; set; } = null!;
         public virtual DbSet<tblCharacterWeapon> tblCharacterWeapons { get; set; } = null!;
@@ -89,7 +89,7 @@ namespace DMD.PL
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
-                    .HasMaxLength(45)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.StyleName)
@@ -104,7 +104,7 @@ namespace DMD.PL
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
-                    .HasMaxLength(45)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.TypeName)
@@ -119,7 +119,7 @@ namespace DMD.PL
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
-                    .HasMaxLength(45)
+                    .HasMaxLength(150)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Name)
@@ -270,6 +270,23 @@ namespace DMD.PL
                     .HasConstraintName("fkClassId-CharacterClasses");
             });
 
+            modelBuilder.Entity<tblCharacterClassSpell>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(d => d.Character)
+                    .WithMany(p => p.tblCharacterClassSpells)
+                    .HasForeignKey(d => d.Character_Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fkCharacterId-CharacterSpells");
+
+                entity.HasOne(d => d.ClassSpells)
+                    .WithMany(p => p.tblCharacterClassSpells)
+                    .HasForeignKey(d => d.ClassSpells_Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fkClassSpellsId-CharacterSpells");
+            });
+
             modelBuilder.Entity<tblCharacterCurrency>(entity =>
             {
                 entity.ToTable("tblCharacterCurrency");
@@ -311,23 +328,6 @@ namespace DMD.PL
                 entity.ToTable("tblCharacterLevel");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
-            });
-
-            modelBuilder.Entity<tblCharacterSpell>(entity =>
-            {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.HasOne(d => d.Character)
-                    .WithMany(p => p.tblCharacterSpells)
-                    .HasForeignKey(d => d.Character_Id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fkCharacterId-CharacterSpells");
-
-                entity.HasOne(d => d.Spell)
-                    .WithMany(p => p.tblCharacterSpells)
-                    .HasForeignKey(d => d.Spell_Id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fkSpellId-CharacterSpells");
             });
 
             modelBuilder.Entity<tblCharacterSpellCharge>(entity =>
@@ -413,7 +413,7 @@ namespace DMD.PL
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
-                    .HasMaxLength(100)
+                    .HasMaxLength(150)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Name)
@@ -423,19 +423,17 @@ namespace DMD.PL
 
             modelBuilder.Entity<tblClassSpell>(entity =>
             {
-                entity.HasKey(e => e.Spell_Id)
-                    .HasName("PK__tblClass__30FA58BEAAFD4203");
-
-                entity.Property(e => e.Spell_Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.HasOne(d => d.Class)
                     .WithMany(p => p.tblClassSpells)
                     .HasForeignKey(d => d.Class_Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fkClassId-Class Spells");
 
                 entity.HasOne(d => d.Spell)
-                    .WithOne(p => p.tblClassSpell)
-                    .HasForeignKey<tblClassSpell>(d => d.Spell_Id)
+                    .WithMany(p => p.tblClassSpells)
+                    .HasForeignKey(d => d.Spell_Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fkSpellId-ClassSpells");
             });
@@ -462,7 +460,7 @@ namespace DMD.PL
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
-                    .HasMaxLength(45)
+                    .HasMaxLength(150)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Name)
@@ -522,7 +520,7 @@ namespace DMD.PL
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
-                    .HasMaxLength(45)
+                    .HasMaxLength(150)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Name)
@@ -604,7 +602,7 @@ namespace DMD.PL
             modelBuilder.Entity<tblStatModifier>(entity =>
             {
                 entity.HasKey(e => e.Value)
-                    .HasName("PK__tblStatM__07D9BBC392605E6C");
+                    .HasName("PK__tblStatM__07D9BBC32BF124B2");
 
                 entity.ToTable("tblStatModifier");
 
@@ -701,7 +699,7 @@ namespace DMD.PL
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
-                    .HasMaxLength(45)
+                    .HasMaxLength(150)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Type)

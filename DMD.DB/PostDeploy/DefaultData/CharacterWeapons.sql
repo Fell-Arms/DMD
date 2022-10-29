@@ -1,18 +1,18 @@
 ﻿BEGIN
-	DECLARE @Weapon_Id1 uniqueidentifier, @Weapon_Id2 uniqueidentifier, @Weapon_Id3 uniqueidentifier,
-			@Character_Id1 uniqueidentifier, @Character_Id2 uniqueidentifier, @Character_Id3 uniqueidentifier;
+	DECLARE @Weapon_Id161 uniqueidentifier, @Weapon_Id162 uniqueidentifier, @Weapon_Id163 uniqueidentifier,
+			@Character_Id161 uniqueidentifier, @Character_Id162 uniqueidentifier, @Character_Id163 uniqueidentifier;
 
-	SELECT @Weapon_Id1 = Id FROM tblWeapon WHERE Name = 'Steel Sword'
-	SELECT @Weapon_Id2 = Id FROM tblWeapon WHERE Name = 'Bone Blade'
-	SELECT @Weapon_Id3 = Id FROM tblWeapon WHERE Name = 'Eye of Selune'
+	SELECT @Weapon_Id161 = Id FROM tblWeapon WHERE Name = 'Steel Sword'
+	SELECT @Weapon_Id162 = Id FROM tblWeapon WHERE Name = 'Bone Blade'
+	SELECT @Weapon_Id163 = Id FROM tblWeapon WHERE Name = 'Eye of Selune'
 
-	SELECT @Character_Id1 = Id FROM Characters WHERE LastName = 'Bobbinson'
-	SELECT @Character_Id2 = Id FROM Characters WHERE LastName = 'Gravydog'
-	SELECT @Character_Id3 = Id FROM Characters WHERE LastName = 'Greywall'
+	SELECT @Character_Id161 = Id FROM tblCharacter WHERE LastName = 'Bobbinson'
+	SELECT @Character_Id162 = Id FROM tblCharacter WHERE LastName = 'Gravydog'
+	SELECT @Character_Id163 = Id FROM tblCharacter WHERE LastName = 'Greywall'
 
 	INSERT INTO dbo.tblCharacterWeapons (Id, Weapon_Id, Character_Id, Equipped)
 	VALUES
-	(NEWID(), @Weapon_Id1, @Character_Id1, 1),
-	(NEWID(), @Weapon_Id2, @Character_Id2, 0),
-	(NEWID(), @Weapon_Id3, @Character_Id3, 1)
+	(NEWID(), @Weapon_Id161, @Character_Id161, 1),
+	(NEWID(), @Weapon_Id162, @Character_Id162, 0),
+	(NEWID(), @Weapon_Id163, @Character_Id163, 1)
 END

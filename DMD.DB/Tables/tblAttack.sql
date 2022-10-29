@@ -5,7 +5,7 @@
     [Stat_Id] UNIQUEIDENTIFIER NOT NULL, 
     [WeaponType_Id] UNIQUEIDENTIFIER NOT NULL, 
     [Name] VARCHAR(45) NOT NULL, 
-    [Description] VARCHAR(45) NOT NULL, 
+    [Description] VARCHAR(150) NOT NULL, 
     [Targets] INT NOT NULL, 
     [MaxUses] INT NOT NULL, 
     [UseWeapon] BIT NOT NULL, 

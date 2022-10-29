@@ -10,9 +10,9 @@
 	SELECT @Class_Id72 = Id FROM tblClass WHERE Name = 'Warlock'
 	SELECT @Class_Id73 = Id FROM tblClass WHERE Name = 'Ranger'
 
-	INSERT INTO dbo.tblClassSpells (Spell_Id, Class_Id)
+	INSERT INTO dbo.tblClassSpells (Id, Spell_Id, Class_Id)
 	VALUES
-	(@Spell_Id71, @Class_Id71),
-	(@Spell_Id72, @Class_Id72),
-	(@Spell_Id73, @Class_Id73)
+	(NEWID(), @Spell_Id71, @Class_Id71),
+	(NEWID(), @Spell_Id72, @Class_Id72),
+	(NEWID(), @Spell_Id73, @Class_Id73)
 END

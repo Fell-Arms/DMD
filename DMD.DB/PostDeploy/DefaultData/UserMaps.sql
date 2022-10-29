@@ -1,18 +1,18 @@
 ﻿BEGIN
-	DECLARE @User_Id1 uniqueidentifier, @User_Id2 uniqueidentifier, @User_Id3 uniqueidentifier,
-			@Map_Id1 uniqueidentifier, @Map_Id2 uniqueidentifier, @Map_Id3 uniqueidentifier;
+	DECLARE @User_Id201 uniqueidentifier, @User_Id202 uniqueidentifier, @User_Id203 uniqueidentifier,
+			@Map_Id201 uniqueidentifier, @Map_Id202 uniqueidentifier, @Map_Id203 uniqueidentifier;
 
-	SELECT @User_Id1 = Id FROM tblUser WHERE Username = 'bfoote'
-	SELECT @User_Id2 = Id FROM tblUser WHERE Username = 'ketchum'
-	SELECT @User_Id3 = Id FROM tblUser WHERE Username = 'admin'
+	SELECT @User_Id201 = Id FROM tblUser WHERE Username = 'bfoote'
+	SELECT @User_Id202 = Id FROM tblUser WHERE Username = 'ketchum'
+	SELECT @User_Id203 = Id FROM tblUser WHERE Username = 'admin'
 
-	SELECT @Map_Id1 = Id FROM tblMap WHERE Type = 'Combat'
-	SELECT @Map_Id2 = Id FROM tblMap WHERE Type = 'Adventure'
-	SELECT @Map_Id3 = Id FROM tblMap WHERE Type = 'Overview'
+	SELECT @Map_Id201 = Id FROM tblMap WHERE Type = 'Combat'
+	SELECT @Map_Id202 = Id FROM tblMap WHERE Type = 'Adventure'
+	SELECT @Map_Id203 = Id FROM tblMap WHERE Type = 'Overview'
 
 	INSERT INTO dbo.tblUserMaps (Id, User_Id, Map_Id)
 	VALUES
-	(NEWID(), @User_Id1, @Map_Id1, 5, 2, 20),
-	(NEWID(), @User_Id2, @Map_Id2, 7, 5, 50),
-	(NEWID(), @User_Id3, @Map_Id3, 10, 8, 100)
+	(NEWID(), @User_Id201, @Map_Id201),
+	(NEWID(), @User_Id202, @Map_Id202),
+	(NEWID(), @User_Id203, @Map_Id203)
 END

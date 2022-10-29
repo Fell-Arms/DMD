@@ -7,7 +7,7 @@ namespace DMD.PL
     {
         public tblSpell()
         {
-            tblCharacterSpells = new HashSet<tblCharacterSpell>();
+            tblClassSpells = new HashSet<tblClassSpell>();
             tblSpellDamageTypes = new HashSet<tblSpellDamageType>();
         }
 
@@ -21,8 +21,7 @@ namespace DMD.PL
         public bool Heal { get; set; }
 
         public virtual tblStat Stat { get; set; } = null!;
-        public virtual tblClassSpell? tblClassSpell { get; set; }
-        public virtual ICollection<tblCharacterSpell> tblCharacterSpells { get; set; }
+        public virtual ICollection<tblClassSpell> tblClassSpells { get; set; }
         public virtual ICollection<tblSpellDamageType> tblSpellDamageTypes { get; set; }
     }
 }

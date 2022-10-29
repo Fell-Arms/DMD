@@ -8,6 +8,7 @@ namespace DMD.PL
         public tblWeapon()
         {
             tblCharacterWeapons = new HashSet<tblCharacterWeapon>();
+            tblWeaponDamageTypes = new HashSet<tblWeaponDamageType>();
         }
 
         public Guid Id { get; set; }
@@ -18,7 +19,7 @@ namespace DMD.PL
 
         public virtual tblStat Stats { get; set; } = null!;
         public virtual tblWeaponType WeaponType { get; set; } = null!;
-        public virtual tblWeaponDamageType? tblWeaponDamageType { get; set; }
         public virtual ICollection<tblCharacterWeapon> tblCharacterWeapons { get; set; }
+        public virtual ICollection<tblWeaponDamageType> tblWeaponDamageTypes { get; set; }
     }
 }

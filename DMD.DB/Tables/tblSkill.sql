@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[tblSkill]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
-    [Stats_Id] UNIQUEIDENTIFIER NULL, 
-    [Name] VARCHAR(45) NULL, 
-    [Description] VARCHAR(45) NULL
+    [Stats_Id] UNIQUEIDENTIFIER NOT NULL, 
+    [Name] VARCHAR(45) NOT NULL, 
+    [Description] VARCHAR(45) NOT NULL
 )

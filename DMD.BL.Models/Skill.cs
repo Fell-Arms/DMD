@@ -9,7 +9,7 @@ namespace DMD.BL.Models
     public class Skill
     {
         public Guid Id { get; set; } // use guid for id
-        public Guid Stats_Id { get; set; }
+        public Stat Stat { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }

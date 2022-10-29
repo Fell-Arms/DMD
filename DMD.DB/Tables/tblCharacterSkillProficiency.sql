@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[tblCharacterSkillProficiency]
-(
-	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+( 
+    [Character_Id] UNIQUEIDENTIFIER NOT NULL,
     [Skill_Id] UNIQUEIDENTIFIER NOT NULL, 
-    [Character_Id] UNIQUEIDENTIFIER NOT NULL
+    CONSTRAINT PK_CharacterSkill PRIMARY KEY (Character_Id, Skill_Id)
 )

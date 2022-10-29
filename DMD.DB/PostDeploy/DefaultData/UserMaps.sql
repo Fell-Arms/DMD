@@ -1,6 +1,6 @@
 ﻿BEGIN
-	DECLARE @User_Id1 uniqueindentifier, @User_Id2 uniqueindentifier, @User_Id3 uniqueindentifier,
-			@Map_Id1 uniqueindentifier, @Map_Id2 uniqueindentifier, @Map_Id3 uniqueindentifier;
+	DECLARE @User_Id1 uniqueidentifier, @User_Id2 uniqueidentifier, @User_Id3 uniqueidentifier,
+			@Map_Id1 uniqueidentifier, @Map_Id2 uniqueidentifier, @Map_Id3 uniqueidentifier;
 
 	SELECT @User_Id1 = Id FROM tblUser WHERE Username = 'bfoote'
 	SELECT @User_Id2 = Id FROM tblUser WHERE Username = 'ketchum'

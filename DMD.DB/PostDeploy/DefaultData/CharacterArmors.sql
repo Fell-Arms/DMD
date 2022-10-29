@@ -1,6 +1,6 @@
 ﻿BEGIN
-	DECLARE @Armor_Id1 uniqueindentifier, @Armor_Id2 uniqueindentifier, @Armor_Id3 uniqueindentifier,
-			@Character_Id1 uniqueindentifier, @Character_Id2 uniqueindentifier, @Character_Id3 uniqueindentifier;
+	DECLARE @Armor_Id1 uniqueidentifier, @Armor_Id2 uniqueidentifier, @Armor_Id3 uniqueidentifier,
+			@Character_Id1 uniqueidentifier, @Character_Id2 uniqueidentifier, @Character_Id3 uniqueidentifier;
 
 	SELECT @Armor_Id1 = Id FROM tblArmor WHERE Cost = 20
 	SELECT @Armor_Id2 = Id FROM tblArmor WHERE Cost = 50

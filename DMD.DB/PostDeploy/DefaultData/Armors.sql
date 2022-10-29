@@ -1,6 +1,6 @@
 ﻿BEGIN
-	DECLARE @ArmorStyle_Id1 uniqueindentifier, @ArmorStyle_Id2 uniqueindentifier, @ArmorStyle_Id3 uniqueindentifier,
-			@ArmorType_Id1 uniqueindentifier, @ArmorType_Id2 uniqueindentifier;
+	DECLARE @ArmorStyle_Id1 uniqueidentifier, @ArmorStyle_Id2 uniqueidentifier, @ArmorStyle_Id3 uniqueidentifier,
+			@ArmorType_Id1 uniqueidentifier, @ArmorType_Id2 uniqueidentifier;
 
 	SELECT @ArmorStyle_Id1 = Id FROM tblArmorStyle WHERE StyleName = 'Light'
 	SELECT @ArmorStyle_Id2 = Id FROM tblArmorStyle WHERE StyleName = 'Medium'

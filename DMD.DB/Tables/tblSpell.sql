@@ -6,6 +6,6 @@
     [Name] VARCHAR(45) NOT NULL, 
     [Description] TEXT NOT NULL, 
     [Targets] INT NULL, 
-    [TargetAllies] BIT NULL, 
-    [Heal] BIT NULL
+    [TargetAllies] BIT NOT NULL, 
+    [Heal] BIT NOT NULL
 )

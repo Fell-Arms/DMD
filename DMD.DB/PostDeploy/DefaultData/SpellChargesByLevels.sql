@@ -1,5 +1,5 @@
 ﻿BEGIN
-	DECLARE @Class_Id1 uniqueindentifier, @Class_Id2 uniqueindentifier, @Class_Id3 uniqueindentifier;
+	DECLARE @Class_Id1 uniqueidentifier, @Class_Id2 uniqueidentifier, @Class_Id3 uniqueidentifier;
 
 	SELECT @Class_Id1 = Id FROM tblClass WHERE Name = 'Ranger'
 	SELECT @Class_Id2 = Id FROM tblClass WHERE Name = 'Paladin'

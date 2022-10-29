@@ -8,7 +8,7 @@ namespace DMD.BL.Models
 {
     public class ClassSpells
     {
-        public Guid Spell_Id { get; set; } // use guid for id
+        public List<Spell> Spells { get; set; } // use guid for id
         public Guid Class_Id { get; set; } // use guid for id
     }
 }

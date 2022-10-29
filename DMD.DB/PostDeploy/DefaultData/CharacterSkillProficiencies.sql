@@ -1,18 +1,18 @@
 ﻿BEGIN
-	DECLARE @Skill_Id1 uniqueindentifier, @Skill_Id2 uniqueindentifier, @Skill_Id3 uniqueindentifier,
-			@Character_Id1 uniqueindentifier, @Character_Id2 uniqueindentifier, @Character_Id3 uniqueindentifier;
+	DECLARE @Skill_Id21 uniqueidentifier, @Skill_Id22 uniqueidentifier, @Skill_Id23 uniqueidentifier,
+			@Character_Id21 uniqueidentifier, @Character_Id22 uniqueidentifier, @Character_Id23 uniqueidentifier;
 
-	SELECT @Skill_Id1 = Id FROM tblSkill WHERE Name = 'Religion'
-	SELECT @Skill_Id2 = Id FROM tblSkill WHERE Name = 'Stealth'
-	SELECT @Skill_Id3 = Id FROM tblSkill WHERE Name = 'Arcana'
+	SELECT @Skill_Id21 = Id FROM tblSkill WHERE Name = 'Religion'
+	SELECT @Skill_Id22 = Id FROM tblSkill WHERE Name = 'Stealth'
+	SELECT @Skill_Id23 = Id FROM tblSkill WHERE Name = 'Arcana'
 
-	SELECT @Character_Id1 = Id FROM Characters WHERE LastName = 'Bobbinson'
-	SELECT @Character_Id2 = Id FROM Characters WHERE LastName = 'Gravydog'
-	SELECT @Character_Id3 = Id FROM Characters WHERE LastName = 'Greywall'
+	SELECT @Character_Id21 = Id FROM tblCharacter WHERE LastName = 'Bobbinson'
+	SELECT @Character_Id22 = Id FROM tblCharacter WHERE LastName = 'Gravydog'
+	SELECT @Character_Id23 = Id FROM tblCharacter WHERE LastName = 'Greywall'
 
-	INSERT INTO dbo.tblCharacterSkillProficiency (Id, Skill_Id, Character_Id)
+	INSERT INTO dbo.tblCharacterSkillProficiency (Character_Id, Skill_Id)
 	VALUES
-	(NEWID(), @Skill_Id1, @Character_Id1),
-	(NEWID(), @Skill_Id2, @Character_Id2),
-	(NEWID(), @Skill_Id3, @Character_Id3)
+	(@Character_Id21, @Skill_Id21),
+	(@Character_Id22, @Skill_Id22),
+	(@Character_Id23, @Skill_Id23)
 END

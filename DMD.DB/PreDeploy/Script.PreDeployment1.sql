@@ -30,6 +30,7 @@ DROP TABLE IF EXISTS dbo.tblWeapon
 DROP TABLE IF EXISTS dbo.tblCharacterSpellCharges
 DROP TABLE IF EXISTS dbo.tblSpellChargesByLevel
 DROP TABLE IF EXISTS dbo.tblCharacterSpells
+DROP TABLE IF EXISTS dbo.tblCharacterClassSpells
 DROP TABLE IF EXISTS dbo.tblClassSpells
 DROP TABLE IF EXISTS dbo.tblSpell
 DROP TABLE IF EXISTS dbo.tblCharacterAttacks

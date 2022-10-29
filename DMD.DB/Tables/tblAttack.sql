@@ -9,5 +9,5 @@
     [Targets] INT NOT NULL, 
     [MaxUses] INT NOT NULL, 
     [UseWeapon] BIT NOT NULL, 
-    [Class_Level] INT NULL
+    [Class_Level] INT NOT NULL
 )

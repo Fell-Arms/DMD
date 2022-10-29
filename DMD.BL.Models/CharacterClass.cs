@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DMD.BL.Models
 {
-    public class CharacterSpellCharges
+    public class CharacterClass
     {
         public Guid Id { get; set; } // use guid for id
         public Guid Character_Id { get; set; }
-        public Guid Spell_Charges_By_Level_Id { get; set; }
-        public int ChargesAvailable { get; set; }
+        public Guid Class_Id { get; set; }
+        public int Class_Level { get; set; }
     }
 }

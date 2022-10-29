@@ -1,18 +1,18 @@
 ﻿BEGIN
-	DECLARE @Class_Id1 uniqueindentifier, @Class_Id2 uniqueindentifier, @Class_Id3 uniqueindentifier,
-			@Character_Id1 uniqueindentifier, @Character_Id2 uniqueindentifier, @Character_Id3 uniqueindentifier;
+	DECLARE @Class_Id31 uniqueidentifier, @Class_Id32 uniqueidentifier, @Class_Id33 uniqueidentifier,
+			@Character_Id31 uniqueidentifier, @Character_Id32 uniqueidentifier, @Character_Id33 uniqueidentifier;
 
-	SELECT @Class_Id1 = Id FROM tblClass WHERE Name = 'Paladin'
-	SELECT @Class_Id2 = Id FROM tblClass WHERE Name = 'Warlock'
-	SELECT @Class_Id3 = Id FROM tblClass WHERE Name = 'Ranger'
+	SELECT @Class_Id31 = Id FROM tblClass WHERE Name = 'Paladin'
+	SELECT @Class_Id32 = Id FROM tblClass WHERE Name = 'Warlock'
+	SELECT @Class_Id33 = Id FROM tblClass WHERE Name = 'Ranger'
 
-	SELECT @Character_Id1 = Id FROM Characters WHERE LastName = 'Bobbinson'
-	SELECT @Character_Id2 = Id FROM Characters WHERE LastName = 'Gravydog'
-	SELECT @Character_Id3 = Id FROM Characters WHERE LastName = 'Greywall'
+	SELECT @Character_Id31 = Id FROM tblCharacter WHERE LastName = 'Bobbinson'
+	SELECT @Character_Id32 = Id FROM tblCharacter WHERE LastName = 'Gravydog'
+	SELECT @Character_Id33 = Id FROM tblCharacter WHERE LastName = 'Greywall'
 
 	INSERT INTO dbo.tblCharacterClasses(Id, Character_Id, Class_Id, Class_Level)
 	VALUES
-	(NEWID(), @Character_Id1, @Class_Id1, 1),
-	(NEWID(), @Character_Id2, @Class_Id2, 2),
-	(NEWID(), @Character_Id3, @Class_Id3, 3)
+	(NEWID(), @Character_Id31, @Class_Id31, 1),
+	(NEWID(), @Character_Id32, @Class_Id32, 2),
+	(NEWID(), @Character_Id33, @Class_Id33, 3)
 END

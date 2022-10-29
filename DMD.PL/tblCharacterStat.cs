@@ -12,5 +12,6 @@ namespace DMD.PL
 
         public virtual tblCharacter Character { get; set; } = null!;
         public virtual tblStat Stats { get; set; } = null!;
+        public virtual tblStatModifier ValueNavigation { get; set; } = null!;
     }
 }

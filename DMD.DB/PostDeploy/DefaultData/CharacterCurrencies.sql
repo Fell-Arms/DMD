@@ -1,6 +1,6 @@
 ﻿BEGIN
-	DECLARE @Currency_Id1 uniqueindentifier, @Currency_Id2 uniqueindentifier, @Currency_Id3 uniqueindentifier,
-			@Character_Id1 uniqueindentifier, @Character_Id2 uniqueindentifier, @Character_Id3 uniqueindentifier;
+	DECLARE @Currency_Id1 uniqueidentifier, @Currency_Id2 uniqueidentifier, @Currency_Id3 uniqueidentifier,
+			@Character_Id1 uniqueidentifier, @Character_Id2 uniqueidentifier, @Character_Id3 uniqueidentifier;
 
 	SELECT @Currency_Id1 = Id FROM tblCurrency WHERE Name = 'Copper'
 	SELECT @Currency_Id2 = Id FROM tblCurrency WHERE Name = 'Silver'

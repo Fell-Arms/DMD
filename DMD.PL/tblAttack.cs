@@ -20,7 +20,7 @@ namespace DMD.PL
         public int Targets { get; set; }
         public int MaxUses { get; set; }
         public bool UseWeapon { get; set; }
-        public int? Class_Level { get; set; }
+        public int Class_Level { get; set; }
 
         public virtual tblClass Class { get; set; } = null!;
         public virtual tblStat Stat { get; set; } = null!;

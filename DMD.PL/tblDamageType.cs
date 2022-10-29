@@ -7,6 +7,8 @@ namespace DMD.PL
     {
         public tblDamageType()
         {
+            tblAttackDamageTypes = new HashSet<tblAttackDamageType>();
+            tblSpellDamageTypes = new HashSet<tblSpellDamageType>();
             tblWeaponDamageTypes = new HashSet<tblWeaponDamageType>();
         }
 
@@ -14,8 +16,8 @@ namespace DMD.PL
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
 
-        public virtual tblAttackDamageType? tblAttackDamageType { get; set; }
-        public virtual tblSpellDamageType? tblSpellDamageType { get; set; }
+        public virtual ICollection<tblAttackDamageType> tblAttackDamageTypes { get; set; }
+        public virtual ICollection<tblSpellDamageType> tblSpellDamageTypes { get; set; }
         public virtual ICollection<tblWeaponDamageType> tblWeaponDamageTypes { get; set; }
     }
 }

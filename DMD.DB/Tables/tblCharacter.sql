@@ -8,8 +8,7 @@
     [LastName] VARCHAR(30) NOT NULL, 
     [MaxHitpoints] INT NOT NULL,
     [CurrentHitpoints] INT NOT NULL,
-    [Background] TEXT NULL,
+    [Background] VARCHAR(1000) NULL,
     [Experience] INT NOT NULL,
-    [Image] VARCHAR(30)
-    
+    [Image] VARCHAR(100)
 )

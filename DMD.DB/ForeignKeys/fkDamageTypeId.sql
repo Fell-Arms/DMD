@@ -19,3 +19,4 @@ ALTER TABLE [dbo].[tblWeaponDamageTypes]
 	REFERENCES [tblDamageType] (Id)
 GO;
 
+ 

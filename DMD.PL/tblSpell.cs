@@ -17,8 +17,8 @@ namespace DMD.PL
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
         public int? Targets { get; set; }
-        public bool? TargetAllies { get; set; }
-        public bool? Heal { get; set; }
+        public bool TargetAllies { get; set; }
+        public bool Heal { get; set; }
 
         public virtual tblStat Stat { get; set; } = null!;
         public virtual tblClassSpell? tblClassSpell { get; set; }

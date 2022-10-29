@@ -28,7 +28,6 @@ namespace DMD.PL
         public virtual DbSet<tblCharacterCurrency> tblCharacterCurrencies { get; set; } = null!;
         public virtual DbSet<tblCharacterLanguage> tblCharacterLanguages { get; set; } = null!;
         public virtual DbSet<tblCharacterLevel> tblCharacterLevels { get; set; } = null!;
-        public virtual DbSet<tblCharacterSkillProficiency> tblCharacterSkillProficiencies { get; set; } = null!;
         public virtual DbSet<tblCharacterSpell> tblCharacterSpells { get; set; } = null!;
         public virtual DbSet<tblCharacterSpellCharge> tblCharacterSpellCharges { get; set; } = null!;
         public virtual DbSet<tblCharacterStat> tblCharacterStats { get; set; } = null!;
@@ -59,7 +58,6 @@ namespace DMD.PL
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDb;Database=DMD.DB;Integrated Security=True");
-                optionsBuilder.UseLazyLoadingProxies();
             }
         }
 
@@ -149,10 +147,8 @@ namespace DMD.PL
 
             modelBuilder.Entity<tblAttackDamageType>(entity =>
             {
-                entity.HasKey(e => e.DamageType_Id)
-                    .HasName("PK__tblAttac__7B4BE0A536FE12AA");
-
-                entity.Property(e => e.DamageType_Id).ValueGeneratedNever();
+                entity.HasKey(e => new { e.DamageType_Id, e.Attack_Id })
+                    .HasName("PK_AttackDamageTypes");
 
                 entity.HasOne(d => d.Attack)
                     .WithMany(p => p.tblAttackDamageTypes)
@@ -161,8 +157,8 @@ namespace DMD.PL
                     .HasConstraintName("fkAttacksId-AttackDamageTypes");
 
                 entity.HasOne(d => d.DamageType)
-                    .WithOne(p => p.tblAttackDamageType)
-                    .HasForeignKey<tblAttackDamageType>(d => d.DamageType_Id)
+                    .WithMany(p => p.tblAttackDamageTypes)
+                    .HasForeignKey(d => d.DamageType_Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fkDamageTypeId-AttackDamageTypes");
             });
@@ -173,14 +169,16 @@ namespace DMD.PL
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Background).HasColumnType("text");
+                entity.Property(e => e.Background)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.FirstName)
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Image)
-                    .HasMaxLength(30)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.LastName)
@@ -204,6 +202,19 @@ namespace DMD.PL
                     .HasForeignKey(d => d.User_Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fkUserId-Characters");
+
+                entity.HasMany(d => d.Skills)
+                    .WithMany(p => p.Characters)
+                    .UsingEntity<Dictionary<string, object>>(
+                        "tblCharacterSkillProficiency",
+                        l => l.HasOne<tblSkill>().WithMany().HasForeignKey("Skill_Id").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fkSkillId-CharacterSkillProficiency"),
+                        r => r.HasOne<tblCharacter>().WithMany().HasForeignKey("Character_Id").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fkCharacterId-CharacterSkillProficiency"),
+                        j =>
+                        {
+                            j.HasKey("Character_Id", "Skill_Id").HasName("PK_CharacterSkill");
+
+                            j.ToTable("tblCharacterSkillProficiency");
+                        });
             });
 
             modelBuilder.Entity<tblCharacterArmor>(entity =>
@@ -249,11 +260,13 @@ namespace DMD.PL
                 entity.HasOne(d => d.Character)
                     .WithMany(p => p.tblCharacterClasses)
                     .HasForeignKey(d => d.Character_Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fkCharacterId-CharacterClasses");
 
                 entity.HasOne(d => d.Class)
                     .WithMany(p => p.tblCharacterClasses)
                     .HasForeignKey(d => d.Class_Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fkClassId-CharacterClasses");
             });
 
@@ -298,25 +311,6 @@ namespace DMD.PL
                 entity.ToTable("tblCharacterLevel");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
-            });
-
-            modelBuilder.Entity<tblCharacterSkillProficiency>(entity =>
-            {
-                entity.ToTable("tblCharacterSkillProficiency");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.HasOne(d => d.Character)
-                    .WithMany(p => p.tblCharacterSkillProficiencies)
-                    .HasForeignKey(d => d.Character_Id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fkCharacterId-CharacterSkillProficiency");
-
-                entity.HasOne(d => d.Skill)
-                    .WithMany(p => p.tblCharacterSkillProficiencies)
-                    .HasForeignKey(d => d.Skill_Id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fkSkillId-Character");
             });
 
             modelBuilder.Entity<tblCharacterSpell>(entity =>
@@ -368,6 +362,12 @@ namespace DMD.PL
                     .HasForeignKey(d => d.Stats_Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fkStatId-CharacterStats");
+
+                entity.HasOne(d => d.ValueNavigation)
+                    .WithMany(p => p.tblCharacterStats)
+                    .HasForeignKey(d => d.Value)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fkValueId-CharacterStats");
             });
 
             modelBuilder.Entity<tblCharacterWeapon>(entity =>
@@ -413,7 +413,7 @@ namespace DMD.PL
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
-                    .HasMaxLength(45)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Name)
@@ -424,7 +424,7 @@ namespace DMD.PL
             modelBuilder.Entity<tblClassSpell>(entity =>
             {
                 entity.HasKey(e => e.Spell_Id)
-                    .HasName("PK__tblClass__30FA58BE68649A51");
+                    .HasName("PK__tblClass__30FA58BEAAFD4203");
 
                 entity.Property(e => e.Spell_Id).ValueGeneratedNever();
 
@@ -477,7 +477,7 @@ namespace DMD.PL
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
-                    .HasMaxLength(45)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Name)
@@ -507,7 +507,7 @@ namespace DMD.PL
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
-                    .HasMaxLength(45)
+                    .HasMaxLength(250)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Name)
@@ -532,6 +532,7 @@ namespace DMD.PL
                 entity.HasOne(d => d.Stats)
                     .WithMany(p => p.tblSkills)
                     .HasForeignKey(d => d.Stats_Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fkStatId-Skill");
             });
 
@@ -569,14 +570,12 @@ namespace DMD.PL
 
             modelBuilder.Entity<tblSpellDamageType>(entity =>
             {
-                entity.HasKey(e => e.DamageType_Id)
-                    .HasName("PK__tblSpell__7B4BE0A58D5EB02A");
-
-                entity.Property(e => e.DamageType_Id).ValueGeneratedNever();
+                entity.HasKey(e => new { e.DamageType_Id, e.Spell_Id })
+                    .HasName("PK_SpellDamageTypes");
 
                 entity.HasOne(d => d.DamageType)
-                    .WithOne(p => p.tblSpellDamageType)
-                    .HasForeignKey<tblSpellDamageType>(d => d.DamageType_Id)
+                    .WithMany(p => p.tblSpellDamageTypes)
+                    .HasForeignKey(d => d.DamageType_Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fkDamageTypeId-SpellDamageTypes");
 
@@ -593,7 +592,9 @@ namespace DMD.PL
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Description).HasColumnType("text");
+                entity.Property(e => e.Description)
+                    .HasMaxLength(300)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(45)
@@ -603,7 +604,7 @@ namespace DMD.PL
             modelBuilder.Entity<tblStatModifier>(entity =>
             {
                 entity.HasKey(e => e.Value)
-                    .HasName("PK__tblStatM__07D9BBC3F9EA6969");
+                    .HasName("PK__tblStatM__07D9BBC392605E6C");
 
                 entity.ToTable("tblStatModifier");
 
@@ -677,10 +678,8 @@ namespace DMD.PL
 
             modelBuilder.Entity<tblWeaponDamageType>(entity =>
             {
-                entity.HasKey(e => e.Weapon_Id)
-                    .HasName("PK__tblWeapo__D9F8222EFC65398B");
-
-                entity.Property(e => e.Weapon_Id).ValueGeneratedNever();
+                entity.HasKey(e => new { e.Weapon_Id, e.DamageType_id })
+                    .HasName("PK_WeaponDamageTypes");
 
                 entity.HasOne(d => d.DamageType)
                     .WithMany(p => p.tblWeaponDamageTypes)
@@ -689,8 +688,8 @@ namespace DMD.PL
                     .HasConstraintName("fkDamageTypeId-WeaponDamageTypes");
 
                 entity.HasOne(d => d.Weapon)
-                    .WithOne(p => p.tblWeaponDamageType)
-                    .HasForeignKey<tblWeaponDamageType>(d => d.Weapon_Id)
+                    .WithMany(p => p.tblWeaponDamageTypes)
+                    .HasForeignKey(d => d.Weapon_Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fkWeaponId-WeaponDamageTypes");
             });

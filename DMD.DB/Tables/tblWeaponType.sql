@@ -2,5 +2,5 @@
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
     [Type] VARCHAR(15) NOT NULL, 
-    [Description] VARCHAR(45) NULL
+    [Description] VARCHAR(45) NOT NULL
 )

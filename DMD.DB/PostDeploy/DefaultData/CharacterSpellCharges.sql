@@ -1,6 +1,6 @@
 ﻿BEGIN
-	DECLARE @SpellChargesByLevel_Id1 uniqueindentifier, @SpellChargesByLevel_Id2 uniqueindentifier, @SpellChargesByLevel_Id3 uniqueindentifier,
-			@Character_Id1 uniqueindentifier, @Character_Id2 uniqueindentifier, @Character_Id3 uniqueindentifier;
+	DECLARE @SpellChargesByLevel_Id1 uniqueidentifier, @SpellChargesByLevel_Id2 uniqueidentifier, @SpellChargesByLevel_Id3 uniqueidentifier,
+			@Character_Id1 uniqueidentifier, @Character_Id2 uniqueidentifier, @Character_Id3 uniqueidentifier;
 
 	SELECT @SpellChargesByLevel_Id1 = Id FROM tblSpellChargesByLevel WHERE Class_Level = 2
 	SELECT @SpellChargesByLevel_Id2 = Id FROM tblSpellChargesByLevel WHERE Class_Level = 6

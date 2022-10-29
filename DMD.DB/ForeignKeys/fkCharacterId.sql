@@ -20,7 +20,7 @@ ALTER TABLE [dbo].[tblCharacterWeapons]
 GO;
 
 --Character to CharacterSpells
-ALTER TABLE [dbo].[tblCharacterSpells]
+ALTER TABLE [dbo].[tblCharacterClassSpells]
 	ADD CONSTRAINT [fkCharacterId-CharacterSpells]
 	FOREIGN KEY (Character_Id)
 	REFERENCES [tblCharacter] (Id)

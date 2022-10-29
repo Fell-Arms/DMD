@@ -12,7 +12,7 @@ namespace DMD.PL
 
         public Guid Id { get; set; }
         public string StyleName { get; set; } = null!;
-        public string? Description { get; set; }
+        public string Description { get; set; } = null!;
 
         public virtual ICollection<tblArmor> tblArmors { get; set; }
     }

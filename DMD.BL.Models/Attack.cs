@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace DMD.BL.Models
 {
-    public class Attacks
+    public class Attack
     {
         public Guid Id { get; set; } // use guid for id
         public Guid Class_Id { get; set; }
         public Guid Stat_Id { get; set; }
         public Guid WeaponType_Id { get; set; }
+        public List<Guid> AttackDamageType_Ids { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int Targets { get; set; }

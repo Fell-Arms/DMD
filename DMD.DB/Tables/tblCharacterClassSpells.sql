@@ -1,6 +1,6 @@
-﻿CREATE TABLE [dbo].[tblCharacterSpells]
+﻿CREATE TABLE [dbo].[tblCharacterClassSpells]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
     [Character_Id] UNIQUEIDENTIFIER NOT NULL, 
-    [Spell_Id] UNIQUEIDENTIFIER NOT NULL
+    [ClassSpells_Id] UNIQUEIDENTIFIER NOT NULL
 )

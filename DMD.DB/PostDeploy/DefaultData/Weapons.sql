@@ -1,6 +1,6 @@
 ﻿BEGIN
-	DECLARE @Stat_Id1 uniqueindentifier, @Stat_Id2 uniqueindentifier, @Stat_Id3 uniqueindentifier,
-			@Weapon_Id1 uniqueindentifier, @Weapon_Id2 uniqueindentifier, @Weapon_Id3 uniqueindentifier;
+	DECLARE @Stat_Id1 uniqueidentifier, @Stat_Id2 uniqueidentifier, @Stat_Id3 uniqueidentifier,
+			@Weapon_Id1 uniqueidentifier, @Weapon_Id2 uniqueidentifier, @Weapon_Id3 uniqueidentifier;
 
 	SELECT @Stat_Id1 = Id FROM tblStat WHERE Name = 'Strength'
 	SELECT @Stat_Id2 = Id FROM tblStat WHERE Name = 'Intelligence'

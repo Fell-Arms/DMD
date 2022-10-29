@@ -1,6 +1,6 @@
 ﻿BEGIN
-	DECLARE @WeaponType_Id1 uniqueindentifier, @WeaponType_Id2 uniqueindentifier, @WeaponType_Id3 uniqueindentifier,
-			@Character_Id1 uniqueindentifier, @Character_Id2 uniqueindentifier, @Character_Id3 uniqueindentifier;
+	DECLARE @WeaponType_Id1 uniqueidentifier, @WeaponType_Id2 uniqueidentifier, @WeaponType_Id3 uniqueidentifier,
+			@Character_Id1 uniqueidentifier, @Character_Id2 uniqueidentifier, @Character_Id3 uniqueidentifier;
 
 	SELECT @WeaponType_Id1 = Id FROM tblWeaponType WHERE Type = 'Sword'
 	SELECT @WeaponType_Id2 = Id FROM tblWeaponType WHERE Type = 'Dagger'

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace DMD.BL.Models
 {
-    public class CharacterLanguages
+    public class CharacterSkill
     {
         public Guid Id { get; set; } // use guid for id
+        public Guid Skill_Id { get; set; }
         public Guid Character_Id { get; set; }
-        public Guid Language_Id { get; set; }
+        public bool IsProficient { get; set; }
     }
 }

@@ -9,7 +9,8 @@ namespace DMD.BL.Models
     public class Spell
     {
         public Guid Id { get; set; } // use guid for id
-        public Guid Stats_Id { get; set; }
+        public Stat Stat { get; set; }
+        public List<Guid> SpellDamageType_Ids { get; set; }
         public int Spell_Level { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

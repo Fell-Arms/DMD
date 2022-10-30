@@ -7,7 +7,7 @@ namespace DMD.PL
     {
         public tblSkill()
         {
-            Characters = new HashSet<tblCharacter>();
+            tblCharacterSkillProficiencies = new HashSet<tblCharacterSkillProficiency>();
         }
 
         public Guid Id { get; set; }
@@ -16,7 +16,6 @@ namespace DMD.PL
         public string Description { get; set; } = null!;
 
         public virtual tblStat Stats { get; set; } = null!;
-
-        public virtual ICollection<tblCharacter> Characters { get; set; }
+        public virtual ICollection<tblCharacterSkillProficiency> tblCharacterSkillProficiencies { get; set; }
     }
 }

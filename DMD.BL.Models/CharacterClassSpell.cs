@@ -10,6 +10,6 @@ namespace DMD.BL.Models
     {
         public Guid Id { get; set; } // use guid for id
         public Guid Character_Id { get; set; }
-        public Guid Spell_Id{ get; set; }
+        public Guid ClassSpell_Id{ get; set; }
     }
 }

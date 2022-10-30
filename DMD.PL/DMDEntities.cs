@@ -29,6 +29,7 @@ namespace DMD.PL
         public virtual DbSet<tblCharacterCurrency> tblCharacterCurrencies { get; set; } = null!;
         public virtual DbSet<tblCharacterLanguage> tblCharacterLanguages { get; set; } = null!;
         public virtual DbSet<tblCharacterLevel> tblCharacterLevels { get; set; } = null!;
+        public virtual DbSet<tblCharacterSkillProficiency> tblCharacterSkillProficiencies { get; set; } = null!;
         public virtual DbSet<tblCharacterSpellCharge> tblCharacterSpellCharges { get; set; } = null!;
         public virtual DbSet<tblCharacterStat> tblCharacterStats { get; set; } = null!;
         public virtual DbSet<tblCharacterWeapon> tblCharacterWeapons { get; set; } = null!;
@@ -58,6 +59,7 @@ namespace DMD.PL
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDb;Database=DMD.DB;Integrated Security=True");
+                optionsBuilder.UseLazyLoadingProxies();
             }
         }
 
@@ -202,19 +204,6 @@ namespace DMD.PL
                     .HasForeignKey(d => d.User_Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fkUserId-Characters");
-
-                entity.HasMany(d => d.Skills)
-                    .WithMany(p => p.Characters)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "tblCharacterSkillProficiency",
-                        l => l.HasOne<tblSkill>().WithMany().HasForeignKey("Skill_Id").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fkSkillId-CharacterSkillProficiency"),
-                        r => r.HasOne<tblCharacter>().WithMany().HasForeignKey("Character_Id").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fkCharacterId-CharacterSkillProficiency"),
-                        j =>
-                        {
-                            j.HasKey("Character_Id", "Skill_Id").HasName("PK_CharacterSkill");
-
-                            j.ToTable("tblCharacterSkillProficiency");
-                        });
             });
 
             modelBuilder.Entity<tblCharacterArmor>(entity =>
@@ -328,6 +317,26 @@ namespace DMD.PL
                 entity.ToTable("tblCharacterLevel");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<tblCharacterSkillProficiency>(entity =>
+            {
+                entity.HasKey(e => new { e.Character_Id, e.Skill_Id })
+                    .HasName("PK_CharacterSkillProficiency");
+
+                entity.ToTable("tblCharacterSkillProficiency");
+
+                entity.HasOne(d => d.Character)
+                    .WithMany(p => p.tblCharacterSkillProficiencies)
+                    .HasForeignKey(d => d.Character_Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fkCharacterId-CharacterSkillProficiency");
+
+                entity.HasOne(d => d.Skill)
+                    .WithMany(p => p.tblCharacterSkillProficiencies)
+                    .HasForeignKey(d => d.Skill_Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fkSkillId-CharacterSkillProficiency");
             });
 
             modelBuilder.Entity<tblCharacterSpellCharge>(entity =>
@@ -460,7 +469,7 @@ namespace DMD.PL
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
-                    .HasMaxLength(150)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Name)
@@ -602,7 +611,7 @@ namespace DMD.PL
             modelBuilder.Entity<tblStatModifier>(entity =>
             {
                 entity.HasKey(e => e.Value)
-                    .HasName("PK__tblStatM__07D9BBC32BF124B2");
+                    .HasName("PK__tblStatM__07D9BBC35690760C");
 
                 entity.ToTable("tblStatModifier");
 

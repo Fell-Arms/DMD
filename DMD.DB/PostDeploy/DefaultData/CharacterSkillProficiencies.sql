@@ -10,9 +10,9 @@
 	SELECT @Character_Id22 = Id FROM tblCharacter WHERE LastName = 'Gravydog'
 	SELECT @Character_Id23 = Id FROM tblCharacter WHERE LastName = 'Greywall'
 
-	INSERT INTO dbo.tblCharacterSkillProficiency (Character_Id, Skill_Id)
+	INSERT INTO dbo.tblCharacterSkillProficiency (Id, Character_Id, Skill_Id)
 	VALUES
-	(@Character_Id21, @Skill_Id21),
-	(@Character_Id22, @Skill_Id22),
-	(@Character_Id23, @Skill_Id23)
+	(NEWID(), @Character_Id21, @Skill_Id21),
+	(NEWID(), @Character_Id22, @Skill_Id22),
+	(NEWID(), @Character_Id23, @Skill_Id23)
 END

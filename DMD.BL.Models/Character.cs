@@ -24,7 +24,7 @@ namespace DMD.BL.Models
         public List<CharacterWeapon> CharacterWeapons { get; set; }
         public List<CharacterWeaponTypeProficiency> CharacterWeaponTypeProficiencies { get; set; }
         public List<CharacterSpellCharge> CharacterSpellCharges { get; set; }
-        public List<CharacterClassSpell> CharacterSpells { get; set; }
+        public List<CharacterClassSpell> CharacterClassSpells { get; set; }
         public List<CharacterClass> CharacterClasses { get; set; }
         public List<CharacterAttack> CharacterAttacks { get; set; }
         public List<CharacterStat> CharacterStats { get; set; }

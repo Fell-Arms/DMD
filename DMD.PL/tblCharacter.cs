@@ -13,11 +13,11 @@ namespace DMD.PL
             tblCharacterClasses = new HashSet<tblCharacterClass>();
             tblCharacterCurrencies = new HashSet<tblCharacterCurrency>();
             tblCharacterLanguages = new HashSet<tblCharacterLanguage>();
+            tblCharacterSkillProficiencies = new HashSet<tblCharacterSkillProficiency>();
             tblCharacterSpellCharges = new HashSet<tblCharacterSpellCharge>();
             tblCharacterStats = new HashSet<tblCharacterStat>();
             tblCharacterWeaponTypeProficiencies = new HashSet<tblCharacterWeaponTypeProficiency>();
             tblCharacterWeapons = new HashSet<tblCharacterWeapon>();
-            Skills = new HashSet<tblSkill>();
         }
 
         public Guid Id { get; set; }
@@ -41,11 +41,10 @@ namespace DMD.PL
         public virtual ICollection<tblCharacterClass> tblCharacterClasses { get; set; }
         public virtual ICollection<tblCharacterCurrency> tblCharacterCurrencies { get; set; }
         public virtual ICollection<tblCharacterLanguage> tblCharacterLanguages { get; set; }
+        public virtual ICollection<tblCharacterSkillProficiency> tblCharacterSkillProficiencies { get; set; }
         public virtual ICollection<tblCharacterSpellCharge> tblCharacterSpellCharges { get; set; }
         public virtual ICollection<tblCharacterStat> tblCharacterStats { get; set; }
         public virtual ICollection<tblCharacterWeaponTypeProficiency> tblCharacterWeaponTypeProficiencies { get; set; }
         public virtual ICollection<tblCharacterWeapon> tblCharacterWeapons { get; set; }
-
-        public virtual ICollection<tblSkill> Skills { get; set; }
     }
 }

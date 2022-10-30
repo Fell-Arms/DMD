@@ -611,7 +611,7 @@ namespace DMD.PL
             modelBuilder.Entity<tblStatModifier>(entity =>
             {
                 entity.HasKey(e => e.Value)
-                    .HasName("PK__tblStatM__07D9BBC35690760C");
+                    .HasName("PK__tblStatM__07D9BBC37D887965");
 
                 entity.ToTable("tblStatModifier");
 

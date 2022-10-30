@@ -7,7 +7,7 @@ namespace DMD.PL
     {
         public Guid Character_Id { get; set; }
         public Guid Skill_Id { get; set; }
-        public bool? IsProficient { get; set; }
+        public bool? ValidRow { get; set; }
 
         public virtual tblCharacter Character { get; set; } = null!;
         public virtual tblSkill Skill { get; set; } = null!;

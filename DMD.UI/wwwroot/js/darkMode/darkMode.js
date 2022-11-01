@@ -13,4 +13,5 @@
     $(".form-control").toggleClass("dark-mode-form-control");
     $(".btn-pop-toggle").toggleClass("dark-mode-btn-toggle-pop");
     $(".icon-pop-toggle").toggleClass("dark-mode-icon-toggle-pop");
+    $(".btn-color-toggle").toggleClass("dark-mode-btn-color-toggle");
     }

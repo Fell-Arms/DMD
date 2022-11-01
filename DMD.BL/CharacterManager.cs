@@ -971,7 +971,7 @@ namespace DMD.BL
         }
 
 
-
+        /*
         public async static Task<int> Update(Character character, bool rollback = false)
         {
             try
@@ -1058,5 +1058,6 @@ namespace DMD.BL
                 throw;
             }
         }
+        */
     }
 }

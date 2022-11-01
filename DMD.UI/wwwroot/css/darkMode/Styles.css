@@ -34,7 +34,7 @@
     }
 
 .dark-mode-icon-toggle-pop {
-    background-color: #FF3366;
+    color: #FF3366;
 }
 
 .dark-mode-btn-toggle-pop {
@@ -44,4 +44,12 @@
     .dark-mode-btn-toggle-pop:hover {
         background-color: #7523B0;
     }
+
+.dark-mode-btn-color-toggle {
+    color: white;
+}
+    .dark-mode-btn-color-toggle:hover {
+        color: #FF3366;
+    }
+
 

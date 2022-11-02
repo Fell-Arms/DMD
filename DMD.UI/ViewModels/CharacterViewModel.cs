@@ -14,6 +14,8 @@ namespace DMD.UI.ViewModels
         public Character Character { get; set; } //Uses entire character model
         public User User { get; set; } //Uses entire user model
 
+        public IEnumerable<int> UserIds { get; set; }
+
         //List from - BL Model---Name-------get/set
 
         public List<Language> Languages { get; set; }       //Lists all the LANGUAGES to choose from

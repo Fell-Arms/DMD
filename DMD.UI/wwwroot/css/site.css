@@ -29,17 +29,6 @@ footer a:hover {
     text-decoration: none;
     cursor: pointer;
 }
-/*footer {
-    background-color: black;
-    color: white;
-    text-decoration: none;
-    margin-top: 100px;
-    text-align: center;
-    color: white;
-    bottom: -10px;
-    width: 100%;
-    height: 5rem;
-}*/
 .Footer {
     background-color: white;
     color:black;
@@ -47,5 +36,4 @@ footer a:hover {
     position: absolute;
     bottom: 0;
     width: 100%;
-    
 }

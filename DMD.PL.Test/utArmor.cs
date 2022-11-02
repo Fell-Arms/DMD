@@ -63,5 +63,27 @@ namespace DMD.PL.Test
             //Asserts that the value of result is greater than 0, indicating a proper save.
             Assert.IsTrue(result > 0);
         }
+
+        //Update Test Method
+        [TestMethod]
+        public void UpdateTest()
+        {
+            InsertTest(); //Runs insert test method.
+
+            tblArmor existingRow = dc.tblArmors.FirstOrDefault(c => c.Cost == 100);
+
+            if(existingRow != null)
+            {
+                existingRow.Id = Guid.NewGuid();
+                existingRow.ArmorStyle_Id = Guid.NewGuid();
+                existingRow.ArmorType_Id = Guid.NewGuid();
+                existingRow.ArmorClassBonus = 200;
+                existingRow.MovementPenalty = 200;
+                existingRow.Cost = 200;
+            }
+
+            tblArmor row = dc.tblArmors.FirstOrDefault(c => c.Cost == 200);
+            Assert.AreEqual(existingRow.Cost, row.Cost);          
+        }
     }
 }

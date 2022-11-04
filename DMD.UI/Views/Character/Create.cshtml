@@ -1,31 +1,37 @@
 ﻿@model DMD.UI.ViewModels.CharacterViewModel
 
 @{
-    ViewData["Title"] = "Create a Character";
+    ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<head>
-    <link rel="stylesheet" href="~/css/charStylesheet/Styles.css" />
-</head>
+<h1>Create</h1>
 
-<h1 class="display-4">Create your Character</h1>
-<p>Fill out the form below to add a new character to your account. Use the "Appearance" and "Background" tabs to add extra details for immersion and role playing!</p>
-
-
+<h4>CharacterViewModel</h4>
 <hr />
-<form asp-action="Create">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+            <input hidden asp-for="Character.Id" class="form-control" />
 
+            <div class="form-group">
+                <label asp-for="Character.FirstName" class="control-label"></label>
+                <select asp-for="Character.FirstName" class="form-control" asp-items="@(new SelectList(Model.Character.FirstName,"First Name"))"></select>
+                <span asp-validation-for="Character.FirstName" class="text-danger"></span>
+            </div>
 
-
-
-
-        <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
-</form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

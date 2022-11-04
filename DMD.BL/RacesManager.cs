@@ -19,7 +19,7 @@ namespace DMD.BL
             try
             {
                 List<Race> races = new List<Race>();
-                await Task.Run(() =>
+                await Task.Run(async () =>
                 {
                     using (DMDEntities ra = new DMDEntities())
                     {
@@ -32,6 +32,7 @@ namespace DMD.BL
                                Description = r.Description,
 
                             };
+
                             races.Add(race);
                         }
                     }

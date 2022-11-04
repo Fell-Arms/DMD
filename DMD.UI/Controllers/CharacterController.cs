@@ -32,7 +32,7 @@ namespace DMD.UI.Controllers
             //characterViewModel.Classes = ClassManager.Load();
             //characterViewModel.Stats = StatsManager.Load();
             //characterViewModel.StatModifiers = StatModManager.Load();
-            //characterViewModel.Races = RaceManager.Load();
+            //characterViewModel.Races = RacesManager.Load();
             //characterViewModel.Weapons = WeaponManager.Load();
             //characterViewModel.Armors = ArmorManager.Load();
 
@@ -49,6 +49,7 @@ namespace DMD.UI.Controllers
             try
             {
                 CharacterManager.Insert(characterViewModel.Character);
+                CharacterManager.Insert((Character)characterViewModel.Race);
                 //characterViewModel.UserIds.ToList().ForEach(u => CharacterManager.Insert(characterViewModel.Character.Id, u));
 
                 return RedirectToAction(nameof(Index));

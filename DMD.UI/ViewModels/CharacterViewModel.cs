@@ -20,7 +20,9 @@ namespace DMD.UI.ViewModels
 
         public List<Language> Languages { get; set; }       //Lists all the LANGUAGES to choose from
         public List<Class> Classes { get; set; }            //Lists all the CLASSES to choose from
+        
         public List<Race> Races { get; set; }               //Lists all the RACES to choose from
+
         public List<Stat> Stats { get; set; }               //Lists all the STATS to choose from
         public List<StatModifier> StatModifiers { get; set; }//Lists all the STAT MODIFIERS to choose from
         public List<Weapon> Weapons { get; set; }           //Lists all the WEAPONS to choose from

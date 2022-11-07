@@ -19,7 +19,7 @@ namespace DMD.BL
             try
             {
                 List<Class> classes = new List<Class>();
-                await Task.Run(async () =>
+                await Task.Run(() =>
                 {
                     using (DMDEntities ca = new DMDEntities())
                     {

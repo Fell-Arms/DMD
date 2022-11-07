@@ -48,7 +48,7 @@ namespace DMD.UI.Controllers
         {
             try
             {
-                //CharacterManager.Insert(characterViewModel.Character);
+                CharacterManager.Insert(characterViewModel.Character);
                 //CharacterManager.Insert((Character)characterViewModel.Race);
                 //characterViewModel.UserIds.ToList().ForEach(u => CharacterManager.Insert(characterViewModel.Character.Id, u));
 

@@ -14,6 +14,43 @@ namespace DMD.BL
 
     public static class ClassesManager
     {
+        //public async static Task<List<Class>> Load()
+        //{
+        //    try
+        //    {
+        //        List<Class> classes = new List<Class>();
+        //        await Task.Run(() =>
+        //        {
+        //            using (DMDEntities ca = new DMDEntities())
+        //            {
+        //                foreach (tblClass c in ca.tblClasses.ToList())
+        //                {
+        //                    Class class1 = new Class
+        //                    {
+        //                        Id = c.Id,
+        //                        Name = c.Name,
+        //                        Description = c.Description,
+        //                        HPUpDieOnLevel = c.HPUpDieOnLevel,
+
+        //                    };
+
+        //                    classes.Add(class1);
+        //                }
+        //            }
+        //        });
+        //        return classes;
+        //    }
+
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+
+        //}
+
+
+
         public async static Task<List<Class>> Load()
         {
             try
@@ -21,21 +58,17 @@ namespace DMD.BL
                 List<Class> classes = new List<Class>();
                 await Task.Run(() =>
                 {
-                    using (DMDEntities ca = new DMDEntities())
+                    using (DMDEntities dc = new DMDEntities())
                     {
-                        foreach (tblClass c in ca.tblClasses.ToList())
-                        {
-                            Class class1 = new Class
+                        dc.tblClasses
+                            .ToList()
+                            .ForEach(c => classes.Add(new Class()
                             {
                                 Id = c.Id,
                                 Name = c.Name,
                                 Description = c.Description,
-                                HPUpDieOnLevel = c.HPUpDieOnLevel,
-
-                            };
-
-                            classes.Add(class1);
-                        }
+                                HPUpDieOnLevel = c.HPUpDieOnLevel
+                            }));
                     }
                 });
                 return classes;
@@ -48,6 +81,9 @@ namespace DMD.BL
             }
 
         }
+
+
+
 
 
         //public static Armor LoadById(Guid id)

@@ -1,14 +1,5 @@
 ﻿using DMD.BL.Models;
 using DMD.PL;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DMD.BL
 {
@@ -59,7 +50,7 @@ namespace DMD.BL
                     {
                         dc.tblRaces
                             .ToList()
-                            .ForEach(r => races.Add(new Race
+                            .ForEach(r => races.Add(new Race()
                             {
                                 Id = r.Id,
                                 Name = r.Name,

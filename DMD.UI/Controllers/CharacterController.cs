@@ -51,11 +51,8 @@ namespace DMD.UI.Controllers
         {
             try
             {
-
-
                 CharacterManager.Insert(characterViewModel.Character);
-
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             catch
             {

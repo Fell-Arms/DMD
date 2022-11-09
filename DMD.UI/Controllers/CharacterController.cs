@@ -28,13 +28,13 @@ namespace DMD.UI.Controllers
 
             //-------------Need to load lists for dropdown menus-----------\\
 
-            //characterViewModel.Languages = LanguageManager.Load();
-            //characterViewModel.Classes = ClassManager.Load();
-            //characterViewModel.Stats = StatsManager.Load();
-            //characterViewModel.StatModifiers = StatModManager.Load();
-            //characterViewModel.Races = RacesManager.Load();
-            //characterViewModel.Weapons = WeaponManager.Load();
-            //characterViewModel.Armors = ArmorManager.Load();
+            //characterViewModel.Languages = LanguageManager.Load().Result;
+            //characterViewModel.Classes = ClassesManager.Load().Result;
+            //characterViewModel.Stats = StatManager.Load().Result;
+            //characterViewModel.StatModifiers = StatModifierManager.Load().Result;
+            characterViewModel.Races = RacesManager.Load().Result;
+            //characterViewModel.Weapons = WeaponManager.Load().Result;
+            //characterViewModel.Armors = ArmorManager.Load().Result;
 
 
             return View(characterViewModel);

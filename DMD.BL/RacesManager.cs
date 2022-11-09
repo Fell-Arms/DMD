@@ -1,40 +1,61 @@
 ﻿using DMD.BL.Models;
 using DMD.PL;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DMD.BL
 {
 
     public static class RacesManager
     {
+        //public async static Task<List<Race>> Load()
+        //{
+        //    try
+        //    {
+        //        List<Race> races = new List<Race>();
+        //        await Task.Run(() =>
+        //        {
+        //            using (DMDEntities ra = new DMDEntities())
+        //            {
+        //                foreach (tblRace r in ra.tblRaces.ToList())
+        //                {
+        //                    Race race = new Race
+        //                    {
+        //                        Id = r.Id,
+        //                        Name = r.Name,
+        //                        Description = r.Description,
+        //                    };
+
+        //                    races.Add(race);
+        //                }
+        //            }
+        //        });
+        //        return races;
+        //    }
+
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+
+        //}
+
         public async static Task<List<Race>> Load()
         {
             try
             {
                 List<Race> races = new List<Race>();
-                await Task.Run(async () =>
+                await Task.Run(() =>
                 {
-                    using (DMDEntities ra = new DMDEntities())
+                    using (DMDEntities dc = new DMDEntities())
                     {
-                        foreach (tblRace r in ra.tblRaces.ToList())
-                        {
-                            Race race = new Race
+                        dc.tblRaces
+                            .ToList()
+                            .ForEach(r => races.Add(new Race()
                             {
                                 Id = r.Id,
-                               Name = r.Name,
-                               Description = r.Description,
-
-                            };
-
-                            races.Add(race);
-                        }
+                                Name = r.Name,
+                                Description = r.Description
+                            }));
                     }
                 });
                 return races;

@@ -14,50 +14,85 @@ namespace DMD.BL
 
     public static class WeaponManager
     {
+        //public async static Task<List<Weapon>> Load()
+        //{
+        //    try
+        //    {
+        //        List<Weapon> weapons = new List<Weapon>();
+        //        await Task.Run(async () =>
+        //        {
+        //            using (DMDEntities wa = new DMDEntities())
+        //            {
+        //                foreach (tblWeapon w in wa.tblWeapons.ToList())
+        //                {
+        //                    Weapon weapon = new Weapon
+        //                    {
+        //                        Id = w.Id,
+        //                        WeaponType_Id = w.WeaponType_Id,    
+        //                        Stats_Id = w.Stats_Id,
+        //                        Name = w.Name,
+        //                        Cost = w.Cost
+
+                             
+
+        //                    };
+
+        //                    weapon.WeaponDamageType_Ids = new List<Guid>();
+
+        //                    foreach (tblWeaponDamageType wdt in w.tblWeaponDamageTypes.ToList())
+        //                    {
+
+
+        //                        WeaponDamageTypes weaponDamageTypes = new WeaponDamageTypes();
+        //                        {
+                                    
+
+        //                        }
+                            
+
+
+        //                    }
+
+
+
+
+        //                    weapons.Add(weapon);
+        //                }
+        //            }
+        //        });
+        //        return weapons;
+        //    }
+
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+
+        //}
+
+
         public async static Task<List<Weapon>> Load()
         {
             try
             {
                 List<Weapon> weapons = new List<Weapon>();
-                await Task.Run(async () =>
+                await Task.Run(() =>
                 {
-                    using (DMDEntities wa = new DMDEntities())
+                    using (DMDEntities dc = new DMDEntities())
                     {
-                        foreach (tblWeapon w in wa.tblWeapons.ToList())
-                        {
-                            Weapon weapon = new Weapon
+                        dc.tblWeapons
+                            .ToList()
+                            .ForEach(w => weapons.Add(new Weapon()
                             {
                                 Id = w.Id,
-                                WeaponType_Id = w.WeaponType_Id,    
+                                WeaponType_Id = w.WeaponType_Id,
                                 Stats_Id = w.Stats_Id,
                                 Name = w.Name,
                                 Cost = w.Cost
+                              
 
-                             
-
-                            };
-
-                            weapon.WeaponDamageType_Ids = new List<Guid>();
-
-                            foreach (tblWeaponDamageType wdt in w.tblWeaponDamageTypes.ToList())
-                            {
-
-
-                                WeaponDamageTypes weaponDamageTypes = new WeaponDamageTypes();
-                                {
-                                    
-
-                                }
-                            
-
-
-                            }
-
-
-
-
-                            weapons.Add(weapon);
-                        }
+                            }));
                     }
                 });
                 return weapons;
@@ -70,6 +105,8 @@ namespace DMD.BL
             }
 
         }
+
+
 
 
         //public static Armor LoadById(Guid id)

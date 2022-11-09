@@ -14,27 +14,58 @@ namespace DMD.BL
 
     public static class LanguageManager
     {
+        //public async static Task<List<Language>> Load()
+        //{
+        //    try
+        //    {
+        //        List<Language> languages = new List<Language>();
+        //        await Task.Run(async () =>
+        //        {
+        //            using (DMDEntities la = new DMDEntities())
+        //            {
+        //                foreach (tblLanguage l in la.tblLanguages.ToList())
+        //                {
+        //                    Language language = new Language
+        //                    {
+        //                        Id = l.Id,
+        //                        Name = l.Name,
+        //                        Description = l.Description,
+
+        //                    };
+
+        //                    languages.Add(language);
+        //                }
+        //            }
+        //        });
+        //        return languages;
+        //    }
+
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+
+        //}
+
+
         public async static Task<List<Language>> Load()
         {
             try
             {
                 List<Language> languages = new List<Language>();
-                await Task.Run(async () =>
+                await Task.Run(() =>
                 {
-                    using (DMDEntities la = new DMDEntities())
+                    using (DMDEntities dc = new DMDEntities())
                     {
-                        foreach (tblLanguage l in la.tblLanguages.ToList())
-                        {
-                            Language language = new Language
+                        dc.tblLanguages
+                            .ToList()
+                            .ForEach(l => languages.Add(new Language()
                             {
                                 Id = l.Id,
                                 Name = l.Name,
-                                Description = l.Description,
-
-                            };
-
-                            languages.Add(language);
-                        }
+                                Description = l.Description
+                            }));
                     }
                 });
                 return languages;
@@ -47,6 +78,23 @@ namespace DMD.BL
             }
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         //public static Armor LoadById(Guid id)

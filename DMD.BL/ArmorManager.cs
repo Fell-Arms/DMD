@@ -14,6 +14,42 @@ namespace DMD.BL
 
     public static class ArmorManager
     {
+        //public async static Task<List<Armor>> Load()
+        //{
+        //    try
+        //    {
+        //        List<Armor> armors = new List<Armor>();
+        //        await Task.Run(() =>
+        //        {
+        //            using (DMDEntities am = new DMDEntities())
+        //            {
+        //                foreach (tblArmor a in am.tblArmors.ToList())
+        //                {
+        //                    Armor armor = new Armor
+        //                    {
+        //                        Id = a.Id,
+        //                        ArmorClassBonus = a.ArmorClassBonus,
+        //                        ArmorStyle_Id = a.ArmorStyle_Id,
+        //                        ArmorType_Id = a.ArmorType_Id,
+        //                        MovementPenalty = a.MovementPenalty,
+        //                        Cost = a.Cost
+        //                    };
+        //                    armors.Add(armor);
+        //                }
+        //            }
+        //        });
+        //        return armors;
+        //    }
+
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+
+        //}
+
+
         public async static Task<List<Armor>> Load()
         {
             try
@@ -21,21 +57,20 @@ namespace DMD.BL
                 List<Armor> armors = new List<Armor>();
                 await Task.Run(() =>
                 {
-                    using (DMDEntities am = new DMDEntities())
+                    using (DMDEntities dc = new DMDEntities())
                     {
-                        foreach (tblArmor a in am.tblArmors.ToList())
-                        {
-                            Armor armor = new Armor
+                        dc.tblArmors
+                            .ToList()
+                            .ForEach(a => armors.Add(new Armor()
                             {
                                 Id = a.Id,
                                 ArmorClassBonus = a.ArmorClassBonus,
                                 ArmorStyle_Id = a.ArmorStyle_Id,
-                                ArmorType_Id = a.ArmorType_Id,
-                                MovementPenalty = a.MovementPenalty,
-                                Cost = a.Cost
-                            };
-                            armors.Add(armor);
-                        }
+                                MovementPenalty = a.MovementPenalty,    
+                                Cost = a.Cost,  
+                                ArmorType_Id = a.ArmorType_Id  
+                               
+                            }));
                     }
                 });
                 return armors;
@@ -48,6 +83,10 @@ namespace DMD.BL
             }
 
         }
+
+
+
+
 
 
         //public static Armor LoadById(Guid id)

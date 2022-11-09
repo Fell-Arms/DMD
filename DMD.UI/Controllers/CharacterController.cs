@@ -3,6 +3,9 @@ using DMD.BL.Models;
 using DMD.UI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using NuGet.Protocol.Plugins;
+using System.Data;
 
 namespace DMD.UI.Controllers
 {
@@ -26,15 +29,15 @@ namespace DMD.UI.Controllers
             CharacterViewModel characterViewModel = new CharacterViewModel();
             characterViewModel.Character = new Character();
 
+
             //-------------Need to load lists for dropdown menus-----------\\
 
-            //characterViewModel.Languages = LanguageManager.Load().Result;
-            //characterViewModel.Classes = ClassesManager.Load().Result;
-            //characterViewModel.Stats = StatManager.Load().Result;
-            //characterViewModel.StatModifiers = StatModifierManager.Load().Result;
+            characterViewModel.Languages = LanguageManager.Load().Result;
+            characterViewModel.Classes = ClassesManager.Load().Result;
+            characterViewModel.Stats = StatManager.Load().Result;
             characterViewModel.Races = RacesManager.Load().Result;
-            //characterViewModel.Weapons = WeaponManager.Load().Result;
-            //characterViewModel.Armors = ArmorManager.Load().Result;
+            characterViewModel.Weapons = WeaponManager.Load().Result;
+            characterViewModel.Armors = ArmorManager.Load().Result;
 
 
             return View(characterViewModel);
@@ -48,9 +51,9 @@ namespace DMD.UI.Controllers
         {
             try
             {
+
+
                 CharacterManager.Insert(characterViewModel.Character);
-                //CharacterManager.Insert((Character)characterViewModel.Race);
-                //characterViewModel.UserIds.ToList().ForEach(u => CharacterManager.Insert(characterViewModel.Character.Id, u));
 
                 return RedirectToAction(nameof(Index));
             }

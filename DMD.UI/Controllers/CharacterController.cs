@@ -1,4 +1,5 @@
-﻿using DMD.BL;
+﻿using Castle.Core.Resource;
+using DMD.BL;
 using DMD.BL.Models;
 using DMD.UI.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -29,12 +30,14 @@ namespace DMD.UI.Controllers
             CharacterViewModel characterViewModel = new CharacterViewModel();
             characterViewModel.Character = new Character();
 
+            characterViewModel.Stats = StatManager.Load().Result;
+            ViewData["Stats"] = characterViewModel.Stats;
 
             //-------------Need to load lists for dropdown menus-----------\\
 
             characterViewModel.Languages = LanguageManager.Load().Result;
             characterViewModel.Classes = ClassesManager.Load().Result;
-            characterViewModel.Stats = StatManager.Load().Result;
+            //characterViewModel.Stats = StatManager.Load().Result;
             characterViewModel.Races = RacesManager.Load().Result;
             characterViewModel.Weapons = WeaponManager.Load().Result;
             characterViewModel.Armors = ArmorManager.Load().Result;

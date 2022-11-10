@@ -13,6 +13,21 @@
     <h1 class="display-4">Create your Character</h1>
     <p>Fill out the form below to add a new character to your account. Use the "Appearance" and "Background" tabs to add extra details for immersion and role playing!</p>
 
+    @if (ViewData["Stats"] != null)
+        {
+            <script type="text/javascript">
+                var statNames = [];
+
+                @foreach (var s in Model.Stats)
+                {
+                    @:statNames.push("@s.Name");
+                }
+                alert(statNames);
+
+                if(@Model.Stat.Name == "")
+
+            </script>
+        }
 
 <form asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -38,7 +53,7 @@
                     <div class="row justify-content-around section1">
                         <select asp-for="Class" class="form-select form-control col m-1" asp-items="@(new SelectList(Model.Classes,"Id","Name","Description"))"><option selected disabled hidden>Class</option></select>
                         <input asp-for="Character.CharacterLevelId" class="col m-1 form-control" type="number" placeholder="Level">
-                        <input asp-for="Character.Experience" class="col m-1 form-control" type="number" placeholder="Experience">
+                        <input disabled class="col m-1 form-control" type="number" placeholder="Experience">
                     </div>
                 </div>
             </div>
@@ -70,6 +85,7 @@
 
                 <div class="section1">
                     <div class="row m-3 justify-content-lg-around">
+
                         <!----------------STRENGTH--------------->
                         <div class="card m-1 col">
                             <div class="card-header header">
@@ -79,7 +95,7 @@
                                 <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
                             </div>
                             <div class="card-footer">
-                                <input class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
+                                <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
                             </div>
                         </div>
                         <!--------------------------------------->
@@ -92,7 +108,7 @@
                                 <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
                             </div>
                             <div class="card-footer">
-                                <input class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
+                                <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
                             </div>
                         </div>
                         <!--------------------------------------->
@@ -105,7 +121,7 @@
                                 <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
                             </div>
                             <div class="card-footer">
-                                <input class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
+                                <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
                             </div>
                         </div>
                         <!--------------------------------------->
@@ -118,7 +134,7 @@
                                 <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
                             </div>
                             <div class="card-footer">
-                                <input class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
+                                <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
                             </div>
                         </div>
                         <!--------------------------------------->
@@ -131,7 +147,7 @@
                                 <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
                             </div>
                             <div class="card-footer">
-                                <input class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
+                                <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
                             </div>
                         </div>
                         <!--------------------------------------->
@@ -144,7 +160,7 @@
                                 <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
                             </div>
                             <div class="card-footer">
-                                <input class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
+                                <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
                             </div>
                         </div>
                         <!--------------------------------------->
@@ -231,7 +247,7 @@
                             <!----------------INSPIRATION--------------->
                             <div class="card top-push section1">
                                 <div class="input-group">
-                                    <input class="w-25 form-control form-control-lg" type="number" placeholder="">
+                                    <input disabled class="w-25 form-control form-control-lg" type="number" placeholder="">
                                     <div class="input-group-prepend w-75">
                                         <div class="input-group-text">Inspiration</div>
                                     </div>
@@ -241,7 +257,7 @@
                             <!----------------PROFICIENCY BONUS--------------->
                             <div class="card section1">
                                 <div class="input-group">
-                                    <input class="w-25 form-control form-control-lg" type="number" placeholder="">
+                                    <input disabled class="w-25 form-control form-control-lg" type="number" placeholder="">
                                     <div class="input-group-prepend w-75">
                                         <div class="input-group-text">Proficiency Bonus</div>
                                     </div>
@@ -251,7 +267,7 @@
                             <!----------------PASSIVE WISDOM--------------->
                             <div class="card section1">
                                 <div class="input-group">
-                                    <input class="w-25 form-control form-control-lg" type="number" placeholder="">
+                                    <input disabled class="w-25 form-control form-control-lg" type="number" placeholder="">
                                     <div class="input-group-prepend w-75">
                                         <div class="input-group-text">Passive Wisdom</div>
                                     </div>
@@ -281,7 +297,7 @@
                                     <!------------------Acro CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="acroCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Acrobatics (DEX)</div>
                                         </div>
@@ -292,7 +308,7 @@
                                     <!------------------Animal CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="animalCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Animal Handling (WIS)</div>
                                         </div>
@@ -303,7 +319,7 @@
                                     <!------------------Arcana CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="arcanaCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Arcana (INT)</div>
                                         </div>
@@ -314,7 +330,7 @@
                                     <!------------------Athle CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="athleCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Athletics (STR)</div>
                                         </div>
@@ -325,7 +341,7 @@
                                     <!------------------Decept CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="deceptCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Deception (CHA)</div>
                                         </div>
@@ -336,7 +352,7 @@
                                     <!------------------Hist CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="histCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">History (INT)</div>
                                         </div>
@@ -347,7 +363,7 @@
                                     <!------------------Insight CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="insightCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Insight (WIS)</div>
                                         </div>
@@ -358,7 +374,7 @@
                                     <!------------------Intimi CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="intimiCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Intimidation (CHA)</div>
                                         </div>
@@ -369,7 +385,7 @@
                                     <!------------------Investi CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="investiCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Investigation (INT)</div>
                                         </div>
@@ -380,7 +396,7 @@
                                     <!------------------Med CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="medCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Medicine (WIS)</div>
                                         </div>
@@ -391,7 +407,7 @@
                                     <!------------------Nature CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="natureCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Nature (INT)</div>
                                         </div>
@@ -402,7 +418,7 @@
                                     <!------------------Percep CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="percepCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Perception (WIS)</div>
                                         </div>
@@ -413,7 +429,7 @@
                                     <!------------------Perform CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="performCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Performance (CHA)</div>
                                         </div>
@@ -424,7 +440,7 @@
                                     <!------------------Persuasion CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="persuasionCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Persuasion (CHA)</div>
                                         </div>
@@ -435,7 +451,7 @@
                                     <!------------------Religion CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="religionCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Religion (INT)</div>
                                         </div>
@@ -446,7 +462,7 @@
                                     <!------------------soh CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="sohCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Slight of Hand (DEX)</div>
                                         </div>
@@ -457,7 +473,7 @@
                                     <!------------------stealth CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="stealthCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Stealth (DEX)</div>
                                         </div>
@@ -468,7 +484,7 @@
                                     <!------------------survival CHECK-------------------->
                                     <input class="form-check-input" type="checkbox" value="" id="survivalCheck">
                                     <div class="input-group">
-                                        <input class="w-25 form-control form-control-sm" type="number" placeholder="">
+                                        <input disabled class="w-25 form-control form-control-sm" type="number" placeholder="">
                                         <div class="input-group-prepend w-75">
                                             <div class="input-group-text char-check-text">Survival (WIS)</div>
                                         </div>
@@ -490,7 +506,7 @@
                                             <h2 class="stat-header">Armor Class</h2>
                                         </div>
                                         <div class="card-body card-content">
-                                            <input class="form-control form-control-sm" type="number" placeholder="">
+                                            <input disabled class="form-control form-control-sm" type="number" placeholder="">
                                         </div>
                                     </div>
                                     <!------------------------------------------------------->
@@ -500,7 +516,7 @@
                                             <h2 class="stat-header">Initiative</h2>
                                         </div>
                                         <div class="card-body card-content">
-                                            <input class="form-control form-control-sm" type="number" placeholder="">
+                                            <input disabled class="form-control form-control-sm" type="number" placeholder="">
                                         </div>
                                     </div>
                                     <!------------------------------------------------------->
@@ -510,7 +526,7 @@
                                             <h2 class="stat-header">Speed</h2>
                                         </div>
                                         <div class="card-body card-content">
-                                            <input class="form-control form-control-sm" type="number" placeholder="">
+                                            <input disabled class="form-control form-control-sm" type="number" placeholder="">
                                         </div>
                                     </div>
                                     <!------------------------------------------------------->
@@ -529,14 +545,14 @@
                                                 </div>
                                                 <input asp-for="Character.MaxHitpoints" class="w-25 form-control form-control-sm" type="number" placeholder="0">
                                             </div>
-                                            <textarea asp-for="Character.CurrentHitpoints" class="form-control" id="txtCurrentHitPoints" rows="3"></textarea>
+                                            <textarea disabled class="form-control" id="txtCurrentHitPoints" rows="3"></textarea>
                                         </div>
 
                                         <div class="card-header header">
                                             <h2 class="stat-header">Temporary Hit Points</h2>
                                         </div>
                                         <div class="card-body card-content">
-                                            <textarea class="form-control" id="txtTempHitPoints" rows="3"></textarea>
+                                            <textarea disabled class="form-control" id="txtTempHitPoints" rows="3"></textarea>
                                         </div>
                                     </div>
                                     <!------------------------------------------------------->
@@ -553,9 +569,9 @@
                                                 <div class="input-group-prepend w-25">
                                                     <div class="input-group-text char-check-text">Total</div>
                                                 </div>
-                                                <input class="w-75 form-control form-control-sm" type="number" placeholder="0">
+                                                <input disabled class="w-75 form-control form-control-sm" type="number" placeholder="0">
                                             </div>
-                                            <input class="form-control form-control-lg stat-modifier" type="number" placeholder="">
+                                            <input disabled class="form-control form-control-lg stat-modifier" type="number" placeholder="">
                                         </div>
                                     </div>
                                     <!--------------------------------------->
@@ -569,13 +585,13 @@
                                             <h2 class="char-check-text">Successes</h2>
                                             <div class="row justify-content-around">
                                                 <div class="form-check form-check-inline w-25">
-                                                    <input class="form-check-input" type="checkbox" id="deathSuccess1" value="">
+                                                    <input disabled class="form-check-input" type="checkbox" id="deathSuccess1" value="">
                                                 </div>
                                                 <div class="form-check form-check-inline w-25">
-                                                    <input class="form-check-input" type="checkbox" id="deathSuccess2" value="">
+                                                    <input disabled class="form-check-input" type="checkbox" id="deathSuccess2" value="">
                                                 </div>
                                                 <div class="form-check form-check-inline w-25">
-                                                    <input class="form-check-input" type="checkbox" id="deathSuccess3" value="">
+                                                    <input disabled class="form-check-input" type="checkbox" id="deathSuccess3" value="">
                                                 </div>
                                             </div>
                                             <!-------------------------->
@@ -583,13 +599,13 @@
                                             <h2 class="char-check-text">Failures</h2>
                                             <div class="row justify-content-around">
                                                 <div class="form-check form-check-inline w-25">
-                                                    <input class="form-check-input" type="checkbox" id="deathSuccess1" value="">
+                                                    <input disabled class="form-check-input" type="checkbox" id="deathSuccess1" value="">
                                                 </div>
                                                 <div class="form-check form-check-inline w-25">
-                                                    <input class="form-check-input" type="checkbox" id="deathSuccess2" value="">
+                                                    <input disabled class="form-check-input" type="checkbox" id="deathSuccess2" value="">
                                                 </div>
                                                 <div class="form-check form-check-inline w-25">
-                                                    <input class="form-check-input" type="checkbox" id="deathSuccess3" value="">
+                                                    <input disabled class="form-check-input" type="checkbox" id="deathSuccess3" value="">
                                                 </div>
                                             </div>
                                             <!-------------------------->
@@ -612,27 +628,27 @@
                             </div>
                             <div class="card-body card-content align-middle">
                                 <div class="row justify-content-around section1">
-                                    <input class="col form-control" type="text" placeholder="Name">
-                                    <input class="col form-control" type="text" placeholder="ATK Bonus">
-                                    <input class="col form-control" type="text" placeholder="DMG Type">
+                                    <input disabled class="col form-control" type="text" placeholder="Name">
+                                    <input disabled class="col form-control" type="text" placeholder="ATK Bonus">
+                                    <input disabled class="col form-control" type="text" placeholder="DMG Type">
                                 </div>
                                 <div class="row justify-content-around section1">
-                                    <input class="col form-control" type="text" placeholder="Name">
-                                    <input class="col form-control" type="text" placeholder="ATK Bonus">
-                                    <input class="col form-control" type="text" placeholder="DMG Type">
+                                    <input disabled class="col form-control" type="text" placeholder="Name">
+                                    <input disabled class="col form-control" type="text" placeholder="ATK Bonus">
+                                    <input disabled class="col form-control" type="text" placeholder="DMG Type">
                                 </div>
                                 <div class="row justify-content-around section1">
-                                    <input class="col form-control" type="text" placeholder="Name">
-                                    <input class="col form-control" type="text" placeholder="ATK Bonus">
-                                    <input class="col form-control" type="text" placeholder="DMG Type">
+                                    <input disabled class="col form-control" type="text" placeholder="Name">
+                                    <input disabled class="col form-control" type="text" placeholder="ATK Bonus">
+                                    <input disabled class="col form-control" type="text" placeholder="DMG Type">
                                 </div>
-                                <textarea class="form-control" rows="6"></textarea>
+                                <textarea disabled class="form-control" rows="6"></textarea>
                             </div>
                         </div>
 
                         <div class="card m-1 col">
                             <div class=card-header>
-                                Equiptment
+                                Equipment
                             </div>
                             <div class=card-body>
                                 <div class="row">
@@ -646,7 +662,8 @@
                                         </div>
                                     </div>
                                     <div class="col-9">
-                                        <textarea class="form-control" rows="12"></textarea>
+                                        <select asp-for="SelectedArmorIds" class="form-control col m-1" asp-items="@(new MultiSelectList(Model.Armors,"ArmorStyle_Id","ArmorClassBonus"))"><option selected disabled hidden>Armors</option></select>
+                                        <select asp-for="SelectedWeaponIds" class="form-control col m-1" asp-items="@(new MultiSelectList(Model.Weapons,"WeaponType_Id","Name"))"><option selected disabled hidden>Weapons</option></select>
                                     </div>
                                 </div>
                             </div>
@@ -834,80 +851,3 @@
 </form>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <select asp-for="Race" class="form-select" asp-items="@(new SelectList(Model.Races,"Id","Name","Description"))"><option selected disabled hidden>Race</option></select>
-
-
-            <div class="form-group">
-                <label asp-for="Race" class="control-label"></label>
-                <select asp-for="Race" class="form-control" asp-items="@(new SelectList(Model.Races,"Id","Name","Description"))"></select>
-                <span asp-validation-for="Race" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Languages" class="control-label"></label>
-                <select asp-for="Languages" class="form-control" asp-items="@(new SelectList(Model.Languages,"Id","Name","Description"))"></select>
-                <span asp-validation-for="Languages" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Classes" class="control-label"></label>
-                <select asp-for="Classes" class="form-control" asp-items="@(new SelectList(Model.Classes,"Id","Name","Description"))"></select>
-                <span asp-validation-for="Classes" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Stats" class="control-label"></label>
-                <select asp-for="Stats" class="form-control" asp-items="@(new SelectList(Model.Stats,"Id","Name","Description"))"></select>
-                <span asp-validation-for="Stats" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Weapons" class="control-label"></label>
-                <select asp-for="Weapons" class="form-control" asp-items="@(new SelectList(Model.Weapons,"Id","Name","WeaponType_Id"))"></select>
-                <span asp-validation-for="Weapons" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Armors" class="control-label"></label>
-                <select asp-for="Armors" class="form-control" asp-items="@(new SelectList(Model.Armors,"Id","ArmorType_Id","ArmorStyle_Id"))"></select>
-                <span asp-validation-for="Armors" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-    -->

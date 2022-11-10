@@ -16,7 +16,8 @@ namespace DMD.UI.ViewModels
         public Character Character { get; set; } //Uses entire character model
         public User User { get; set; } //Uses entire user model
 
-        public Language Language { get; set; }       //Uses entire LANGUAGE model
+        public List<Language> SelectedLanguages { get; set; }       //Uses entire LANGUAGE model
+        public List<Guid> SelectedLanguageIds { get; set; }
         public Class Class { get; set; }            //Uses entire CLASS model
         public Skill Skill { get; set; }             //Uses entire SKILL model
         public Race Race { get; set; }               //Uses entire RACE model

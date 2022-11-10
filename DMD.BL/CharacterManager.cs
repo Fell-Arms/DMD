@@ -832,6 +832,7 @@ namespace DMD.BL
                                 {
                                     tblCharacterClassSpell = new tblCharacterClassSpell();
                                     tblCharacterClassSpell.Id = Guid.NewGuid();
+                                    tblCharacterClassSpell.Character_Id = characterClassSpell.Character_Id;
                                     tblCharacterClassSpell.ClassSpells_Id = characterClassSpell.ClassSpell_Id;
 
                                     characterClassSpell.Id = tblCharacterClassSpell.Id;
@@ -855,6 +856,7 @@ namespace DMD.BL
                                 {
                                     tblCharacterClass = new tblCharacterClass();
                                     tblCharacterClass.Id = Guid.NewGuid();
+                                    tblCharacterClass.Character_Id = tblCharacterClass.Class_Id;
                                     tblCharacterClass.Class_Level = tblCharacterClass.Class_Level;
                                     tblCharacterClass.Class_Id = tblCharacterClass.Class_Id;
 
@@ -878,6 +880,7 @@ namespace DMD.BL
                                 {
                                     tblCharacterAttack = new tblCharacterAttack();
                                     tblCharacterAttack.Id = Guid.NewGuid();
+                                    tblCharacterAttack.Character_Id = characterAttack.Character_Id;
                                     tblCharacterAttack.Attack_Id = characterAttack.Attack_Id;
                                     tblCharacterAttack.CurrentUses = characterAttack.CurrentUses;
 
@@ -901,6 +904,7 @@ namespace DMD.BL
                                 {
                                     tblCharacterStat = new tblCharacterStat();
                                     tblCharacterStat.Id = Guid.NewGuid();
+                                    tblCharacterStat.Character_Id = CharacterStat.Character_Id;
                                     tblCharacterStat.Stats_Id = CharacterStat.Stat_Id;
                                     tblCharacterStat.Value = CharacterStat.Value;
 
@@ -945,6 +949,7 @@ namespace DMD.BL
                                 {
                                     tblCharacterLanguage = new tblCharacterLanguage();
                                     tblCharacterLanguage.Id = Guid.NewGuid();
+                                    tblCharacterLanguage.Character_Id = characterLanguage.Character_Id;
                                     tblCharacterLanguage.Language_Id = characterLanguage.Language_Id;
 
                                     characterLanguage.Id = tblCharacterLanguage.Id;

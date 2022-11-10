@@ -51,8 +51,22 @@ namespace DMD.UI.Controllers
         {
             try
             {
+                //characterViewModel.Character.RaceId = characterViewModel.Race.Id;
+                
+
                 CharacterManager.Insert(characterViewModel.Character);
                 return RedirectToAction("Index", "Home");
+
+
+                /*
+                 *  StudentManager.Insert(studentAdvisors.Student);
+                    int id = studentAdvisors.Student.Id;
+
+                    // Convey changes to the database
+                    studentAdvisors.AdvisorIds.ToList().ForEach(a => StudentAdvisorManager.Insert(id, a));
+                 * 
+                 * 
+                 */
             }
             catch
             {

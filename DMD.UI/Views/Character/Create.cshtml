@@ -264,7 +264,7 @@
                                     <h2 class="stat-header">Proffeciencies and Languages</h2>
                                 </div>
                                 <div class="card-body card-content">
-                                    <select asp-for="Languages" class="form-control col m-1" asp-items="@(new MultiSelectList(Model.Languages,"Id","Name","Description"))"><option selected disabled hidden>Languages</option></select>
+                                    <select asp-for="SelectedLanguageIds" class="form-control col m-1" asp-items="@(new MultiSelectList(Model.Languages,"Id","Name","Description"))"><option selected disabled hidden>Languages</option></select>
                                     <textarea class="form-control" id="txtOtherPL" rows="6" placeholder="Other"></textarea>
                                 </div>
                             </div>

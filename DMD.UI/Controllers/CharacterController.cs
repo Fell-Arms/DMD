@@ -1,8 +1,12 @@
-﻿using DMD.BL;
+﻿using Castle.Core.Resource;
+using DMD.BL;
 using DMD.BL.Models;
 using DMD.UI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using NuGet.Protocol.Plugins;
+using System.Data;
 
 namespace DMD.UI.Controllers
 {
@@ -26,15 +30,17 @@ namespace DMD.UI.Controllers
             CharacterViewModel characterViewModel = new CharacterViewModel();
             characterViewModel.Character = new Character();
 
+            characterViewModel.Stats = StatManager.Load().Result;
+            ViewData["Stats"] = characterViewModel.Stats;
+
             //-------------Need to load lists for dropdown menus-----------\\
 
-            //characterViewModel.Languages = LanguageManager.Load();
-            //characterViewModel.Classes = ClassManager.Load();
-            //characterViewModel.Stats = StatsManager.Load();
-            //characterViewModel.StatModifiers = StatModManager.Load();
-            //characterViewModel.Races = RaceManager.Load();
-            //characterViewModel.Weapons = WeaponManager.Load();
-            //characterViewModel.Armors = ArmorManager.Load();
+            characterViewModel.Languages = LanguageManager.Load().Result;
+            characterViewModel.Classes = ClassesManager.Load().Result;
+            //characterViewModel.Stats = StatManager.Load().Result;
+            characterViewModel.Races = RacesManager.Load().Result;
+            characterViewModel.Weapons = WeaponManager.Load().Result;
+            characterViewModel.Armors = ArmorManager.Load().Result;
 
 
             return View(characterViewModel);
@@ -48,10 +54,22 @@ namespace DMD.UI.Controllers
         {
             try
             {
-                CharacterManager.Insert(characterViewModel.Character);
-                //characterViewModel.UserIds.ToList().ForEach(u => CharacterManager.Insert(characterViewModel.Character.Id, u));
+                //characterViewModel.Character.RaceId = characterViewModel.Race.Id;
+                
 
-                return RedirectToAction(nameof(Index));
+                CharacterManager.Insert(characterViewModel.Character);
+                return RedirectToAction("Index", "Home");
+
+
+                /*
+                 *  StudentManager.Insert(studentAdvisors.Student);
+                    int id = studentAdvisors.Student.Id;
+
+                    // Convey changes to the database
+                    studentAdvisors.AdvisorIds.ToList().ForEach(a => StudentAdvisorManager.Insert(id, a));
+                 * 
+                 * 
+                 */
             }
             catch
             {

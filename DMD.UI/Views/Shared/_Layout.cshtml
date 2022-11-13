@@ -23,7 +23,7 @@
 <body class="toggleMode">
 
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar-custom navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container-fluid">
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -31,46 +31,59 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li>
-                                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/img/DMD-Main-Logo.jpg" width="100" height="55"/></a>
-                            </li>
-                            <li style="margin-top:8px;">
-                                <a class="top-nav-link nav-link text-dark" class="text-right" asp-area="" asp-controller="User" asp-action="Login">Login</a>
-                            </li>
-                            <li style="margin-top:8px;">
-                                <a class="top-nav-link nav-link text-dark" asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
-                            </li>
-                                    @*                        <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="User"
-                                    asp-action="Login">Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="User"
-                                    asp-action="Logout">Logout</a>
-                                    </li>*@
-                         
-                            <li style ="margin-top:8px;">
-                                <a class="top-nav-link nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index">Account</a>
-                            </li>
-                            <li style ="margin-top:8px;">
-                                <a class="top-nav-link nav-link text-dark" asp-area="" asp-controller="Sheets" asp-action="Index">Character Sheets</a>
-                            </li>
-                            <li style ="margin-top:8px;">
-                                <a class="top-nav-link nav-link text-dark" asp-area="" asp-controller="About" asp-action="Index">About the Developers</a>
-                            </li>
-                            <li style="margin-top:8px;">
-                                <button class="" onclick="toggleMode()">Toggle Mode</button>
-                            </li>
-                            </ul>
+                    <ul class="navbar-nav flex-grow-1">
+                        <li>
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/img/DMD-Main-Logo.jpg" width="100" height="55"/></a>
+                        </li>
+                        
+                        <li style ="margin-top:8px;">
+                        <a class="top-nav-link custom-nav-links" asp-area="" asp-controller="Character" asp-action="Create">Create a Character</a>
+                        </li>
+                        <li style="margin-top:8px;">
+                        <a class="top-nav-link custom-nav-links" asp-area="" asp-controller="Play" asp-action="Index">Play</a>
+                        </li>
+                        <li style ="margin-top:8px;">
+                        <a class="top-nav-link custom-nav-links" asp-area="" asp-controller="About" asp-action="Index">About Us</a>
+                        </li>
+                    </ul>
                     
                      <ul class="navbar-nav">
+                        @{
+                            var fullname = @HttpContextAccessor.HttpContext.Session.GetString("fullname");
+                            if (fullname != null)
+                                fullname = fullname.Replace("\"", "");
+                        }
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @fullname
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="User Nav Dropdown">
+                                <a class="top-nav-link text-dark custom-nav-links" asp-area="" asp-controller="Account" asp-action="Index">My Account</a>
+                                <a class="top-nav-link text-dark custom-nav-links" asp-area="" asp-controller="User" asp-action="Logout">Log Out</a>
+
+                                <button class="top-nav-link text-dark custom-nav-links" onclick="toggleMode()">Toggle</button>
+                            </div>
+                        </li>
+
                         <li class="nav-item">
                             @{
-                                var fullname = @HttpContextAccessor.HttpContext?.Session.GetString("fullname");
-                                if (fullname != null) fullname = fullname.Replace("\"", "");
+                                var login = "Login";
+
+                                if (fullname != null)
+                                {
+                                    login = "";
+
+                                    if (fullname == "")
+                                    {
+                                        login = "Login";
+                                    }
+                                }
+                                else
+                                {
+                                    login = "Login";
+                                }
                             }
-                            <a class="top-nav-link nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index">@fullname</a>
+                            <a class=" top-nav-link custom-nav-links" asp-area="" asp-controller="User" asp-action="Login">@login</a>
                         </li>
                     </ul>
 
@@ -94,11 +107,13 @@
             <i class="fa fa-phone"></i> Phone: 715-420-6969<br>
             <i class="fa fa-envelope "></i> Email: Devs@DMDmail.com<br>                
             <br />    
-            <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Acknowledgments</a> |
-            <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Terms of Service</a> |
-            <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Privacy Policy</a> |
-            <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Support</a> |
-            <a class="nav-item" asp-area="" asp-controller="Home" asp-action="About">Contact Us</a> |
+            Acknowledgments |
+            Terms of Service |
+            Privacy Policy |
+            Support |
+            Contact Us
+            @*<a class="nav-item" asp-area="" asp-controller="Home" asp-action="About"></a>
+            *@
            
         </div>
       

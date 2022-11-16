@@ -49,8 +49,8 @@ namespace DMD.PL.Test
         {
             //Creates new instance of table and adds a value for each column for the row to be inserted.
             tblArmor armor = new tblArmor();
-            armor.Id = Guid.NewGuid();
-            armor.ArmorStyle_Id = Guid.NewGuid();
+            armor.Id = Guid.NewGuid();                                                                  //NEEDS TO BE EXISTING ID'S
+            armor.ArmorStyle_Id = Guid.NewGuid();                                                       //Need to point to foreign keys that exist. //NEEDS TO BE SIMILAR TO THE existingRow example from below.
             armor.ArmorType_Id = Guid.NewGuid();
             armor.ArmorClassBonus = 100;
             armor.MovementPenalty = 100;
@@ -70,9 +70,9 @@ namespace DMD.PL.Test
         {
             InsertTest(); //Runs insert test method.
 
-            tblArmor existingRow = dc.tblArmors.FirstOrDefault(c => c.Cost == 100);
+            tblArmor existingRow = dc.tblArmors.FirstOrDefault(c => c.Cost == 100);                     //THIS IS WHAT SHOULD BE REFERENCED ON HOW TO IMPLEMENT FOREIGN KEY CONNECTION.
 
-            if(existingRow != null)
+            if(existingRow != null) 
             {
                 existingRow.Id = Guid.NewGuid();
                 existingRow.ArmorStyle_Id = Guid.NewGuid();

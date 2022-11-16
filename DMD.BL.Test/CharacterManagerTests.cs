@@ -59,7 +59,7 @@ namespace DMD.BL.Test
         [TestMethod]
         public void InsertTest()
         {
-            //CharacterManager Async Task
+            //CharacterManager Async Task insert test
             Task.Run(async () =>
             {
                 int results = await CharacterManager.Insert(
@@ -78,6 +78,22 @@ namespace DMD.BL.Test
                     }, true);
                 Assert.IsTrue(results > 0);
             });
+
+            /* SAVE THIS FOR CHARACTERARMOR TEST CLASS.
+            //CharacterArmor Async Task insert test
+            Task.Run(async () =>
+            {
+                int results2 = await CharacterArmorManager.Insert(
+                    new Models.CharacterArmor
+                    {
+                        Id = Guid.NewGuid(),
+                        Character_Id = Guid.NewGuid(),
+                        Armor_Id = Guid.NewGuid(),
+                        Equipped = false
+                    }, true);
+                Assert.IsTrue(results2 > 0);
+            });
+            */
         }
 
 

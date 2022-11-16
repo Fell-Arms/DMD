@@ -15,7 +15,7 @@ namespace DMD.BL.Test
         [TestMethod]
         public void LoadTest()
         {
-
+            List<Character> characters = CharacterManager.Load();
 
             //old code here if needed
             //Character character = CharacterManager.Load();

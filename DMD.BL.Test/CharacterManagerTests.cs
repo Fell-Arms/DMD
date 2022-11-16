@@ -25,14 +25,15 @@ namespace DMD.BL.Test
             }).GetAwaiter().GetResult();
 
 
-
+            /*
             //Run Async Task for Loading in CharacterArmor
             Task.Run(async () =>
             {
-                var task2 = await ArmorManager.Load();
-                IEnumerable<Models.Armor> armors = task2;
+                var task2 = await CharacterArmorManager.Load();
+                IEnumerable<Models.CharacterArmor> cnaracterArmors = task2;
                 Assert.AreEqual(3, armors.ToList().Count);
             }).GetAwaiter().GetResult();
+            */
             
 
         }
@@ -52,5 +53,35 @@ namespace DMD.BL.Test
 
         }
         */
+
+
+        //This method is used to insert data and test inserting data where applicable for each table.
+        [TestMethod]
+        public void InsertTest()
+        {
+            //CharacterManager Async Task
+            Task.Run(async () =>
+            {
+                int results = await CharacterManager.Insert(
+                    new Models.Character {
+                        Id = Guid.NewGuid(),
+                        UserId = Guid.NewGuid(),
+                        RaceId = Guid.NewGuid(),
+                        CharacterLevelId = Guid.NewGuid(),
+                        FirstName = "Jefferson",
+                        LastName = "Geffy",
+                        MaxHitpoints = 3,
+                        CurrentHitpoints = 2,
+                        Background = "www.background.com",
+                        Experience = 25,
+                        ImagePath = "www.portraitimagetest.com/aaaa"
+                    }, true);
+                Assert.IsTrue(results > 0);
+            });
+        }
+
+
+
+
     }
 }

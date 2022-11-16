@@ -132,6 +132,20 @@ body {
     height: 270px;
 }
 
+/*Container with  dice toolbar and buttons - draggable*/
+#dicetoolbar {
+    cursor: grabbing;
+    overflow: hidden;
+    color: white;
+    position: absolute;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    left: 92vw;
+    top: 20vh;
+    width: 60px;
+    height: 270px;
+}
+
 /*all the elements that can be dragged*/
     .draggable-ui {
         user-select: none;

@@ -25,15 +25,15 @@ namespace DMD.BL.Test
             }).GetAwaiter().GetResult();
 
 
-            /* CODE TO TRY AND LOAD CHARACTERARMOR.
+
             //Run Async Task for Loading in CharacterArmor
             Task.Run(async () =>
             {
-                var task = await CharacterManager.Load();
-                IEnumerable<Models.CharacterArmor> characterArmors = task;
-                Assert.AreEqual(3, characterArmors.ToList().Count);
+                var task2 = await ArmorManager.Load();
+                IEnumerable<Models.Armor> armors = task2;
+                Assert.AreEqual(3, armors.ToList().Count);
             }).GetAwaiter().GetResult();
-            */
+            
 
         }
 

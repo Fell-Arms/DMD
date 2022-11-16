@@ -227,7 +227,7 @@ namespace DMD.BL
 
                             characters.Add(character);
                         }
-                    }
+                    }  //AWAIT ENDS HERE
                 });
                 return characters;
             }

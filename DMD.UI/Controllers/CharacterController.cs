@@ -30,14 +30,14 @@ namespace DMD.UI.Controllers
             CharacterViewModel characterViewModel = new CharacterViewModel();
             characterViewModel.Character = new Character();
 
-            characterViewModel.Stats = StatManager.Load().Result;
-            ViewData["Stats"] = characterViewModel.Stats;
+            //characterViewModel.Stats = StatManager.Load().Result;
+            //ViewData["Stats"] = characterViewModel.Stats;
 
             //-------------Need to load lists for dropdown menus-----------\\
 
             characterViewModel.Languages = LanguageManager.Load().Result;
             characterViewModel.Classes = ClassesManager.Load().Result;
-            //characterViewModel.Stats = StatManager.Load().Result;
+            characterViewModel.Stats = StatManager.Load().Result;
             characterViewModel.Races = RacesManager.Load().Result;
             characterViewModel.Weapons = WeaponManager.Load().Result;
             characterViewModel.Armors = ArmorManager.Load().Result;
@@ -60,9 +60,17 @@ namespace DMD.UI.Controllers
                 CharacterManager.Insert(characterViewModel.Character);
                 Guid characterId = characterViewModel.Character.Id;
 
-                foreach(var stat in characterViewModel.CharacterStats)
-                {
-                    CharacterStatsManager.Insert(characterId, stat.Id, stat.Value);
+                //foreach(var stat in characterViewModel.CharacterStats)
+                //{
+                //    CharacterStatsManager.Insert(characterId, stat.Id, stat.Value);
+                //}
+
+                for (int i = 0; i < 6; i++)
+                { 
+                    Guid statId= characterViewModel.CharacterStatIds[i];
+                    int value= characterViewModel.CharacterStatValues[i];
+                    //CharacterStatsManager.Insert(characterId, statId, value);
+                    int randomNum = 0;
                 }
 
                 return RedirectToAction("Index", "Home");

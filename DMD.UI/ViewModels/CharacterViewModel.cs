@@ -16,12 +16,18 @@ namespace DMD.UI.ViewModels
         public Character Character { get; set; } //Uses entire character model
         public User User { get; set; } //Uses entire user model
 
+        public Guid ClassId { get; set; } //
+
+
         public List<Guid> SelectedLanguageIds { get; set; } //Gets the selected LANGUAGES
         public List<Guid> SelectedArmorIds { get; set; } //Gets the selected ARMORS
         public List<Guid> SelectedWeaponIds { get; set; } //Gets the selected WEAPONS
         public List<Guid> SelectedSkillIds { get; set; } //Gets the selected SKILLS
-        public List<Stat> CharacterStats { get; set; }
 
+        public List<Guid> CharacterStatIds { get; set; }               //Lists all the STATS to choose from
+        public List<Stat> CharacterStats { get; set; }               //Lists all the STATS to choose from
+
+        public List<int> CharacterStatValues { get; set; }
 
         public Class Class { get; set; }            //Uses entire CLASS model
         public Race Race { get; set; }               //Uses entire RACE model

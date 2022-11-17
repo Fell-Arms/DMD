@@ -13,7 +13,7 @@
     <h1 class="display-4">Create your Character</h1>
     <p>Fill out the form below to add a new character to your account. Use the "Appearance" and "Background" tabs to add extra details for immersion and role playing!</p>
 
-    @if (ViewData["Stats"] != null)
+    @*@if (ViewData["Stats"] != null)
         {
             <script type="text/javascript">
                 var statNames = [];
@@ -27,7 +27,7 @@
                 if(@Model.Stat.Name == "")
 
             </script>
-        }
+        }*@
 
 <form asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -86,20 +86,23 @@
                 <div class="section1">
                     <div class="row m-3 justify-content-lg-around">
 
-                        <!----------------STRENGTH--------------->
-                        <div class="card m-1 col">
-                            <div class="card-header header">
-                                <h2 class="stat-header">STR</h2>
+                        @foreach (var item in Model.Stats)
+                        {
+                            <!----------------STRENGTH--------------->
+                            <div class="card m-1 col">
+                                <div class="card-header header">
+                                    <h2 class="stat-header">@item.Name</h2>
+                                </div>
+                                <div class="card-body card-content">
+                                    <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
+                                </div>
+                                <div class="card-footer">
+                                    <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
+                                </div>
                             </div>
-                            <div class="card-body card-content">
-                                <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
-                            </div>
-                            <div class="card-footer">
-                                <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
-                            </div>
-                        </div>
-                        <!--------------------------------------->
-                        <!----------------DEXTERITY--------------->
+                            <!--------------------------------------->
+                        }
+                        @*<!----------------DEXTERITY--------------->
                         <div class="card m-1 col">
                             <div class="card-header header">
                                 <h2 class="stat-header">DEX</h2>
@@ -163,7 +166,7 @@
                                 <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
                             </div>
                         </div>
-                        <!--------------------------------------->
+                        <!--------------------------------------->*@
                     </div>
                 </div>
 

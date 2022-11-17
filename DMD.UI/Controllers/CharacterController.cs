@@ -65,7 +65,7 @@ namespace DMD.UI.Controllers
                 //    CharacterStatsManager.Insert(characterId, stat.Id, stat.Value);
                 //}
 
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < characterViewModel.CharacterStatIds.Count(); i++)
                 { 
                     Guid statId= characterViewModel.CharacterStatIds[i];
                     int value= characterViewModel.CharacterStatValues[i];

@@ -20,6 +20,7 @@ namespace DMD.UI.ViewModels
         public List<Guid> SelectedArmorIds { get; set; } //Gets the selected ARMORS
         public List<Guid> SelectedWeaponIds { get; set; } //Gets the selected WEAPONS
         public List<Guid> SelectedSkillIds { get; set; } //Gets the selected SKILLS
+        public List<Stat> CharacterStats { get; set; }
 
 
         public Class Class { get; set; }            //Uses entire CLASS model

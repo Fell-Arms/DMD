@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DMD.BL.Models;
+using DMD.PL;
 
 namespace DMD.BL.Test
 {
@@ -57,27 +58,29 @@ namespace DMD.BL.Test
 
         //This method is used to insert data and test inserting data where applicable for each table.
         [TestMethod]
-        public void InsertTest()
+        public async void InsertTest()
         {
+
+            List <User> userList = UserManager.Load();
+
             //CharacterManager Async Task insert test
-            Task.Run(async () =>
-            {
-                int results = await CharacterManager.Insert(
-                    new Models.Character {
-                        Id = Guid.NewGuid(),
-                        UserId = Guid.NewGuid(),
-                        RaceId = Guid.NewGuid(),
-                        CharacterLevelId = Guid.NewGuid(),
-                        FirstName = "Jefferson",
-                        LastName = "Geffy",
-                        MaxHitpoints = 3,
-                        CurrentHitpoints = 2,
-                        Background = "www.background.com",
-                        Experience = 25,
-                        ImagePath = "www.portraitimagetest.com/aaaa"
-                    }, true);
-                Assert.IsTrue(results > 0);
-            });
+
+            int results = await CharacterManager.Insert(
+                new Models.Character {
+                    Id = Guid.NewGuid(),
+                    UserId = userList[0].Id,
+                    RaceId = Guid.NewGuid(),
+                    CharacterLevelId = Guid.NewGuid(),
+                    FirstName = "Jefferson",
+                    LastName = "Geffy",
+                    MaxHitpoints = 3,
+                    CurrentHitpoints = 2,
+                    Background = "www.background.com",
+                    Experience = 25,
+                    ImagePath = "www.portraitimagetest.com/aaaa"
+                }, true);
+            Assert.IsTrue(results > 0);
+
 
             /* SAVE THIS FOR CHARACTERARMOR TEST CLASS.
             //CharacterArmor Async Task insert test

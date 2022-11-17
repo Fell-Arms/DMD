@@ -58,8 +58,14 @@ namespace DMD.UI.Controllers
                 
 
                 CharacterManager.Insert(characterViewModel.Character);
-                return RedirectToAction("Index", "Home");
+                Guid characterId = characterViewModel.Character.Id;
 
+                foreach(var stat in characterViewModel.CharacterStats)
+                {
+                    CharacterStatsManager.Insert(characterId, stat.Id, stat.Value);
+                }
+
+                return RedirectToAction("Index", "Home");
 
                 /*
                  *  StudentManager.Insert(studentAdvisors.Student);

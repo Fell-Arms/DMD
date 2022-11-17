@@ -696,13 +696,15 @@ namespace DMD.BL
                         newrow.Background = character.Background;
                         newrow.Experience = character.Experience;
                         newrow.Image = character.ImagePath;
+
+                        character.Id = newrow.Id;
                         dc.tblCharacters.Add(newrow);
 
                         if (character.CharacterCurrency != null && character.CharacterCurrency.Any())
                         {
                             foreach (CharacterCurrency characterCurrency in character.CharacterCurrency)
                             {
-                                tblCharacterCurrency? tblCharacterCurrency = dc.tblCharacterCurrencies.FirstOrDefault(cc => cc.Currency_Id == characterCurrency.Currency_Id && cc.Character_Id == characterCurrency.Character_Id);
+                                tblCharacterCurrency? tblCharacterCurrency = dc.tblCharacterCurrencies.Where(cc => cc.Currency_Id == characterCurrency.Currency_Id && cc.Character_Id == characterCurrency.Character_Id).FirstOrDefault();
                                 if (tblCharacterCurrency != null)
                                 {
                                     throw new Exception("No duplicate currency!!");
@@ -718,7 +720,6 @@ namespace DMD.BL
                                     characterCurrency.Id = tblCharacterCurrency.Id;
                                     dc.tblCharacterCurrencies.Add(tblCharacterCurrency);
                                 }
-
                             }
                         }
 

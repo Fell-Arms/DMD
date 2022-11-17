@@ -92,6 +92,51 @@
             });
 
         });
+        
+            let x;
+            let y;
+            let z;
+            let i;
+            let j;
+            let k;
+
+            document.getElementById("roll4").onclick = function () {
+
+                x = Math.floor(Math.random() * 4) + 1;
+
+                document.getElementById("xlabel").innerHTML = x;
+            }
+            document.getElementById("roll6").onclick = function () {
+
+                x = Math.floor(Math.random() * 6) + 1;
+
+                document.getElementById("ylabel").innerHTML = x;
+            }
+            document.getElementById("roll8").onclick = function () {
+
+                x = Math.floor(Math.random() * 8) + 1;
+
+                document.getElementById("zlabel").innerHTML = x;
+            }
+            document.getElementById("roll10").onclick = function () {
+
+                x = Math.floor(Math.random() * 10) + 1;
+
+                document.getElementById("ilabel").innerHTML = x;
+            }
+            document.getElementById("roll12").onclick = function () {
+
+                x = Math.floor(Math.random() * 12) + 1;
+
+                document.getElementById("jlabel").innerHTML = x;
+            }
+            document.getElementById("roll20").onclick = function () {
+
+                x = Math.floor(Math.random() * 20) + 1;
+
+                document.getElementById("klabel").innerHTML = x;
+            }
+            
     </script>
     
 
@@ -1028,27 +1073,30 @@
         <!--This is the  DICE TOOLBAR. It is draggable and contains buttons for the DM Developer Tools -->
             <div id="dicetoolbar" class="draggable-ui">
                 <ul>
-                    <li><button id="xlabel">D4</button></li>
-                        <img src='~/img/Dice/D4.jpg' height="25" width="25"/>
-                    <li><button id="ylabel" <img src='../wwwroot/img/Dice/D6.jpg'/>D6</button></li>
-                        <img src='~/img/Dice/D6.jpg' height="25" width="25"/>
-                    <li><button id="zlabel" <img src='../wwwroot/img/Dice/D8.jpg'/>D8</button></li>
-                        <img src='~/img/Dice/D8.jpg' height="25" width="25"/>
-                    <li><button id="ilabel" <img src='../wwwroot/img/Dice/D10.jpg'/>D10</button></li>
-                        <img src='~/img/Dice/D10.jpg' height="25" width="25"/>
-                    <li><button id="jlabel" <img src='../wwwroot/img/Dice/D12.jpg'/>D12</button></li>
-                        <img src='~/img/Dice/D12.jpg' height="25" width="25"/>
-                    <li><button id="klabel" <img src='../wwwroot/img/Dice/D20.jpg'/>D20</button></li>
-                        <img src='~/img/Dice/D20.jpg' height="25" width="25"/>
-                    <br />
-                    <label id="xlabel"></label><br>
-                    <label id="ylabel"></label><br>
-                    <label id="zlabel"></label><br>
-                    <label id="ilabel"></label><br>
-                    <label id="jlabel"></label><br>
-                    <label id="klabel"></label><br>
-                    <br>
-                    <li><button id="rollButton">roll</button></li>
+                    <li><input type="image" type="button" id="roll4"
+                        src='~/img/Dice/D4.jpg' height="40" width="40"/>
+                        <label id="xlabel"></label></li> 
+                    
+                    <li><input type="image" type="button" id="roll6"
+                        src='~/img/Dice/D6.jpg' height="40" width="40"/>
+                        <label id="ylabel"></label></li>
+                    
+                    <li><input type="image" type="button" id="roll8"
+                        src='~/img/Dice/D8.jpg' height="40" width="40"/>
+                        <label id="zlabel"></label></li>
+                    
+                    <li><input type="image" type="button" id="roll10"
+                        src='~/img/Dice/D10.jpg' height="40" width="40"/>
+                        <label id="ilabel"></label></li>
+                    
+                    <li><input type="image" type="button" id="roll12"
+                        src='~/img/Dice/D12.jpg' height="40" width="40"/>
+                        <label id="jlabel"></label></li>
+                   
+                    <li><input type="image" type="button" id="roll20"
+                        src='~/img/Dice/D20.jpg' height="40" width="40"/>
+                        <label id="klabel"></label></li>
+                    
                 </ul>
             </div>
         <!---------------------------------------------------------------------------------------------------->

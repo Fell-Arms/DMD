@@ -91,7 +91,8 @@
 
             $("#grid20").draggable({ grid: [ 20, 20 ] });
             $("#grid80").draggable({ grid: [ 80, 80 ] });
-            
+            $( ".specialAsset" ).resizable();
+
             $( "#chatBox" ).resizable({
               maxHeight: 750,
               maxWidth: 400,
@@ -1204,12 +1205,23 @@
                 still needs modification -->
         
         <div id="playWindow" class="playWindow">
-            
+        <div id="grid80" class="draggable-ui zoomable">
+            <img class="specialAsset customMap startStacked" src="~/img/GameAssets/Map1.jpg"></img>
+        </div>
+        <div id="grid80" class="draggable-ui zoomable">
+            <img class="specialAsset customMap startStacked" src="~/img/GameAssets/DungeonMap.jpg"></img>
+        </div>
             <div id="grid20" class="draggable-ui zoomable">
-                <p>I snap to a 20x20 grid</p>
+                <img class="specialAsset customObj startStacked" src="~/img/GameAssets/HumanRangerPlayer.png" height="250px" width="200px"></img>
+            </div>
+            <div id="grid20" class="draggable-ui zoomable">
+                <img class="specialAsset customObj startStacked" src="~/img/GameAssets/WarlockPlayer.png" height="250px" width="200px"></img>
             </div>
             <div id="grid80" class="draggable-ui zoomable">
-                <p>I snap to a 80x80 grid</p>
+                <img class="specialAsset customObj startStacked" src="~/img/GameAssets/redFlag.png" height="50px" width="50px"></img>
+            </div>
+            <div id="grid80" class="draggable-ui zoomable">
+                <img class="specialAsset customObj startStacked" src="~/img/GameAssets/bigTreasure.png" height="50px" width="50px"></img>
             </div>
             
         </div>

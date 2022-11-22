@@ -1,7 +1,7 @@
 html {
     overflow: hidden;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     font-family: Arial;
     font-size: 16px;
 }
@@ -11,6 +11,18 @@ body {
     line-height: normal;
 }
 
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+    font-size: 18px;
+}
+
+.customNavRow {
+    width:100vw;
+}
+
+.navContentRight {
+    text-align: right;
+}
 #navbar {
     margin: 0;
     background-color: white;
@@ -72,7 +84,6 @@ body {
         color: white;
         background-color: #7523B0;
         text-align: center;
-        padding: 10px;
         font-size: 16px;
         text-decoration: none;
     }
@@ -83,8 +94,8 @@ body {
 
 #page {
     margin:0;
-    overflow: hidden;
-    width: 100%;
+    overflow:hidden;
+    width: 100vw;
     height: 100vh;
     background-color: white;
     position: relative;
@@ -107,7 +118,8 @@ body {
 
 /*Container that creates the bounds of the developer tools (chat and toolbar). Sits OVER play window*/
 #toolWindow {
-    margin:0;
+    overflow: hidden;
+    margin: 0;
     width: 100vw;
     height: 100vh;
     pointer-events: none;
@@ -124,47 +136,73 @@ body {
     overflow: hidden;
     color: white;
     position: absolute;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    left: 92vw;
-    top: 52vh;
+    left: 0vw;
+    top: 64vh;
     width: 60px;
-    height: 270px;
+    height: 300px;
 }
 
 /*Container with  dice toolbar and buttons - draggable*/
 #dicetoolbar {
+    width: 60px;
+    height: 400px;
+
     cursor: grabbing;
     overflow: hidden;
     color: white;
     position: absolute;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    left: 92vw;
-    top: 20vh;
-    width: 140px;
-    height: 290px;
+    left: 0vw;
+    top: 2vh;
+}
+
+.btnD4, .btnD6, .btnD8, .btnD10, .btnD12, .btnD20 {
+    width: 45px;
+    height: 45px;
+    background-size: cover;
+    border: none;
+}
+
+.btnD4 {
+    background-image:url(../../img/Dice/D4.jpg);
+}
+.btnD6 {
+    background-image: url(../../img/Dice/D6.jpg);
+}
+.btnD8 {
+    background-image: url(../../img/Dice/D8.jpg);
+}
+.btnD10 {
+    background-image: url(../../img/Dice/D10.jpg);
+}
+.btnD12 {
+    background-image: url(../../img/Dice/D12.jpg);
+}
+.btnD20 {
+    background-image: url(../../img/Dice/D20.jpg);
 }
 
 /*all the elements that can be dragged*/
-    .draggable-ui {
-        user-select: none;
-        cursor: grabbing;
-        color: white;
-        z-index: 10;
-    }
+.draggable-ui {
+    user-select: none;
+    cursor: grabbing;
+    color: white;
+    z-index: 10;
+}
 
 /*The container around the toolbar - grabbable part*/
-ul {
+.toolListBox, .diceListBox {
     margin: 0;
     padding-left: 0;
     background-color: white;
     border-radius: 10px;
-    height: 270px;
+    height: 300px;
     width: 60px;
     text-align: center;
     align-content: center;
     box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 12px 0 rgba(0, 0, 0, 0.19);
+}
+.diceListBox {
+    height: 400px;
 }
 
 li {
@@ -177,7 +215,7 @@ li {
     width: 40px;
     background-color: #7523B0;
     font-size: 24px;
-    font-family: webdings;
+    
     color: white;
     padding: 5px;
     margin: 4px;
@@ -189,17 +227,16 @@ li {
         background-color: #ff3366;
         box-shadow: 0 0px 3px 0 rgba(255, 51, 102, 1), 0 0px 5px 0 rgba(255, 120, 142, 1);
     }
-
 /*The entire chat container*/
 #chatBox {
     margin: 0;
     padding: 0;
-    top: 5vh;
-    left: 5vw;
+    top: 0vh;
+    left: 0vw;
     position: absolute;
     z-index: 15;
-    width: 230px;
-    height: 420px;
+    width: 300px;
+    height: 95vh;
     background-color: #dedede;
     border-radius: 5px;
     box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 12px 0 rgba(0, 0, 0, 0.19);
@@ -283,8 +320,9 @@ li {
 /*The actual buttons for opening the chat and opening the navbar*/
 
 .open-button {
-    font-family: webdings;
-    padding: 8px;
+    font-family: Arial;
+
+    padding:5px;
     margin: 10px;
     background-color: #7523B0;
     color: white;
@@ -298,20 +336,33 @@ li {
         box-shadow: 0 0px 3px 0 rgba(255, 51, 102, 1), 0 0px 5px 0 rgba(255, 120, 142, 1);
     }
 
+#zoomBox {
+    position: absolute;
+    text-align: center;
+    left: 10px;
+    top: 85vh;
+}
+
 #zoomLabel {
     color: white;
     font-size: 12px;
     position: absolute;
     text-align: center;
-    left:15px;
-    top: 92vh;
+    margin:10px;
+}
+
+.zoomIcon {
+    background:none;
+    border:none;
+    color: white;
+    font-size: 24px;
 }
 
 #charSheet {
     display:none;
     overflow:auto;
     position:absolute;
-    width: 65vw;
+    width: 85vw;
     height: 90vh;
     margin: auto;
     background-color: white;

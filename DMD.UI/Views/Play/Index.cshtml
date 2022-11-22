@@ -11,9 +11,11 @@
     <meta charset="utf-8">
     <title>Play</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/playStylesheet/styles.css" />
     <link rel="stylesheet" href="~/css/jQueryUI/jquery-ui.min.css" />
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="~/css/playStylesheet/styles.css" />
+    <link rel="stylesheet" href="~/css/charStylesheet/Styles.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
@@ -71,11 +73,17 @@
             $("#charSheet").toggle();
         }
 
+        function diceRoll() {
+            alert("You clicked a dice");
+        }
+
         $(function(){
             $(".draggable-ui").draggable({ scroll: true, scrollSensitivity: 200});
             
             $("#toolbar").draggable({ containment: "#toolWindow", snap: "true", snap: "#toolWindow", snapMode: "inner", stack: ".draggable-ui" });
-            
+                        
+            $("#dicetoolbar").draggable({ containment: "#toolWindow", snap: "true", snap: "#toolWindow", snapMode: "inner", stack: ".draggable-ui" });
+
             $("#chatBox").draggable({ containment: "#toolWindow", snap: "true", snap: "#toolWindow", snapMode: "inner", stack: ".draggable-ui" });
 
             $("#charSheet").draggable({ containment: "#toolWindow", snap: "true", snap: "#toolWindow", snapMode: "inner", stack: ".draggable-ui" });
@@ -92,7 +100,7 @@
             });
 
         });
-        
+            
             let x;
             let y;
             let z;
@@ -166,21 +174,26 @@
 }
             <div id="navbar">
             <a class="navitem" id="homeicon" href="../Home"> <img src="~/img/DMD-Main-Logo.jpg" width="100" height="55"/></a>
-            <div class="row justify-content-around">
+            <div class="row customNavRow justify-content-around">
             
-                    <div class="col justify-content-start">
+                    <div class="col-10 justify-content-start">
                         <div id="navLinks">
                                 <a class="navitem" href="../Character/Create">Character A Character</a>
                                 <a class="navitem" href="../Play">Play</a>
                                 <a class="navitem" href="../About">About Us</a>
                         </div>
                     </div>
-                    <div class="col justify-content-end">
+                    <div class="col-2 navContentRight">
                             <a class="navitem nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @fullname
                             </a>
+
                             <a class="navitem top-nav-link custom-nav-links" asp-area="" asp-controller="User" asp-action="Login">@login</a>
-                            <button class="navitem open-button" onclick="closeNav()">5</button>
+                            <button class="navitem open-button" onclick="closeNav()">
+                                <span class="material-symbols-outlined">
+                                    arrow_drop_down
+                                </span>
+                            </button>
 
                     </div>
             </div>
@@ -192,20 +205,27 @@
         <div class="controlbtns">
 
         <!----------------Button that opens the CHAT ------------------------>
-        <button class="open-button" onclick="openForm()">^</button>
+        <button class="open-button" onclick="openForm()">
+            <span class="material-symbols-outlined">
+                chat
+            </span>
+        </button>
         <!------------------------------------------------------------------->
 
         <!----------------Button that opens the NAV ------------------------>
-        <button class="open-button" onclick="openNav()">6</button>
+        <button class="open-button" onclick="openNav()">
+            <span class="material-symbols-outlined">
+                arrow_drop_up
+            </span>
+        </button>
         <!------------------------------------------------------------------->
-        <!----------------Button that ZOOMS OUT ------------------------>
-        <button class="open-button" onclick="zoomOut()">+</button>
-        <!------------------------------------------------------------------->
-        <!----------------Button that ZOOMS IN ------------------------>
-        <button class="open-button" onclick="zoomIn()">-</button>
-        <!------------------------------------------------------------------->
+        
         <!----------------Button that opens CHARACTER SHEET ------------------------>
-        <button class="open-button" onclick="toggleCharSheet()">H</button>
+        <button class="open-button" onclick="toggleCharSheet()">
+            <span class="material-symbols-outlined">
+                contact_page
+            </span>
+        </button>
         <!------------------------------------------------------------------->
         </div>
 
@@ -214,6 +234,30 @@
         <div id="toolWindow"></div>
         <!--------------------------------------------------------->
 
+
+        <!--------- DIV WITH ZOOM CONTROLS------>
+        <div id="zoomBox" class="row">
+            <div class="col">
+                <!----------------Button that ZOOMS IN ------------------------>
+                <button class="zoomIcon" onclick="zoomIn()">
+                    <span class="zoomIcon material-symbols-outlined">
+                        zoom_in
+                    </span>
+                </button>
+                <!------------------------------------------------------------------->
+                <!----------------Button that ZOOMS OUT ------------------------>
+                <button class="zoomIcon" onclick="zoomOut()">
+                    <span class="zoomIcon material-symbols-outlined">
+                        zoom_out
+                    </span>
+                </button>
+                <!------------------------------------------------------------------->
+            </div>
+            <div class="col">
+                <h5 id="zoomLabel"></h5>
+            </div>
+        </div>
+        <!--------------------------------------------------------->
 
         <!-----------------------CHARACTER SHEET ------------------------>
         <div id="charSheet">
@@ -1058,19 +1102,72 @@
         
         <!--This is the TOOLBAR. It is draggable and contains buttons for the DM Developer Tools -->
             <div id="toolbar" class="draggable-ui">
-                <ul>
+                <ul class="toolListBox">
                     <br />
                     <br />
-                    <li><button class="btnTools">P</button></li>
-                    <li><button class="btnTools">P</button></li>
-                    <li><button class="btnTools">%</button></li>
-                    <li><button class="btnTools">7</button></li>
-                    <li><button class="btnTools">q</button></li>
+            <li>
+                <button class="btnTools" alt-text="Maps">
+                    <span class="material-symbols-outlined">
+                        public
+                    </span>
+                </button>
+            </li>
+            <li>
+                <button class="btnTools" alt-text="Game Items">
+                    <span class="material-symbols-outlined">
+                        swords
+                    </span>
+                </button>
+            </li>
+            <li>
+                <button class="btnTools" alt-text="Objectives">
+                    <span class="material-symbols-outlined">
+                        flag
+                    </span>
+                </button>
+            </li>
+            <li>
+                <button class="btnTools" alt-text="Add Players">
+                    <span class="material-symbols-outlined">
+                        group_add
+                    </span>
+                </button>
+            </li>
+            <li>
+                <button class="btnTools" alt-text="End Game">
+                    <span class="material-symbols-outlined">
+                        cancel_presentation
+                    </span>
+                </button>
+            </li>
+                </ul>
+            </div>
+        <!---------------------------------------------------------------------------------------------------->
+
+        <!--This is the DICE TOOLBAR. It is draggable and contains buttons for the DM Developer Tools -->
+            <div id="dicetoolbar" class="draggable-ui">
+                <ul class="diceListBox">
+                    <br />
+                    <br />
+                    <li><button class="btnD4" onclick="diceRoll()"></button></li>
+                    <li><button class="btnD6" onclick="diceRoll()"></button></li>
+                    <li><button class="btnD8" onclick="diceRoll()"></button></li>
+                    <li><button class="btnD10" onclick="diceRoll()"></button></li>
+                    <li><button class="btnD12" onclick="diceRoll()"></button></li>
+                    <li><button class="btnD20" onclick="diceRoll()"></button></li>
+                    <br />
+                    <select class="diceConfig" name="Rolls" id="rolls" placeholder="# of Rolls">
+                        <option class="rolls" value="1">1</option>
+                        <option class="rolls" value="3">3</option>
+                        <option class="rolls"value="5">5</option>
+                        <option class="rolls" value="10">10</option>
+                    </select>
                 </ul>
             </div>
         <!---------------------------------------------------------------------------------------------------->
 
         <!--This is the  DICE TOOLBAR. It is draggable and contains buttons for the DM Developer Tools -->
+        <!--
             <div id="dicetoolbar" class="draggable-ui">
                 <ul>
                     <li><input type="image" type="button" id="roll4"
@@ -1099,6 +1196,7 @@
                     
                 </ul>
             </div>
+            -->
         <!---------------------------------------------------------------------------------------------------->
         
         

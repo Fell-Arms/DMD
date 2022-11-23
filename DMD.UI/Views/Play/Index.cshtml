@@ -73,6 +73,10 @@
             $("#charSheet").toggle();
         }
 
+        function toggleMapsGallery() {
+            $("#MapsGallery").toggle();
+        }
+
         function diceRoll() {
             alert("You clicked a dice");
         }
@@ -192,7 +196,7 @@
                             <a class="navitem top-nav-link custom-nav-links" asp-area="" asp-controller="User" asp-action="Login">@login</a>
                             <button class="navitem open-button" onclick="closeNav()">
                                 <span class="material-symbols-outlined">
-                                    arrow_drop_down
+                                    arrow_drop_up
                                 </span>
                             </button>
 
@@ -216,7 +220,7 @@
         <!----------------Button that opens the NAV ------------------------>
         <button class="open-button" onclick="openNav()">
             <span class="material-symbols-outlined">
-                arrow_drop_up
+                arrow_drop_down
             </span>
         </button>
         <!------------------------------------------------------------------->
@@ -295,26 +299,7 @@
 
             </div>
 
-            <!-----------------TABS-------------------->
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats" type="button" role="tab" aria-controls="stats" aria-selected="true">Stats</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="appearance-tab" data-bs-toggle="tab" data-bs-target="#appearance" type="button" role="tab" aria-controls="appearance" aria-selected="false">Appearance</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="backgroundt-tab" data-bs-toggle="tab" data-bs-target="#background" type="button" role="tab" aria-controls="background" aria-selected="false">Background and Lore</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="spells-tab" data-bs-toggle="tab" data-bs-target="#spells" type="button" role="tab" aria-controls="spells" aria-selected="false">Spells</button>
-                </li>
-            </ul>
-
-            <div class="tab-content" id="myTabContent">
-
                 <!----------------------START TAB 1-------------------->
-                <div class="tab-pane fade show active" id="stats" role="tabpanel" aria-labelledby="stats-tab">
                     <div class="container characterForm">
 
                         <div class="section1">
@@ -906,10 +891,8 @@
                         </div>
 
                     </div>
-                </div>
                 <!----------------------END TAB 1-------------------->
                 <!----------------------START TAB 2-------------------->
-                <div class="tab-pane fade" id="appearance" role="tabpanel" aria-labelledby="appearance-tab">
                     <div class="container characterForm">
 
                         <div class="section1">
@@ -972,10 +955,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
                 <!----------------------END TAB 2-------------------->
                 <!----------------------START TAB 3-------------------->
-                <div class="tab-pane fade" id="background" role="tabpanel" aria-labelledby="background-tab">
                     <div class="container characterForm">
 
                         <div class="section1">
@@ -1069,13 +1050,21 @@
                             </div>
                         </div>
                     </div>
-                </div>
                 <!----------------------END TAB 3-------------------->
-            </div>
             </div>
         </div>
         <!--------------------------------------------------------->
         
+
+        <!-- MAPS GALLERY BOX-->
+        <div id="MapsGallery">
+            <button class="btnClose" type="button" onclick="toggleMapsGallery()">X</button>
+
+            <p> This box will contain a bunch of map images to choose from</p>
+
+        </div>
+        <!---------------------->
+
         <!--This is a draggable and resizable CHAT WINDOW. Chat window can be also be closed and reopened -->
         <div id="chatBox">
             <form action="/" class="form-container">
@@ -1107,7 +1096,7 @@
                     <br />
                     <br />
             <li>
-                <button class="btnTools" alt-text="Maps">
+                <button class="btnTools" alt-text="Maps" onclick="toggleMapsGallery()">
                     <span class="material-symbols-outlined">
                         public
                     </span>
@@ -1157,7 +1146,8 @@
                     <li><button class="btnD12" onclick="diceRoll()"></button></li>
                     <li><button class="btnD20" onclick="diceRoll()"></button></li>
                     <br />
-                    <select class="diceConfig" name="Rolls" id="rolls" placeholder="# of Rolls">
+                    <small><p class="text-dark">Rolls:</p></small>
+                    <select class="diceConfig" name="Rolls" id="rolls">
                         <option class="rolls" value="1">1</option>
                         <option class="rolls" value="3">3</option>
                         <option class="rolls"value="5">5</option>
@@ -1206,7 +1196,7 @@
         
         <div id="playWindow" class="playWindow">
         <div id="grid80" class="draggable-ui zoomable">
-            <img class="specialAsset customMap startStacked" src="~/img/GameAssets/Map1.jpg"></img>
+            <img class="specialAsset customMap startStacked" src="~/img/GameAssets/Map1.jpg" height="700px" width="1000px"></img>
         </div>
         <div id="grid80" class="draggable-ui zoomable">
             <img class="specialAsset customMap startStacked" src="~/img/GameAssets/DungeonMap.jpg"></img>

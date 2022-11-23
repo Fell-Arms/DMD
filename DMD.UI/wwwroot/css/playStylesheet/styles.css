@@ -136,8 +136,8 @@ body {
     overflow: hidden;
     color: white;
     position: absolute;
-    left: 0vw;
-    top: 64vh;
+    left: 75px;
+    top: 80px;
     width: 60px;
     height: 300px;
 }
@@ -145,14 +145,14 @@ body {
 /*Container with  dice toolbar and buttons - draggable*/
 #dicetoolbar {
     width: 60px;
-    height: 400px;
+    height: 420px;
 
     cursor: grabbing;
     overflow: hidden;
     color: white;
     position: absolute;
     left: 0vw;
-    top: 2vh;
+    top: 80px;
 }
 
 .btnD4, .btnD6, .btnD8, .btnD10, .btnD12, .btnD20 {
@@ -202,7 +202,7 @@ body {
     box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 12px 0 rgba(0, 0, 0, 0.19);
 }
 .diceListBox {
-    height: 400px;
+    height: 420px;
 }
 
 li {
@@ -231,12 +231,12 @@ li {
 #chatBox {
     margin: 0;
     padding: 0;
-    top: 0vh;
-    left: 0vw;
+    top: 66px;
+    right: 20px;
     position: absolute;
     z-index: 15;
-    width: 300px;
-    height: 95vh;
+    width: 320px;
+    height: 92vh;
     background-color: #dedede;
     border-radius: 5px;
     box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 12px 0 rgba(0, 0, 0, 0.19);
@@ -378,4 +378,15 @@ margin:auto;
     top:5px;
     left:30px;
 
+}
+
+
+#MapsGallery {
+    display: none;
+    position: absolute;
+    width: 400px;
+    height: 99vh;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
 }

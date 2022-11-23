@@ -1,6 +1,7 @@
 ﻿using Castle.Core.Resource;
 using DMD.BL;
 using DMD.BL.Models;
+using DMD.UI.Extensions;
 using DMD.UI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,23 @@ namespace DMD.UI.Controllers
         //}
 
         // GET: CharacterController/Create
+
+
+
+        private void SetUser(User user)
+        {
+            HttpContext.Session.SetObject("user", user);
+            if (user != null)
+            {
+                HttpContext.Session.SetObject("UserId", user.Id);
+            }
+            else
+            {
+                HttpContext.Session.SetObject("UserId", string.Empty);
+            }
+        }
+
+
         public ActionResult Create()
         {
             CharacterViewModel characterViewModel = new CharacterViewModel();

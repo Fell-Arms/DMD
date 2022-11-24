@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DMD.BL
 {
-    public class CurrencyManager
+    public static class CurrencyManager 
     {
 
         public async static Task<List<Currency>> Load()
@@ -21,6 +21,7 @@ namespace DMD.BL
                     using (DMDEntities dc = new DMDEntities())
                     {
                         dc.tblCurrencies
+                            .OrderBy(c => c.Value)
                             .ToList()
                             .ForEach(c => currencies.Add(new Currency()
                             {
@@ -30,6 +31,14 @@ namespace DMD.BL
                             }));
                     }
                 });
+
+                //List<Currency> sortedCurrencies = new List<Currency>();
+
+                //foreach(Currency currency in currencies)
+                //{
+
+                //}
+
                 return currencies;
             }
             catch (Exception)
@@ -38,5 +47,6 @@ namespace DMD.BL
                 throw;
             }
         }
+
     }
 }

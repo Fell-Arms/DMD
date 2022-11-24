@@ -70,6 +70,11 @@ namespace DMD.UI.Controllers
                 characterViewModel.Weapons = WeaponManager.Load().Result;
                 characterViewModel.Armors = ArmorManager.Load().Result;
                 characterViewModel.Currency = CurrencyManager.Load().Result;
+                
+                foreach ( var currency in characterViewModel.Currency)
+                {
+
+                }
 
 
                 return View(characterViewModel);

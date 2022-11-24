@@ -11,6 +11,7 @@ namespace DMD.BL.Models
         public Guid Id { get; set; } // use guid for id
         public Guid ArmorStyle_Id { get; set; }
         public Guid ArmorType_Id { get; set; }
+        public string Name { get; set; }
         public int ArmorClassBonus { get; set; }
         public int MovementPenalty { get; set; }
         public int Cost { get; set; }

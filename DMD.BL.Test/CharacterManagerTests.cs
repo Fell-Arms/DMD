@@ -70,7 +70,7 @@ namespace DMD.BL.Test
                     Id = Guid.NewGuid(),
                     UserId = userList[0].Id,
                     RaceId = Guid.NewGuid(),
-                    CharacterLevelId = Guid.NewGuid(),
+                    CharacterLevelId = 1,
                     FirstName = "Jefferson",
                     LastName = "Geffy",
                     MaxHitpoints = 3,

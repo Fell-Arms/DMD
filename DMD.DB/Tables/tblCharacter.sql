@@ -3,7 +3,7 @@
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
     [User_Id] UNIQUEIDENTIFIER NOT NULL,
     [Race_Id] UNIQUEIDENTIFIER NOT NULL,
-    [CharacterLevel_Id] UNIQUEIDENTIFIER NOT NULL,
+    [CharacterLevel_Id] INT NOT NULL,
     [FirstName] VARCHAR(30) NOT NULL, 
     [LastName] VARCHAR(30) NOT NULL, 
     [MaxHitpoints] INT NOT NULL,

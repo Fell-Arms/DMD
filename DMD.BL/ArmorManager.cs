@@ -64,11 +64,12 @@ namespace DMD.BL
                             .ForEach(a => armors.Add(new Armor()
                             {
                                 Id = a.Id,
-                                ArmorClassBonus = a.ArmorClassBonus,
                                 ArmorStyle_Id = a.ArmorStyle_Id,
+                                ArmorType_Id = a.ArmorType_Id,
+                                Name = a.Name,
+                                ArmorClassBonus = a.ArmorClassBonus,
                                 MovementPenalty = a.MovementPenalty,    
                                 Cost = a.Cost,  
-                                ArmorType_Id = a.ArmorType_Id  
                                
                             }));
                     }

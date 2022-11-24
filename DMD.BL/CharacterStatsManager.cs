@@ -16,8 +16,8 @@ namespace DMD.BL
             {
                 int results = 0;
 
-                await Task.Run(() =>
-                {
+                //await Task.Run(() =>
+                //{
                     using (DMDEntities dc = new DMDEntities())
                     {
                         IDbContextTransaction transaction = dc.Database.BeginTransaction();
@@ -33,7 +33,8 @@ namespace DMD.BL
                         if (rollback) { transaction.Rollback(); }
                         else { transaction.Commit(); }
                     }
-                });
+                //}
+            //);
 
                 return results;
             }

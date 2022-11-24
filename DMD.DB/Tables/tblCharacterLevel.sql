@@ -1,7 +1,6 @@
 ﻿CREATE TABLE [dbo].[tblCharacterLevel]
-(
-	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
-    [Level] INT NOT NULL, 
+( 
+    [Level] INT NOT NULL PRIMARY KEY, 
     [Experience] INT NOT NULL, 
     [ProficencyBonus] INT NOT NULL
 )

@@ -13,6 +13,7 @@ namespace DMD.PL
         public Guid Id { get; set; }
         public Guid ArmorStyle_Id { get; set; }
         public Guid ArmorType_Id { get; set; }
+        public string Name { get; set; } = null!;
         public int ArmorClassBonus { get; set; }
         public int MovementPenalty { get; set; }
         public int Cost { get; set; }

@@ -52,6 +52,7 @@ namespace DMD.PL.Test
             armor.Id = Guid.NewGuid();                                                                  //NEEDS TO BE EXISTING ID'S
             armor.ArmorStyle_Id = Guid.NewGuid();                                                       //Need to point to foreign keys that exist. //NEEDS TO BE SIMILAR TO THE existingRow example from below.
             armor.ArmorType_Id = Guid.NewGuid();
+            armor.Name = "New armor";
             armor.ArmorClassBonus = 100;
             armor.MovementPenalty = 100;
             armor.Cost = 100;
@@ -77,6 +78,7 @@ namespace DMD.PL.Test
                 existingRow.Id = Guid.NewGuid();
                 existingRow.ArmorStyle_Id = Guid.NewGuid();
                 existingRow.ArmorType_Id = Guid.NewGuid();
+                existingRow.Name = "Recon Armor";
                 existingRow.ArmorClassBonus = 200;
                 existingRow.MovementPenalty = 200;
                 existingRow.Cost = 200;

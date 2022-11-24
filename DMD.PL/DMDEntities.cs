@@ -71,6 +71,10 @@ namespace DMD.PL
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
+                entity.Property(e => e.Name)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
                 entity.HasOne(d => d.ArmorStyle)
                     .WithMany(p => p.tblArmors)
                     .HasForeignKey(d => d.ArmorStyle_Id)
@@ -314,9 +318,12 @@ namespace DMD.PL
 
             modelBuilder.Entity<tblCharacterLevel>(entity =>
             {
+                entity.HasKey(e => e.Level)
+                    .HasName("PK__tblChara__AAF8996306330D13");
+
                 entity.ToTable("tblCharacterLevel");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Level).ValueGeneratedNever();
             });
 
             modelBuilder.Entity<tblCharacterSkillProficiency>(entity =>
@@ -611,7 +618,7 @@ namespace DMD.PL
             modelBuilder.Entity<tblStatModifier>(entity =>
             {
                 entity.HasKey(e => e.Value)
-                    .HasName("PK__tblStatM__07D9BBC37D887965");
+                    .HasName("PK__tblStatM__07D9BBC3FA2EE609");
 
                 entity.ToTable("tblStatModifier");
 

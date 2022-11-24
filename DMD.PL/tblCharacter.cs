@@ -23,7 +23,7 @@ namespace DMD.PL
         public Guid Id { get; set; }
         public Guid User_Id { get; set; }
         public Guid Race_Id { get; set; }
-        public Guid CharacterLevel_Id { get; set; }
+        public int CharacterLevel_Id { get; set; }
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public int MaxHitpoints { get; set; }

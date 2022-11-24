@@ -9,9 +9,9 @@
 	SELECT @ArmorType_Id181 = Id FROM tblArmorType WHERE TypeName = 'Body Armor'
 	SELECT @ArmorType_Id182 = Id FROM tblArmorType WHERE TypeName = 'Shield'
 
-	INSERT INTO dbo.tblArmor (Id, ArmorStyle_Id, ArmorType_Id, ArmorClassBonus, MovementPenalty, Cost)
+	INSERT INTO dbo.tblArmor (Id, ArmorStyle_Id, ArmorType_Id, Name, ArmorClassBonus, MovementPenalty, Cost)
 	VALUES
-	(NEWID(), @ArmorStyle_Id181, @ArmorType_Id181, 5, 2, 20),
-	(NEWID(), @ArmorStyle_Id182, @ArmorType_Id182, 7, 5, 50),
-	(NEWID(), @ArmorStyle_Id183, @ArmorType_Id181, 10, 8, 100)
+	(NEWID(), @ArmorStyle_Id181, @ArmorType_Id181, 'Wizard Robe', 5, 2, 20),
+	(NEWID(), @ArmorStyle_Id182, @ArmorType_Id182, 'Drakehide Shield', 7, 5, 50),
+	(NEWID(), @ArmorStyle_Id183, @ArmorType_Id181, 'Wyrmscale Armor', 10, 8, 100)
 END

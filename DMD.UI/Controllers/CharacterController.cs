@@ -2,8 +2,10 @@
 using DMD.BL;
 using DMD.BL.Models;
 using DMD.UI.Extensions;
+using DMD.UI.Models;
 using DMD.UI.ViewModels;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using NuGet.Protocol.Plugins;
@@ -42,26 +44,41 @@ namespace DMD.UI.Controllers
             }
         }
 
-
-        public ActionResult Create()
+        //GET: CharacterController/Create
+        public ActionResult Create(string returnUrl)
         {
-            CharacterViewModel characterViewModel = new CharacterViewModel();
-            characterViewModel.Character = new Character();
+            //if(isLoggedIn)
+            if (Authenticate.IsAuthenticated(HttpContext))
+            {
+                TempData["returnurl"] = returnUrl;
+                User user = HttpContext.Session.GetObject<User>("user");
 
-            //characterViewModel.Stats = StatManager.Load().Result;
-            //ViewData["Stats"] = characterViewModel.Stats;
+                CharacterViewModel characterViewModel = new CharacterViewModel();
+                characterViewModel.Character = new Character();
+                characterViewModel.Character.UserId = user.Id;
+                characterViewModel.User = user;
 
-            //-------------Need to load lists for dropdown menus-----------\\
+                //characterViewModel.Stats = StatManager.Load().Result;
+                //ViewData["Stats"] = characterViewModel.Stats;
 
-            characterViewModel.Languages = LanguageManager.Load().Result;
-            characterViewModel.Classes = ClassesManager.Load().Result;
-            characterViewModel.Stats = StatManager.Load().Result;
-            characterViewModel.Races = RacesManager.Load().Result;
-            characterViewModel.Weapons = WeaponManager.Load().Result;
-            characterViewModel.Armors = ArmorManager.Load().Result;
+                //-------------Need to load lists for dropdown menus-----------\\
+
+                characterViewModel.Languages = LanguageManager.Load().Result;
+                characterViewModel.Classes = ClassesManager.Load().Result;
+                characterViewModel.Stats = StatManager.Load().Result;
+                characterViewModel.Races = RacesManager.Load().Result;
+                characterViewModel.Weapons = WeaponManager.Load().Result;
+                characterViewModel.Armors = ArmorManager.Load().Result;
+                characterViewModel.Currency = CurrencyManager.Load().Result;
 
 
-            return View(characterViewModel);
+                return View(characterViewModel);
+
+            }
+            else
+            {
+                return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }
             //return View();
         }
 
@@ -72,10 +89,13 @@ namespace DMD.UI.Controllers
         {
             try
             {
-                //characterViewModel.Character.RaceId = characterViewModel.Race.Id;
-                
+                User user = HttpContext.Session.GetObject<User>("user");
 
-                CharacterManager.Insert(characterViewModel.Character);
+                //characterViewModel.Character.RaceId = characterViewModel.Race.Id;
+                //characterViewModel.Character.CharacterLevel = 1;
+                characterViewModel.Character.UserId = user.Id;
+
+                _ = CharacterManager.Insert(characterViewModel.Character).Result;
                 Guid characterId = characterViewModel.Character.Id;
 
                 //foreach(var stat in characterViewModel.CharacterStats)
@@ -83,12 +103,51 @@ namespace DMD.UI.Controllers
                 //    CharacterStatsManager.Insert(characterId, stat.Id, stat.Value);
                 //}
 
-                for (int i = 0; i < characterViewModel.CharacterStatIds.Count(); i++)
-                { 
-                    Guid statId= characterViewModel.CharacterStatIds[i];
-                    int value= characterViewModel.CharacterStatValues[i];
-                    //CharacterStatsManager.Insert(characterId, statId, value);
-                    int randomNum = 0;
+                _ = CharacterClassesManager.Insert(characterId, characterViewModel.ClassId, characterViewModel.Character.CharacterLevelId);
+
+                if( characterViewModel.CharacterStatIds != null)
+                {
+                    for (int i = 0; i < 6; i++)
+                    { 
+                        Guid statId= characterViewModel.CharacterStatIds[i];
+                        int value= characterViewModel.CharacterStatValues[i];
+                        _ = CharacterStatsManager.Insert(characterId, statId, value);
+                        //int randomNum = 0;
+                    }
+                }
+
+                if (characterViewModel.SelectedLanguageIds != null)
+                {
+                    foreach(Guid languageId in characterViewModel.SelectedLanguageIds)
+                    {
+                       _ = CharacterLanguagesManager.Insert(characterId, languageId);
+                    }
+                }
+
+                if( characterViewModel.SelectedWeaponIds != null)
+                {
+                    foreach(Guid weaponId in characterViewModel.SelectedWeaponIds)
+                    {
+                      _ =  CharacterWeaponManager.Insert(characterId, weaponId);
+                    }
+                }
+
+                if( characterViewModel.SelectedArmorIds != null)
+                {
+                    foreach(Guid armorId in characterViewModel.SelectedArmorIds)
+                    {
+                      _ = CharacterArmorManager.Insert(characterId, armorId);
+                    }
+                }
+
+                if( characterViewModel.CharacterCurrencyIds != null)
+                {
+                    for(int i = 0; i < characterViewModel.CharacterCurrencyIds.Count(); i++)
+                    {
+                        Guid currencyId = characterViewModel.CharacterCurrencyIds[i];
+                        int amount = characterViewModel.CharacterCurrencyAmounts[i];
+                        _ = CharacterCurrencyManager.Insert(characterId, currencyId, amount);
+                    }
                 }
 
                 return RedirectToAction("Index", "Home");

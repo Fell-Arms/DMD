@@ -658,16 +658,45 @@
                                 <div class="row">
                                     <div class="col-2">
                                         <div>
-                                            <input class="m-2 form-control" type="text" placeholder="CP">
+                                            @foreach (var item in Model.Currency)
+                                            {
+                                                <!----------------CURRENCY--------------->
+
+                                                <div class="header">
+                                                    <h2 class="stat-header">@item.Name</h2>
+                                                    <input hidden asp-for="CharacterCurrencyIds" class="form-control" value="@item.Id">
+                                                </div>
+                                                @*<div class="card-body card-content">*@
+                                                    <input asp-for="CharacterCurrencyAmounts" class="w-100 form-control" type="number" placeholder="#">
+                                                @*</div>*@
+
+                                                <!--------------------------------------->
+                                            }
+
+                                            @*<input class="m-2 form-control" type="text" placeholder="CP">
                                             <input class="m-2 form-control" type="text" placeholder="SP">
                                             <input class="m-2 form-control" type="text" placeholder="EP">
                                             <input class="m-2 form-control" type="text" placeholder="GP">
-                                            <input class="m-2 form-control" type="text" placeholder="PP">
+                                            <input class="m-2 form-control" type="text" placeholder="PP">*@
                                         </div>
                                     </div>
                                     <div class="col-9">
-                                        <select asp-for="SelectedArmorIds" class="form-control col m-1" asp-items="@(new MultiSelectList(Model.Armors,"ArmorStyle_Id","ArmorClassBonus"))"><option selected disabled hidden>Armors</option></select>
-                                        <select asp-for="SelectedWeaponIds" class="form-control col m-1" asp-items="@(new MultiSelectList(Model.Weapons,"WeaponType_Id","Name"))"><option selected disabled hidden>Weapons</option></select>
+                                        @*<select asp-for="SelectedArmorIds" class="form-control col m-1" asp-items="@(new MultiSelectList(Model.Armors,"Id","Name"))"><option selected disabled hidden>Armors</option></select>*@
+                                        @*<select asp-for="SelectedWeaponIds" class="form-control col m-1" asp-items="@(new MultiSelectList(Model.Weapons,"Id","Name"))"><option selected disabled hidden>Weapons</option></select>*@
+                                        <select 
+                                            asp-for="SelectedArmorIds" 
+                                            class="form-control col m-1" 
+                                            multiple 
+                                            asp-items="@(new MultiSelectList(Model.Armors, "Id", "Name"))">
+                                        </select>
+
+                                        <select 
+                                            asp-for="SelectedWeaponIds" 
+                                            class="form-control col m-1" 
+                                            multiple 
+                                            asp-items="@(new MultiSelectList(Model.Weapons, "Id", "Name"))">
+                                        </select>
+                                         @*<select asp-for="SelectedLanguageIds" class="form-control col m-1" asp-items="@(new MultiSelectList(Model.Languages,"Id","Name","Description"))"><option selected disabled hidden>Languages</option></select>*@
                                     </div>
                                 </div>
                             </div>

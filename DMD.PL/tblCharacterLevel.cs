@@ -10,7 +10,6 @@ namespace DMD.PL
             tblCharacters = new HashSet<tblCharacter>();
         }
 
-        public Guid Id { get; set; }
         public int Level { get; set; }
         public int Experience { get; set; }
         public int ProficencyBonus { get; set; }

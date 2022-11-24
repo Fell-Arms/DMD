@@ -23,11 +23,13 @@ namespace DMD.UI.ViewModels
         public List<Guid> SelectedArmorIds { get; set; } //Gets the selected ARMORS
         public List<Guid> SelectedWeaponIds { get; set; } //Gets the selected WEAPONS
         public List<Guid> SelectedSkillIds { get; set; } //Gets the selected SKILLS
-
-        public List<Guid> CharacterStatIds { get; set; }               //Lists all the STATS to choose from
         public List<Stat> CharacterStats { get; set; }               //Lists all the STATS to choose from
+        
+        public List<Guid> CharacterStatIds { get; set; }               //Lists all the Stat Ids a character should have.
+        public List<int> CharacterStatValues { get; set; }            // Lists the values of the CharacterStatIds (The character stats)
 
-        public List<int> CharacterStatValues { get; set; }
+        public List<Guid> CharacterCurrencyIds { get; set; } // List all the character currency Ids.
+        public List<int> CharacterCurrencyAmounts { get; set; } // List the values of CharacterCurrencies
 
         public Class Class { get; set; }            //Uses entire CLASS model
         public Race Race { get; set; }               //Uses entire RACE model
@@ -39,9 +41,10 @@ namespace DMD.UI.ViewModels
         public List<Class> Classes { get; set; }            //Lists all the CLASSES to choose from
         public List<Skill> Skills { get; set; }             //Lists all the SKILLS to choose PROFICIENCY from
         public List<Race> Races { get; set; }               //Lists all the RACES to choose from
-        public List<Stat> Stats { get; set; }               //Lists all the STATS to choose from
+        public List<Stat> Stats { get; set; }               //Lists all the STATS to choose VALUES from
         public List<Weapon> Weapons { get; set; }           //Lists all the WEAPONS to choose from
         public List<Armor> Armors { get; set; }             //Lists all the ARMORS to choose from
+        public List<Currency> Currency { get; set; }        //Lists all the Currency to select amounts from.
 
 
         /*

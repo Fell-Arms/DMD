@@ -149,7 +149,7 @@ body {
 
     cursor: grabbing;
     overflow: hidden;
-    color: white;
+    /*color: white;*/
     position: absolute;
     left: 0vw;
     top: 80px;
@@ -185,7 +185,6 @@ body {
 .draggable-ui {
     user-select: none;
     cursor: grabbing;
-    color: white;
     z-index: 10;
 }
 
@@ -389,4 +388,17 @@ margin:auto;
     margin: auto;
     background-color: white;
     border-radius: 10px;
+}
+
+#diceLabel {
+    color: #7523B0;
+    background-color: #fab0ff;
+    font-weight: 600;
+    font-size: 26px;
+    text-align: center;
+    padding: 4px;
+    margin: 5px;
+    border: 2px;
+    border-style: solid;
+    border-radius: 4px;
 }

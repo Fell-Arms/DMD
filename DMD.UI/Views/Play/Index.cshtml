@@ -113,42 +113,74 @@
             let j;
             let k;
 
-            document.getElementById("roll4").onclick = function () {
-
+            function Roll4() {
                 x = Math.floor(Math.random() * 4) + 1;
 
-                document.getElementById("xlabel").innerHTML = x;
+                document.getElementById("diceLabel").innerHTML = x;
             }
-            document.getElementById("roll6").onclick = function () {
 
+            function Roll6() {
                 x = Math.floor(Math.random() * 6) + 1;
 
-                document.getElementById("ylabel").innerHTML = x;
+                document.getElementById("diceLabel").innerHTML = x;
             }
-            document.getElementById("roll8").onclick = function () {
 
+            function Roll8() {
                 x = Math.floor(Math.random() * 8) + 1;
 
-                document.getElementById("zlabel").innerHTML = x;
+                document.getElementById("diceLabel").innerHTML = x;
             }
-            document.getElementById("roll10").onclick = function () {
-
+            function Roll10() {
                 x = Math.floor(Math.random() * 10) + 1;
 
-                document.getElementById("ilabel").innerHTML = x;
+                document.getElementById("diceLabel").innerHTML = x;
             }
-            document.getElementById("roll12").onclick = function () {
-
+            function Roll12() {
                 x = Math.floor(Math.random() * 12) + 1;
 
-                document.getElementById("jlabel").innerHTML = x;
+                document.getElementById("diceLabel").innerHTML = x;
             }
-            document.getElementById("roll20").onclick = function () {
-
+            function Roll20() {
                 x = Math.floor(Math.random() * 20) + 1;
 
-                document.getElementById("klabel").innerHTML = x;
+                document.getElementById("diceLabel").innerHTML = x;
             }
+            //document.getElementById("roll4").onclick = function () {
+
+            //    x = Math.floor(Math.random() * 4) + 1;
+
+            //    document.getElementById("xlabel").innerHTML = x;
+            //}
+            //document.getElementById("roll6").onclick = function () {
+
+            //    x = Math.floor(Math.random() * 6) + 1;
+
+            //    document.getElementById("ylabel").innerHTML = x;
+            //}
+            //document.getElementById("roll8").onclick = function () {
+
+            //    x = Math.floor(Math.random() * 8) + 1;
+
+            //    document.getElementById("zlabel").innerHTML = x;
+            //}
+            //document.getElementById("roll10").onclick = function () {
+
+            //    x = Math.floor(Math.random() * 10) + 1;
+
+            //    document.getElementById("ilabel").innerHTML = x;
+            //}
+            //document.getElementById("roll12").onclick = function () {
+
+            //    x = Math.floor(Math.random() * 12) + 1;
+
+            //    document.getElementById("jlabel").innerHTML = x;
+            //}
+            //document.getElementById("roll20").onclick = function () {
+
+            //    x = Math.floor(Math.random() * 20) + 1;
+
+            //    document.getElementById("klabel").innerHTML = x;
+            //}
             
     </script>
     
@@ -1088,7 +1120,7 @@
             </form>
         </div>
         <!---------------------------------------------------------------------------------------------------->
-        
+   
         
         <!--This is the TOOLBAR. It is draggable and contains buttons for the DM Developer Tools -->
             <div id="toolbar" class="draggable-ui">
@@ -1139,13 +1171,15 @@
                 <ul class="diceListBox">
                     <br />
                     <br />
-                    <li><button class="btnD4" onclick="diceRoll()"></button></li>
-                    <li><button class="btnD6" onclick="diceRoll()"></button></li>
-                    <li><button class="btnD8" onclick="diceRoll()"></button></li>
-                    <li><button class="btnD10" onclick="diceRoll()"></button></li>
-                    <li><button class="btnD12" onclick="diceRoll()"></button></li>
-                    <li><button class="btnD20" onclick="diceRoll()"></button></li>
+                    <li><button class="btnD4" onclick="Roll4()"></button></li>
+                    <li><button class="btnD6" onclick="Roll6()"></button></li>
+                    <li><button class="btnD8" onclick="Roll8()"></button></li>
+                    <li><button class="btnD10" onclick="Roll10()"></button></li>
+                    <li><button class="btnD12" onclick="Roll12()"></button></li>
+                    <li><button class="btnD20" onclick="Roll20()"></button></li>
                     <br />
+                    <p id="diceLabel">0</p>
+                    <!--
                     <small><p class="text-dark">Rolls:</p></small>
                     <select class="diceConfig" name="Rolls" id="rolls">
                         <option class="rolls" value="1">1</option>
@@ -1153,6 +1187,7 @@
                         <option class="rolls"value="5">5</option>
                         <option class="rolls" value="10">10</option>
                     </select>
+                    -->
                 </ul>
             </div>
         <!---------------------------------------------------------------------------------------------------->

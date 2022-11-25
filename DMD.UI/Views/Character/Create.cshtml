@@ -13,21 +13,24 @@
     <h1 class="display-4">Create your Character</h1>
     <p>Fill out the form below to add a new character to your account. Use the "Appearance" and "Background" tabs to add extra details for immersion and role playing!</p>
 
-    @*@if (ViewData["Stats"] != null)
-        {
-            <script type="text/javascript">
-                var statNames = [];
+    <style>
+        .custom-big-button {
+        text-decoration: none;
+        background-color:  #7523B0;
+        color:white;
+        padding: 14px 28px 14px 28px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        margin-bottom: 100px;
+    }
 
-                @foreach (var s in Model.Stats)
-                {
-                    @:statNames.push("@s.Name");
-                }
-                alert(statNames);
-
-                if(@Model.Stat.Name == "")
-
-            </script>
-        }*@
+        .custom-big-button:hover {
+            background-color: #FF3366;
+            color: white;
+            transition: .3s;
+        }
+    </style>
 
 <form asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -878,9 +881,10 @@
         </div>
         <!----------------------END TAB 4-------------------->
     </div>
-
-    <input type="submit" value="Create" class="btn btn-primary" />
-
+    
+    <div class="row justify-content-center">
+        <input type="submit" value="Create" class="btn btn-primary custom-big-button col-sm-2 m3" />
+    </div>
 </form>
 
 </div>

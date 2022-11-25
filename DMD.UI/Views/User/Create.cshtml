@@ -19,7 +19,7 @@
     .bannerImage {
         width: 100vw;
         height: 750px;
-        background-image: url('../../img/moon.jpg');
+        background-image: url('../../img/supersynth.jpg');
         background-size: cover;
     }
 
@@ -67,18 +67,6 @@
             font-weight: 500;
             font-size: 14px;
         }
-
-    #clouds {
-        float: right;
-        margin-bottom: 50px;
-    }
-
-    #left {
-        float: left;
-        width: 500px;
-        padding-bottom: 100px;
-    }
-
 </style>
 
 <div class="container">
@@ -125,11 +113,6 @@
             </div>
         </div>
 
-        <!--
-        <div id="clouds" >
-            <img src="~/img/moon.jpg" alt="moon" width="1000" height="600">
-        </div>
-        -->
         @section Scripts {
             @{
                 await Html.RenderPartialAsync("_ValidationScriptsPartial");

@@ -42,6 +42,20 @@ namespace DMD.BL
                                 ImagePath = c.Image
                             };
 
+                            //Create the list of Character Languages
+                            character.CharacterLanguages = new List<CharacterLanguage>();
+                            foreach (tblCharacterLanguage cl in c.tblCharacterLanguages.ToList())
+                            {
+                                CharacterLanguage characterLanguage = new CharacterLanguage
+                                {
+                                    Id = cl.Id,
+                                    Language_Id = cl.Language_Id,
+                                    Character_Id = cl.Character_Id,
+                                };
+
+                                character.CharacterLanguages.Add(characterLanguage);
+                            }
+
                             // Create the list of CharacterArmors
                             character.CharacterArmors = new List<CharacterArmor>();
                             foreach (tblCharacterArmor ca in c.tblCharacterArmors.ToList())
@@ -211,18 +225,6 @@ namespace DMD.BL
                                 {
                                     character.CharacterSkills.Add(characterSkill);
                                 }
-                            }
-
-                            //Create the list of Character Languages
-                            character.CharacterLanguages = new List<CharacterLanguage>();
-                            foreach (tblCharacterLanguage cl in c.tblCharacterLanguages.ToList())
-                            {
-                                CharacterLanguage characterLanguage = new CharacterLanguage
-                                {
-                                    Id = cl.Id,
-                                    Language_Id = cl.Language_Id,
-                                    Character_Id = cl.Character_Id,
-                                };
                             }
 
                             characters.Add(character);

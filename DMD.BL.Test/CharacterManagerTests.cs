@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DMD.BL.Models;
-using DMD.PL;
 
 namespace DMD.BL.Test
 {
@@ -14,29 +13,21 @@ namespace DMD.BL.Test
 
         //Test the ability to load data in CharacterManager
         [TestMethod]
-        public void LoadTest()
+        public async Task LoadTest()
         {
-            //Run Async Task for Loading.
-            Task.Run(async () =>
-            {
-                var task = await CharacterManager.Load();
-                //IEnumerable<Models.Character> characters = task;
-                List<Models.Character> characters = task;
-                Assert.AreEqual(3, characters.ToList().Count);
-            }).GetAwaiter().GetResult();
+            IEnumerable<Character> characterList = await CharacterManager.Load();
 
+            Assert.IsNotNull(characterList);
 
-            /*
-            //Run Async Task for Loading in CharacterArmor
-            Task.Run(async () =>
-            {
-                var task2 = await CharacterArmorManager.Load();
-                IEnumerable<Models.CharacterArmor> cnaracterArmors = task2;
-                Assert.AreEqual(3, armors.ToList().Count);
-            }).GetAwaiter().GetResult();
-            */
-            
+            Character character = characterList.Where(c => c.LastName == "Bobbinson").First();
 
+            Assert.IsNotNull(characterList);
+
+            Assert.IsTrue(characterList.Any());
+
+            Assert.IsTrue(character.CharacterStats.Any());
+
+            Assert.IsTrue(character.CharacterLanguages.Any());
         }
 
 
@@ -98,9 +89,5 @@ namespace DMD.BL.Test
             });
             */
         }
-
-
-
-
     }
 }

@@ -8,18 +8,18 @@ namespace DMD.BL.Test
 
         //Test the ability to load data.
         [TestMethod]
-        public void LoadTest()
+        public async Task LoadTest()
         {
-            List<User> users = UserManager.Load();
-            Assert.IsTrue(0 < users.Count);
+            IEnumerable<User> users = await UserManager.Load();
+            Assert.IsTrue(0 < users.Count());
         }
 
         //Test The Update Function
         [TestMethod]
-        public void UpdateTest()
+        public async Task UpdateTest()
         {
-            List<User> users = UserManager.Load();     //Create a load method.
-            User user = users[0];
+            IEnumerable<User> users = await UserManager.Load();     //Create a load method.
+            User user = users.First();
             user.UserName = "Test1";
 
             int results = UserManager.Update(user, true);
@@ -28,10 +28,10 @@ namespace DMD.BL.Test
 
         //Test The Delete Function
         [TestMethod]
-        public void DeleteTest()
+        public async Task DeleteTest()
         {
-            List<User> users = UserManager.Load();     //Create a load method.
-            User user = users[0];
+            IEnumerable<User> users = await UserManager.Load();     //Create a load method.
+            User user = users.First();
 
             int results = UserManager.Delete(user.Id, true);
             Assert.AreEqual(1, results);

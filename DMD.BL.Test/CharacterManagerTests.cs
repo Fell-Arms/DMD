@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DMD.BL.Models;
+using DMD.PL;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DMD.BL.Test
 {
@@ -30,6 +32,21 @@ namespace DMD.BL.Test
             Assert.IsTrue(character.CharacterLanguages.Any());
         }
 
+        [TestMethod]
+        public async Task LoadByUserIdTest()
+        {
+            IEnumerable<User> userList = await UserManager.Load();
+
+            User user = userList.First(u => u.UserName == "bfoote");
+
+            IEnumerable<Character> characterList = await CharacterManager.LoadByUserId(user.Id);
+
+            foreach(Character character in characterList)
+            {
+                Assert.IsTrue(character.UserId == user.Id);
+            }
+        }
+
 
         /* THIS IS A MESS, MAY NEED HELP
         //Test the Ability to Insert Data
@@ -49,17 +66,17 @@ namespace DMD.BL.Test
 
         //This method is used to insert data and test inserting data where applicable for each table.
         [TestMethod]
-        public async void InsertTest()
+        public async Task InsertTest()
         {
 
-            List <User> userList = UserManager.Load();
+            IEnumerable<User> userList = await UserManager.Load();
 
             //CharacterManager Async Task insert test
 
             int results = await CharacterManager.Insert(
                 new Models.Character {
                     Id = Guid.NewGuid(),
-                    UserId = userList[0].Id,
+                    UserId = userList.First().Id,
                     RaceId = Guid.NewGuid(),
                     CharacterLevelId = 1,
                     FirstName = "Jefferson",

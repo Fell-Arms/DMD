@@ -173,35 +173,41 @@ namespace DMD.BL
 
 
         //Load Data Method.
-        public static List<User> Load()
+        public async static Task<IEnumerable<User>> Load()
         {
-            try
-            {
-                //Sets List of Users with the name of "rows" to the value of a list of Users.
-                List<User> rows = new List<User>();
-                using (DMDEntities dc = new DMDEntities())
-                {
-                    // select * from tblUsers
-                    dc.tblUsers
-                        .ToList()
-                        .ForEach(dt => rows.Add(new User
-                        {
-                            Id = dt.Id,
-                            UserName = dt.Username,
-                            Password = dt.Password,
-                            Email = dt.Email,
-                            FirstName = dt.FirstName,
-                            LastName = dt.LastName
-                        }));
-                    return rows;
-                }
-            }
-            catch (Exception ex)
-            {
 
-                throw ex;
-            }
-        }
+            //Sets List of Users with the name of "rows" to the value of a list of Users.
+            List<User> rows = new List<User>();
+
+            await Task.Run(() =>
+            {
+                try
+                {
+                    using (DMDEntities dc = new DMDEntities())
+                    {
+                        // select * from tblUsers
+                        dc.tblUsers
+                            .ToList()
+                            .ForEach(dt => rows.Add(new User
+                            {
+                                Id = dt.Id,
+                                UserName = dt.Username,
+                                Password = dt.Password,
+                                Email = dt.Email,
+                                FirstName = dt.FirstName,
+                                LastName = dt.LastName
+                            }));
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            });
+            return rows;
+        }      
+    
 
 
         //NEED TO FINISH FOR TESTING TO BE DONE.

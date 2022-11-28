@@ -244,7 +244,7 @@ namespace DMD.BL
         /// </summary>
         /// <param name="userid"></param>
         /// <returns>Character List</returns>
-        public async static Task<List<Character>> Load(Guid userid)
+        public async static Task<List<Character>> LoadByUserId(Guid userId)
         {
             try
             {
@@ -253,7 +253,7 @@ namespace DMD.BL
                 {
                     using (DMDEntities dc = new DMDEntities())
                     {
-                        foreach (tblCharacter c in dc.tblCharacters.ToList().Where(a => a.User_Id == userid))
+                        foreach (tblCharacter c in dc.tblCharacters.ToList().Where(c => c.User_Id == userId))
                         {
                             Character character = new Character
                             {
@@ -270,8 +270,22 @@ namespace DMD.BL
                                 ImagePath = c.Image
                             };
 
+                            //Create the list of Character Languages
+                            character.CharacterLanguages = new List<CharacterLanguage>();
+                            foreach (tblCharacterLanguage cl in c.tblCharacterLanguages.ToList())
+                            {
+                                CharacterLanguage characterLanguage = new CharacterLanguage
+                                {
+                                    Id = cl.Id,
+                                    Language_Id = cl.Language_Id,
+                                    Character_Id = cl.Character_Id,
+                                };
+
+                                character.CharacterLanguages.Add(characterLanguage);
+                            }
+
                             // Create the list of CharacterArmors
-                            character.CharacterArmors = new();
+                            character.CharacterArmors = new List<CharacterArmor>();
                             foreach (tblCharacterArmor ca in c.tblCharacterArmors.ToList())
                             {
                                 CharacterArmor characterArmor = new CharacterArmor()
@@ -439,27 +453,11 @@ namespace DMD.BL
                                 {
                                     character.CharacterSkills.Add(characterSkill);
                                 }
-                                else
-                                {
-                                    characterSkill = null;
-                                }
-                            }
-
-                            //Create the list of Character Languages
-                            character.CharacterLanguages = new List<CharacterLanguage>();
-                            foreach (tblCharacterLanguage cl in c.tblCharacterLanguages.ToList())
-                            {
-                                CharacterLanguage characterLanguage = new CharacterLanguage
-                                {
-                                    Id = cl.Id,
-                                    Language_Id = cl.Language_Id,
-                                    Character_Id = cl.Character_Id,
-                                };
                             }
 
                             characters.Add(character);
                         }
-                    }
+                    }  //AWAIT ENDS HERE
                 });
                 return characters;
             }

@@ -21,6 +21,11 @@ namespace DMD.UI.Controllers
         //    return View();
         //}
 
+        public ActionResult CharacterAdded()
+        {
+            return View();
+        }
+
         //// GET: CharacterController/Details/5
         //public ActionResult Details(int id)
         //{
@@ -155,7 +160,7 @@ namespace DMD.UI.Controllers
                     }
                 }
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("CharacterAdded", "Character");
 
                 /*
                  *  StudentManager.Insert(studentAdvisors.Student);

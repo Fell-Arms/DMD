@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "CharacterAdded";
+}
+
+<style>
+    .background-image {
+        width: 100vw;
+        height: 900px;
+        background-image: url('../../img/charactersBackground.jpg');
+        background-size: cover;
+    }
+
+    .custom-link {
+        font-weight: 500;
+    }
+
+        .custom-link:hover {
+            color: #FF3366;
+            font-weight: 500;
+        }
+
+    .custom-background {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.6);
+        top: 100px;
+    }
+
+    .custom-big-button {
+        text-decoration: none;
+        background-color: white;
+        color: black;
+        padding: 14px 28px 14px 28px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+        .custom-big-button:hover {
+            background-color: #FF3366;
+            color: white;
+            transition: .3s;
+        }
+
+        .custom-big-button:visited {
+            text-decoration: none;
+        }
+
+    .custom-margin {
+        padding-top: 12vh;
+        margin: 0;
+    }
+</style>
+
+
+<body>
+    <div class="background-image">
+        <div class="row justify-content-center align-content-center">
+            <div class="card col-5 custom-background">
+                <div class="text-center">
+                    <h1 class="display-5 text-light custom-margin">Character Successfully Added</h1>
+                    <br />
+
+                    <div class="row justify-content-center">
+                        <p class="text-light m-5">
+                            Your character has been added to your account.<br /> To view all your characters <a asp-controller="Account" asp-action="Index" class="custom-link">click here</a>
+
+                        </p>
+                    </div>
+                    <div class="row justify-content-around">
+                        <a class="custom-big-button m-3 col-sm-4" asp-controller="Home" asp-action="Index">Go Home</a>
+                        <a class="custom-big-button m-3 col-sm-4" asp-controller="Character" asp-action="Create">New Character</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

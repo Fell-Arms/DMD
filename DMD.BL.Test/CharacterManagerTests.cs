@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DMD.BL.Models;
+using DMD.PL;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace DMD.BL.Test
 {
     [TestClass]
     public class CharacterManagerTests
     {
+        //Protected instances of DMDEntities and IDbContextTransaction.
+        protected DMDEntities dc;
+        protected IDbContextTransaction transaction;
 
         //Test the ability to load data in CharacterManager
         [TestMethod]
@@ -57,27 +62,29 @@ namespace DMD.BL.Test
 
         //This method is used to insert data and test inserting data where applicable for each table.
         [TestMethod]
-        public void InsertTest()
+        public async void InsertTest()
         {
-            //CharacterManager Async Task insert test
-            Task.Run(async () =>
-            {
-                int results = await CharacterManager.Insert(
-                    new Models.Character {
-                        Id = Guid.NewGuid(),
-                        UserId = Guid.NewGuid(),
-                        RaceId = Guid.NewGuid(),
-                        CharacterLevelId = Guid.NewGuid(),
-                        FirstName = "Jefferson",
-                        LastName = "Geffy",
-                        MaxHitpoints = 3,
-                        CurrentHitpoints = 2,
-                        Background = "www.background.com",
-                        Experience = 25,
-                        ImagePath = "www.portraitimagetest.com/aaaa"
-                    }, true);
-                Assert.IsTrue(results > 0);
-            });
+
+            List<User> userList = UserManager.Load(); //FOLLOW THIS EXAMPLE FOR ALL THE INSERTS.
+            tblCharacter newrow = new tblCharacter(); //Instance of table created
+
+            int results = await CharacterManager.Insert(
+                new Models.Character {
+                    Id = Guid.NewGuid(),                        
+                    UserId = userList[0].Id,                    //FOLLOW EXAMPLE FOR LOADING A GUID  //Manager methods are already using awaited task, NEEDS TO BE REMOVED SO IT WILL WORK.
+                    RaceId = userList[0].Id,                    //NEED TO USE A PRE-EXISTING ID VALUE WITHIN THE TABLE FOR A NEW ROW. (APPLIES TO ALL LINKING TABLES, REFER TO ERD FOR HELP.)
+                    CharacterLevelId = userList[0].Id,          //NEED TO FETCH THE ROW FOR A GUID. 
+                    FirstName = "Jefferson",
+                    LastName = "Geffy",
+                    MaxHitpoints = 3,
+                    CurrentHitpoints = 2,
+                    Background = "www.background.com",
+                    Experience = 25,
+                    ImagePath = "www.portraitimagetest.com/aaaa"
+                }, true);
+
+            dc.tblCharacters.Add(newrow);
+            Assert.IsTrue(results > 0);
 
             /* SAVE THIS FOR CHARACTERARMOR TEST CLASS.
             //CharacterArmor Async Task insert test
@@ -95,9 +102,6 @@ namespace DMD.BL.Test
             });
             */
         }
-
-
-
 
     }
 }

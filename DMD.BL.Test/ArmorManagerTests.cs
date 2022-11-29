@@ -22,5 +22,33 @@ namespace DMD.BL.Test
                 Assert.AreEqual(3, armors.ToList().Count);
             }).GetAwaiter().GetResult();
         }
+
+
+        /*
+        //COMMENT OUT
+        //This test method is used to test inserting data into ArmorManager and into the Armor Table
+        [TestMethod]
+        public async Task InsertTest()
+        {
+
+            IEnumerable<Armor> armorList = await ArmorManager.Load();
+            //Character newrow = new Character(); //Instance of Character created
+            if (armorList.Any())
+            {
+                Armor armor = new Armor()
+                {
+                    Id = armorList.First().Id,
+                    ArmorStyle_Id = armorList.First().ArmorStyle_Id,
+                    ArmorType_Id = armorList.First().ArmorType_Id,
+                    ArmorClassBonus = 200,
+                    MovementPenalty = 200,
+                    Cost = 200
+                };
+
+                int result = await ArmorManager.Insert(armor, true);
+                Assert.IsTrue(result == 1);
+            }
+        }
+        */
     }
 }

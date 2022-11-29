@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DMD.BL.Models;
 using DMD.PL;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DMD.BL.Test
@@ -12,6 +13,9 @@ namespace DMD.BL.Test
     [TestClass]
     public class CharacterManagerTests
     {
+        //Protected Fields of DMDEntities and IDbContextTransaction.
+        protected DMDEntities dc;
+        protected IDbContextTransaction transaction;
 
         //Test the ability to load data in CharacterManager
         [TestMethod]
@@ -48,21 +52,55 @@ namespace DMD.BL.Test
         }
 
 
-        /* THIS IS A MESS, MAY NEED HELP
-        //Test the Ability to Insert Data
-        [TestClass]
-        public void InsertTest()
+
+        //Test the ability to load data in CharacterManager
+        [TestMethod]
+        public void LoadTest2()
         {
+            //Run Async Task for Loading.
             Task.Run(async () =>
             {
-                int results = await ModelManager.Insert(new Models.Model { Description = "NewModel" }, true);
-                Assert.IsTrue(results > 0);
-
-            });
-
+                var task = await CharacterManager.Load();
+                List<Models.Character> characters = task;
+                Assert.AreEqual(3, characters.ToList().Count);
+            }).GetAwaiter().GetResult();
         }
-        */
 
+
+
+        //This test method is used to test inserting data into CharacterManager and into the Character Table
+        [TestMethod]
+        public async Task InsertTest()
+        {
+            IEnumerable<Character> characterList = await CharacterManager.Load();
+            //Character newrow = new Character(); //Instance of Character created
+            if (characterList.Any())
+            {
+                Character character = new Character()
+                {
+                    Id = characterList.First().Id,
+                    UserId = characterList.First().UserId,
+                    RaceId = characterList.First().RaceId,
+                    CharacterLevelId = characterList.First().CharacterLevelId,
+                    FirstName = "TestBilly",
+                    LastName = "TestGeffy",
+                    MaxHitpoints = 300,
+                    CurrentHitpoints = 200,
+                    Background = "www.background.com",
+                    Experience = 25000,
+                    ImagePath = "www.portraitimageTEST.com"
+                };
+
+                int result = await CharacterManager.Insert(character, true);
+                Assert.IsTrue(result == 1);
+            }
+        }
+
+
+
+
+
+        /*
 
         //This method is used to insert data and test inserting data where applicable for each table.
         [TestMethod]
@@ -104,7 +142,8 @@ namespace DMD.BL.Test
                     }, true);
                 Assert.IsTrue(results2 > 0);
             });
-            */
+           
         }
+        */
     }
 }

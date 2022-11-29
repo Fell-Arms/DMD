@@ -52,6 +52,8 @@ namespace DMD.BL.Test
         }
 
 
+        //create a LOADBYID METHOD can load using generic ID instead from characterList(?)
+
 
         //Test the ability to load data in CharacterManager
         [TestMethod]
@@ -78,7 +80,7 @@ namespace DMD.BL.Test
             {
                 Character character = new Character()
                 {
-                    Id = characterList.First().Id,
+                    Id = Guid.NewGuid(),
                     UserId = characterList.First().UserId,
                     RaceId = characterList.First().RaceId,
                     CharacterLevelId = characterList.First().CharacterLevelId,

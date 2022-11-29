@@ -24,6 +24,8 @@ namespace DMD.BL.Test
         }
 
 
+        /*
+        //COMMENT OUT
         //This test method is used to test inserting data into ArmorManager and into the Armor Table
         [TestMethod]
         public async Task InsertTest()
@@ -35,22 +37,20 @@ namespace DMD.BL.Test
             {
                 Armor armor = new Armor()
                 {
-                    Id = characterList.First().Id,
-                    UserId = characterList.First().UserId,
-                    RaceId = characterList.First().RaceId,
-                    CharacterLevelId = characterList.First().CharacterLevelId,
-                    FirstName = "TestBilly",
-                    LastName = "TestGeffy",
-                    MaxHitpoints = 300,
-                    CurrentHitpoints = 200,
-                    Background = "www.background.com",
-                    Experience = 25000,
-                    ImagePath = "www.portraitimageTEST.com"
+                    Id = armorList.First().Id,
+                    ArmorStyle_Id = armorList.First().ArmorStyle_Id,
+                    ArmorType_Id = armorList.First().ArmorType_Id,
+                    ArmorClassBonus = 200,
+                    MovementPenalty = 200,
+                    Cost = 200
                 };
 
-                int result = await CharacterManager.Insert(character, true);
+                int result = await ArmorManager.Insert(armor, true);
                 Assert.IsTrue(result == 1);
             }
         }
+        */
+        
+    }
 
 }

@@ -18,7 +18,7 @@ namespace DMD.BL.Test
             Task.Run(async () =>
             {
                 var task = await ArmorManager.Load();
-                IEnumerable<Models.Armor> armors = task;
+                List<Models.Armor> armors = task;
                 Assert.AreEqual(3, armors.ToList().Count);
             }).GetAwaiter().GetResult();
         }
@@ -51,4 +51,5 @@ namespace DMD.BL.Test
         }
         */
     }
+
 }

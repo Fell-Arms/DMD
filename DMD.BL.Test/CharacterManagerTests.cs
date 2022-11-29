@@ -24,43 +24,14 @@ namespace DMD.BL.Test
             Task.Run(async () =>
             {
                 var task = await CharacterManager.Load();
-                //IEnumerable<Models.Character> characters = task;
                 List<Models.Character> characters = task;
                 Assert.AreEqual(3, characters.ToList().Count);
             }).GetAwaiter().GetResult();
-
-
-            /*
-            //Run Async Task for Loading in CharacterArmor
-            Task.Run(async () =>
-            {
-                var task2 = await CharacterArmorManager.Load();
-                IEnumerable<Models.CharacterArmor> cnaracterArmors = task2;
-                Assert.AreEqual(3, armors.ToList().Count);
-            }).GetAwaiter().GetResult();
-            */
-            
-
         }
 
 
-        /* THIS IS A MESS, MAY NEED HELP
-        //Test the Ability to Insert Data
-        [TestClass]
-        public void InsertTest()
-        {
-            Task.Run(async () =>
-            {
-                int results = await ModelManager.Insert(new Models.Model { Description = "NewModel" }, true);
-                Assert.IsTrue(results > 0);
 
-            });
-
-        }
-        */
-
-
-        //This method is used to insert data and test inserting data where applicable for each table.
+        //This test method is used to test inserting data into CharacterManager and into the Character Table
         [TestMethod]
         public async Task InsertTest()
         {
@@ -69,13 +40,23 @@ namespace DMD.BL.Test
             //Character newrow = new Character(); //Instance of Character created
             if(characterList.Any())
             {
-                Character character1 = characterList.FirstOrDefault(a => a.FirstName == "Bobby");
-                Character character2 = characterList.FirstOrDefault(a => a.FirstName == "Synthia");
-                User user = new User()
+                Character character = new Character()
                 {
-                    Id = character1.Id,
-                    
-                }
+                    Id = characterList.First().Id,
+                    UserId = characterList.First().UserId,
+                    RaceId = characterList.First().RaceId,
+                    CharacterLevelId = characterList.First().CharacterLevelId,
+                    FirstName = "TestBilly",
+                    LastName = "TestGeffy",
+                    MaxHitpoints = 300,
+                    CurrentHitpoints = 200,
+                    Background = "www.background.com",
+                    Experience = 25000,
+                    ImagePath = "www.portraitimageTEST.com"         
+                };
+
+                int result = await CharacterManager.Insert(character, true);
+                Assert.IsTrue(result == 1);
             }
 
 

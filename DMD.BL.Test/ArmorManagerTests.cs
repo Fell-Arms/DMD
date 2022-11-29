@@ -24,7 +24,7 @@ namespace DMD.BL.Test
         }
 
 
-        /*
+        /* CREATE A INSERT METHOD IN THE ARMOR MANAGER.
         //COMMENT OUT
         //This test method is used to test inserting data into ArmorManager and into the Armor Table
         [TestMethod]
@@ -37,7 +37,7 @@ namespace DMD.BL.Test
             {
                 Armor armor = new Armor()
                 {
-                    Id = armorList.First().Id,
+                    Id = Guid.NewGuid(),
                     ArmorStyle_Id = armorList.First().ArmorStyle_Id,
                     ArmorType_Id = armorList.First().ArmorType_Id,
                     ArmorClassBonus = 200,

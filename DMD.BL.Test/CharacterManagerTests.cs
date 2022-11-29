@@ -62,12 +62,25 @@ namespace DMD.BL.Test
 
         //This method is used to insert data and test inserting data where applicable for each table.
         [TestMethod]
-        public void InsertTest()
+        public async Task InsertTest()
         {
 
-            List<Character> userList = UserManager.Load(); //FOLLOW THIS EXAMPLE FOR ALL THE INSERTS.
-            Character newrow = new Character(); //Instance of Character created
+            IEnumerable<Character> characterList = await CharacterManager.Load();
+            //Character newrow = new Character(); //Instance of Character created
+            if(characterList.Any())
+            {
+                Character character1 = characterList.FirstOrDefault(a => a.FirstName == "Bobby");
+                Character character2 = characterList.FirstOrDefault(a => a.FirstName == "Synthia");
+                User user = new User()
+                {
+                    Id = character1.Id,
+                    
+                }
+            }
 
+
+
+            /*
             Models.Character character = new Models.Character();
 
             character.Id = Guid.NewGuid();                      
@@ -84,7 +97,7 @@ namespace DMD.BL.Test
 
             int results =UserManager.Insert(userList, true);
             Assert.IsTrue(results > 0);
-
+            */
 
 
             /* SAVE THIS FOR CHARACTERARMOR TEST CLASS.

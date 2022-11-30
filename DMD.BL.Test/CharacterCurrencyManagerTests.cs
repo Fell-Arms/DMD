@@ -18,8 +18,8 @@ namespace DMD.BL.Test
             Task.Run(async () =>
             {
                 var task = await CharacterCurrencyManager.Load();
-                List<Models.CharacterCurrency> charCurrency = task;
-                Assert.AreEqual(3, charCurrency.ToList().Count);
+                List<Models.CharacterCurrency> charCurrencies = task;
+                Assert.AreEqual(3, charCurrencies.ToList().Count);
             }).GetAwaiter().GetResult();
         }
 

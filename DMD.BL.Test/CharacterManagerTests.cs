@@ -97,55 +97,5 @@ namespace DMD.BL.Test
                 Assert.IsTrue(result == 1);
             }
         }
-
-
-
-
-
-        /*
-
-        //This method is used to insert data and test inserting data where applicable for each table.
-        [TestMethod]
-        public async Task InsertTest()
-        {
-
-            IEnumerable<User> userList = await UserManager.Load();
-
-            //CharacterManager Async Task insert test
-
-            int results = await CharacterManager.Insert(
-                new Models.Character {
-                    Id = Guid.NewGuid(),
-                    UserId = userList.First().Id,
-                    RaceId = Guid.NewGuid(),
-                    CharacterLevelId = 1,
-                    FirstName = "Jefferson",
-                    LastName = "Geffy",
-                    MaxHitpoints = 3,
-                    CurrentHitpoints = 2,
-                    Background = "www.background.com",
-                    Experience = 25,
-                    ImagePath = "www.portraitimagetest.com/aaaa"
-                }, true);
-            Assert.IsTrue(results > 0);
-
-
-            /* SAVE THIS FOR CHARACTERARMOR TEST CLASS.
-            //CharacterArmor Async Task insert test
-            Task.Run(async () =>
-            {
-                int results2 = await CharacterArmorManager.Insert(
-                    new Models.CharacterArmor
-                    {
-                        Id = Guid.NewGuid(),
-                        Character_Id = Guid.NewGuid(),
-                        Armor_Id = Guid.NewGuid(),
-                        Equipped = false
-                    }, true);
-                Assert.IsTrue(results2 > 0);
-            });
-           
-        }
-        */
     }
 }

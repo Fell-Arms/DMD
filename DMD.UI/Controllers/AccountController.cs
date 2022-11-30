@@ -1,14 +1,45 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Castle.Core.Resource;
+using DMD.BL;
+using DMD.BL.Models;
+using DMD.UI.Extensions;
+using DMD.UI.Models;
+using DMD.UI.ViewModels;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using NuGet.Protocol.Plugins;
+using System.Data;
 
 namespace DMD.UI.Controllers
 {
     public class AccountController : Controller
     {
+
         // GET: AccountController
-        public ActionResult Index()
+        public ActionResult Index(string returnUrl)
         {
-            return View();
+            //if(isLoggedIn)
+            if (Authenticate.IsAuthenticated(HttpContext))
+            {
+                TempData["returnurl"] = returnUrl;
+                User user = HttpContext.Session.GetObject<User>("user");
+
+                AccountViewModel accountViewModel = new AccountViewModel();
+                accountViewModel.User = user;
+
+                //-------------Load lists for display menus-----------\\
+
+                accountViewModel.myCharacters = CharacterManager.Load().Result;
+                //accountViewModel.myMaps = MapManager.Load().Result;
+
+                return View(accountViewModel);
+
+            }
+            else
+            {
+                return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }
         }
 
         // GET: AccountController/Details/5

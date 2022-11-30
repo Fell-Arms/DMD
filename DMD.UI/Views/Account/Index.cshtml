@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNetCore.Http;
+﻿@model DMD.UI.ViewModels.AccountViewModel
+@using Microsoft.AspNetCore.Http;
 @inject IHttpContextAccessor HttpContextAccessor
 
 @{
@@ -166,13 +167,31 @@
                         <div class="w3-container">
                             <h5 class="w3-opacity"><b>A list of characters associated with the account</b></h5>
                             
-                            <div class="row">
+                            
+                                @foreach (var item in Model.myCharacters)
+                                {
+                                    <div class="row">
+                                    <div class="card m-2 col">
+                                        <div class="card-header">
+                                            @item.FirstName
+                                        </div>
+                                        <div class="card-body">
+                                            @item.ImagePath
+                                        </div>
+                                        <div class="card-footer">
+                                            @item.CharacterLevelId
+                                            @item.CharacterClasses
+                                        </div>
+                                    </div>
+                                    </div>
+                                }
+                                @*
                                 <div class="card m-2 col">
                                     <div class="card-header">
-                                        Character1 Name
+                                        Character2 Name
                                     </div>
                                     <div class="card-body">
-                                        Character1 Image
+                                        Character2 Image
                                     </div>
                                     <div class="card-footer">
                                         Class, LVL, Delete/Favorite Icons
@@ -189,18 +208,7 @@
                                         Class, LVL, Delete/Favorite Icons
                                     </div>
                                 </div>
-                                <div class="card m-2 col">
-                                    <div class="card-header">
-                                        Character2 Name
-                                    </div>
-                                    <div class="card-body">
-                                        Character2 Image
-                                    </div>
-                                    <div class="card-footer">
-                                        Class, LVL, Delete/Favorite Icons
-                                    </div>
-                                </div>
-                            </div>
+                            </div>*@
                             <hr>
                         </div>
                     </div>
@@ -431,8 +439,7 @@
 
                         <div class="w3-container w3-card w3-white w3-margin-bottom">
                             <h2 class="w3-text-grey w3-padding-16"><i class="w3-margin-right w3-xxlarge"></i>Account Settings</h2>
-                        <h5 class="w3-opacity"><b>Edit account info, delete the account, set mode(maybe add later?)</b></h5>
-                        <button class="" onclick="toggleMode()">Toggle Mode</button>
+                        <h5 class="w3-opacity"><b>Edit your account info or delete your account.</b></h5>
                         <a class="btn btn-pop-toggle" asp-area="" asp-controller="Account" asp-action="Edit">Edit Account</a>
                         <a class="btn btn-danger" asp-area="" asp-controller="Account" asp-action="Delete">Delete Account</a>
                         

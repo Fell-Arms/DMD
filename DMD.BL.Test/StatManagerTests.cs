@@ -19,7 +19,7 @@ namespace DMD.BL.Test
             {
                 var task = await StatManager.Load();
                 List<Models.Stat> stats = task;
-                Assert.AreEqual(3, stats.ToList().Count);
+                Assert.AreEqual(6, stats.ToList().Count);
             }).GetAwaiter().GetResult();
         }
 

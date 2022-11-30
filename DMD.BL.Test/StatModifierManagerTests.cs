@@ -19,7 +19,7 @@ namespace DMD.BL.Test
             {
                 var task = await StatModifierManager.Load();
                 List<Models.StatModifier> statModifiers = task;
-                Assert.AreEqual(3, statModifiers.ToList().Count);
+                Assert.AreEqual(30, statModifiers.ToList().Count);
             }).GetAwaiter().GetResult();
         }
 

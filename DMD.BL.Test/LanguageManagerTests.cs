@@ -19,7 +19,7 @@ namespace DMD.BL.Test
             {
                 var task = await LanguageManager.Load();
                 List<Models.Language> languages = task;
-                Assert.AreEqual(3, languages.ToList().Count);
+                Assert.AreEqual(22, languages.ToList().Count);
             }).GetAwaiter().GetResult();
         }
 

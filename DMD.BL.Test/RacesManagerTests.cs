@@ -19,7 +19,7 @@ namespace DMD.BL.Test
             {
                 var task = await RacesManager.Load();
                 List<Models.Race> races = task;
-                Assert.AreEqual(3, races.ToList().Count);
+                Assert.AreEqual(9, races.ToList().Count);
             }).GetAwaiter().GetResult();
         }
 

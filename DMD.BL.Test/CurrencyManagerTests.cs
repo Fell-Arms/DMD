@@ -19,7 +19,7 @@ namespace DMD.BL.Test
             {
                 var task = await CurrencyManager.Load();
                 List<Models.Currency> currencies = task;
-                Assert.AreEqual(3, currencies.ToList().Count);
+                Assert.AreEqual(5, currencies.ToList().Count);
             }).GetAwaiter().GetResult();
         }
 

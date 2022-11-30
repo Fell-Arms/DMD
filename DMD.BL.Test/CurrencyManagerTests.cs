@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 namespace DMD.BL.Test
 {
     [TestClass]
-    public class CharacterLanguagesManagerTests
+    public class CurrencyManagerTests
     {
-        /*
         //Test the ability to load data.
         [TestMethod]
         public void LoadTest()
@@ -18,30 +17,29 @@ namespace DMD.BL.Test
             //Run Async Task for Loading.
             Task.Run(async () =>
             {
-                var task = await CharacterLanguagesManager.Load();
-                List<Models.CharacterLanguage> charLanguages = task;
-                Assert.AreEqual(3, charLanguages.ToList().Count);
+                var task = await CurrencyManager.Load();
+                List<Models.Currency> currencies = task;
+                Assert.AreEqual(3, currencies.ToList().Count);
             }).GetAwaiter().GetResult();
         }
 
-
-
+        /*
         //This test method is used to test inserting data into the corresponding table and manager //ALTER COMMENTS TO SAY SPECIFIC ONES LATER.
         [TestMethod]
         public async Task InsertTest()
         {
 
-            IEnumerable<CharacterLanguage> charLanguageList = await CharacterLanguagesManager.Load();
-            if (charLanguageList.Any())
+            IEnumerable<Currency> currencyList = await CurrencyManager.Load();
+            if (currencyList.Any())
             {
-                CharacterLanguage charLanguage = new CharacterLanguage()
+                Currency currency = new Currency()
                 {
                     Id = Guid.NewGuid(),
-                    Character_Id = charLanguageList.First().Character_Id,
-                    Language_Id = charLanguageList.First().Language_Id
+                    Name = "Bobbathin",
+                    Value = "40000 bucks",
                 };
 
-                int result = await CharacterLanguagesManager.Insert(charLanguage, true);
+                int result = await CurrencyManager.Insert(currency, true);
                 Assert.IsTrue(result == 1);
             }
         }

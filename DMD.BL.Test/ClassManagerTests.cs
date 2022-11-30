@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 namespace DMD.BL.Test
 {
     [TestClass]
-    public class CharacterLanguagesManagerTests
+    public class ClassManagerTests
     {
-        /*
         //Test the ability to load data.
         [TestMethod]
         public void LoadTest()
@@ -18,30 +17,30 @@ namespace DMD.BL.Test
             //Run Async Task for Loading.
             Task.Run(async () =>
             {
-                var task = await CharacterLanguagesManager.Load();
-                List<Models.CharacterLanguage> charLanguages = task;
-                Assert.AreEqual(3, charLanguages.ToList().Count);
+                var task = await ClassesManager.Load();
+                List<Models.Class> classes = task;
+                Assert.AreEqual(3, classes.ToList().Count);
             }).GetAwaiter().GetResult();
         }
 
-
-
+        /*
         //This test method is used to test inserting data into the corresponding table and manager //ALTER COMMENTS TO SAY SPECIFIC ONES LATER.
         [TestMethod]
         public async Task InsertTest()
         {
 
-            IEnumerable<CharacterLanguage> charLanguageList = await CharacterLanguagesManager.Load();
-            if (charLanguageList.Any())
+            IEnumerable<Class> classList = await ClassesManager.Load();
+            if (classList.Any())
             {
-                CharacterLanguage charLanguage = new CharacterLanguage()
+                Class classInstance = new Class() //naming the instance only "class" throws an error for some reason.
                 {
                     Id = Guid.NewGuid(),
-                    Character_Id = charLanguageList.First().Character_Id,
-                    Language_Id = charLanguageList.First().Language_Id
+                    Name = "Bobbathin",
+                    Description = "TEST Bobbathin is the bobbiest of all bobbathins",
+                    HPUpDieOnLevel = 3,
                 };
 
-                int result = await CharacterLanguagesManager.Insert(charLanguage, true);
+                int result = await ClassesManager.Insert(classInstance, true);
                 Assert.IsTrue(result == 1);
             }
         }

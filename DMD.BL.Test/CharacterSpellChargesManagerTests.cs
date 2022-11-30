@@ -11,6 +11,7 @@ namespace DMD.BL.Test
     [TestClass]
     public class CharacterSpellChargesManagerTests
     {
+        /*
         //Test the ability to load data.
         [TestMethod]
         public void LoadTest()
@@ -46,6 +47,6 @@ namespace DMD.BL.Test
                 Assert.IsTrue(result == 1);
             }
         }
-
+        */
     }
 }

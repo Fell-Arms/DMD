@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 namespace DMD.BL.Test
 {
     [TestClass]
-    public class CharacterLanguagesManagerTests
+    public class LanguageManagerTests
     {
-        /*
         //Test the ability to load data.
         [TestMethod]
         public void LoadTest()
@@ -18,33 +17,33 @@ namespace DMD.BL.Test
             //Run Async Task for Loading.
             Task.Run(async () =>
             {
-                var task = await CharacterLanguagesManager.Load();
-                List<Models.CharacterLanguage> charLanguages = task;
-                Assert.AreEqual(3, charLanguages.ToList().Count);
+                var task = await LanguageManager.Load();
+                List<Models.Language> languages = task;
+                Assert.AreEqual(3, languages.ToList().Count);
             }).GetAwaiter().GetResult();
         }
 
-
-
+        /*
         //This test method is used to test inserting data into the corresponding table and manager //ALTER COMMENTS TO SAY SPECIFIC ONES LATER.
         [TestMethod]
         public async Task InsertTest()
         {
 
-            IEnumerable<CharacterLanguage> charLanguageList = await CharacterLanguagesManager.Load();
-            if (charLanguageList.Any())
+            IEnumerable<Language> languageList = await LanguageManager.Load();
+            if (languageList.Any())
             {
-                CharacterLanguage charLanguage = new CharacterLanguage()
+                Language language = new Language()
                 {
                     Id = Guid.NewGuid(),
-                    Character_Id = charLanguageList.First().Character_Id,
-                    Language_Id = charLanguageList.First().Language_Id
+                    Name = "Bobbathin",
+                    Description = "TEST This is a language passed down from generations",
                 };
 
-                int result = await CharacterLanguagesManager.Insert(charLanguage, true);
+                int result = await LanguageManager.Insert(language, true);
                 Assert.IsTrue(result == 1);
             }
         }
         */
+        
     }
 }

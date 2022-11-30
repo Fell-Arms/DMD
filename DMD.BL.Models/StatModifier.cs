@@ -8,7 +8,7 @@ namespace DMD.BL.Models
 {
     public class StatModifier
     {
-        public int Value { get; set; } // use guid for id
+        public int Value { get; set; } // use guid for id (? delete comment?)
         public int Modifier { get; set; }
     }
 }

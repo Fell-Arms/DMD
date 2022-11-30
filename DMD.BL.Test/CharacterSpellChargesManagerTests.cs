@@ -14,7 +14,7 @@ namespace DMD.BL.Test
         /*
         //Test the ability to load data.
         [TestMethod]
-        public void LoadTest()
+        public async Task LoadTest()
         {
             //Run Async Task for Loading.
             Task.Run(async () =>

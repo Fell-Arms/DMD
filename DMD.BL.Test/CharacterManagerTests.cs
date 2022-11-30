@@ -53,11 +53,22 @@ namespace DMD.BL.Test
 
 
         //create a LOADBYID METHOD can load using generic ID instead from characterList(?)
+        [TestMethod]
+        public async Task LoadById()
+        {
+            //Run async task.
+            Task.Run(async () =>
+            {
+                int expected = 4;
+
+                //int actual = dc.tblCharacters.Where(p => p.Id == Guid.Parse("298619cd-e9c0-4112-b4a8-2f6d718224c6")).FirstOrDefault().User_Id;
+            }).GetAwaiter().GetResult();
+        }
 
 
         //Test the ability to load data in CharacterManager
         [TestMethod]
-        public void LoadTest2()
+        public async Task LoadTest2()
         {
             //Run Async Task for Loading.
             Task.Run(async () =>

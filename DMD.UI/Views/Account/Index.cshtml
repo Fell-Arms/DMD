@@ -171,16 +171,19 @@
                                     <div class="card m-2 col-md-6">
                                         <div class="card-header">
                                             @item.FirstName @item.LastName
+                                            <br />
+                                            Level @item.CharacterLevelId Character
+
                                         </div>
                                         <div class="card-body">
                                             <img src="~/img/GameAssets/HumanRangerPlayer.png" height="200px" width="200px"/>
                                             @*@item.ImagePath*@
                                         </div>
                                         <div class="card-footer">
-                                            @item.CharacterLevelId
+                                            
                                             @foreach (var thing in item.CharacterClasses)
                                             {
-                                                
+                                                <p>Level @thing.Class_Level @thing.Name</p>
                                             }
                                         </div>
                                     </div>

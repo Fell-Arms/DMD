@@ -1,4 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DMD.BL.Models;
+using DMD.BL;
+using DMD.UI.Extensions;
+using DMD.UI.Models;
+using DMD.UI.ViewModels;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DMD.UI.Controllers
@@ -6,12 +12,36 @@ namespace DMD.UI.Controllers
     public class PlayController : Controller
     {
         // GET: PlayController
-        public ActionResult Index()
+        public ActionResult Index(string returnUrl)
         {
-            return View();
+            //if(isLoggedIn)
+            if (Authenticate.IsAuthenticated(HttpContext))
+            {
+                TempData["returnurl"] = returnUrl;
+                User user = HttpContext.Session.GetObject<User>("user");
+
+                PlayViewModel playViewModel = new PlayViewModel();
+                playViewModel.User = user;
+
+                playViewModel.allUserCharacters = CharacterManager.LoadByUserId(user.Id).Result;
+
+                playViewModel.currentUserCharacter = CharacterManager.LoadByUserId(user.Id).Result.FirstOrDefault();
+
+                playViewModel.Stats = StatManager.Load().Result;
+
+                //-------------Load lists for display menus-----------\\
+
+                //accountViewModel.myMaps = MapManager.Load().Result;
+
+                return View(playViewModel);
+
+            }
+            else
+            {
+                return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }
         }
 
-        
         // GET: PlayController/Details/5
         public ActionResult Details(int id)
         {

@@ -1,4 +1,6 @@
-﻿@using Microsoft.AspNetCore.Http;
+﻿@model DMD.UI.ViewModels.PlayViewModel
+
+@using Microsoft.AspNetCore.Http;
 @inject IHttpContextAccessor HttpContextAccessor
 @{
     Layout = null;
@@ -26,6 +28,7 @@
 </head>
 
 <script>
+       
         var currentZoom = 1.0;
 
         function zoomOut() {
@@ -299,6 +302,23 @@
         <!-----------------------CHARACTER SHEET ------------------------>
         <div id="charSheet">
             <button class="btnClose" onclick="toggleCharSheet()">X</button>
+            <h2>Select the character you wish to play as. </h2>
+
+            <select asp-for="SelectedCharacterId">
+            @foreach (var item in Model.allUserCharacters)
+                {
+                    <option>
+                    @item.FirstName @item.LastName
+                     | 
+                    Level @item.CharacterLevelId
+                     | 
+                    @foreach (var thing in item.CharacterClasses)
+                    {
+                        <p>Level @thing.Class_Level @thing.Name</p>
+                    }
+                    </option>
+                }
+            </select>
 
             <div id="charForm">
 
@@ -307,7 +327,7 @@
                 <div class="row justify-content-lg-between">
                     <div class="card col-4">
                         <div class="card-header">
-                            <p>Username</p> <!--HARDCODED CHANGE LATER-->
+                            <p></p> <!--HARDCODED CHANGE LATER-->
                         </div>
                         <div class="card-body card-content">
                             <input class="form-control" type="file" placeholder="Image">
@@ -317,8 +337,8 @@
                     <div class="card col-8">
                         <div class="card-body card-content align-middle">
                             <div class="row justify-content-around section1">
-                                <input class="col m-1 form-control" type="text" placeholder="First Name">
-                                <input class="col m-1 form-control" type="text" placeholder="Last Name">
+                                <input class="col m-1 form-control" type="text" placeholder="First Name" value="@Model.currentUserCharacter.FirstName"/>
+                                <input class="col m-1 form-control" type="text" placeholder="Last Name" value="@Model.currentUserCharacter.LastName"/>
                             </div>
                             <div class="row justify-content-around section1">
                                 <select class="form-select form-control col m-1"><option selected disabled hidden>Class</option></select>
@@ -336,85 +356,26 @@
 
                         <div class="section1">
                             <div class="row m-3 justify-content-lg-around">
-
-                                <!----------------STRENGTH--------------->
-                                <div class="card m-1 col">
-                                    <div class="card-header header">
-                                        <h2 class="stat-header">STR</h2>
-                                    </div>
-                                    <div class="card-body card-content">
-                                        <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
-                                    </div>
-                                    <div class="card-footer">
-                                        <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
-                                    </div>
-                                </div>
-                                <!--------------------------------------->
-                                <!----------------DEXTERITY--------------->
-                                <div class="card m-1 col">
-                                    <div class="card-header header">
-                                        <h2 class="stat-header">DEX</h2>
-                                    </div>
-                                    <div class="card-body card-content">
-                                        <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
-                                    </div>
-                                    <div class="card-footer">
-                                        <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
-                                    </div>
-                                </div>
-                                <!--------------------------------------->
-                                <!----------------CONSTITUTION--------------->
-                                <div class="card m-1 col">
-                                    <div class="card-header header">
-                                        <h2 class="stat-header">CON</h2>
-                                    </div>
-                                    <div class="card-body card-content">
-                                        <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
-                                    </div>
-                                    <div class="card-footer">
-                                        <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
-                                    </div>
-                                </div>
-                                <!--------------------------------------->
-                                <!----------------INTELLIGENCE--------------->
-                                <div class="card m-1 col">
-                                    <div class="card-header header">
-                                        <h2 class="stat-header">INT</h2>
-                                    </div>
-                                    <div class="card-body card-content">
-                                        <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
-                                    </div>
-                                    <div class="card-footer">
-                                        <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
-                                    </div>
-                                </div>
-                                <!--------------------------------------->
-                                <!----------------WISDOM--------------->
-                                <div class="card m-1 col">
-                                    <div class="card-header header">
-                                        <h2 class="stat-header">WIS</h2>
-                                    </div>
-                                    <div class="card-body card-content">
-                                        <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
-                                    </div>
-                                    <div class="card-footer">
-                                        <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
-                                    </div>
-                                </div>
-                                <!--------------------------------------->
-                                <!----------------CHARISMA--------------->
-                                <div class="card m-1 col">
-                                    <div class="card-header header">
-                                        <h2 class="stat-header">CHA</h2>
-                                    </div>
-                                    <div class="card-body card-content">
-                                        <input class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
-                                    </div>
-                                    <div class="card-footer">
-                                        <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
-                                    </div>
-                                </div>
-                                <!--------------------------------------->
+                                
+                                @foreach (var item in Model.Stats)
+                                {
+                                        <!----------------STRENGTH--------------->
+                                        <div class="card m-1 col">
+                                            <div class="card-header header">
+                                                <h2 class="stat-header">@item.Name</h2>
+                                                <input hidden asp-for="CharacterStatIds" class="form-control" value="@item.Id">
+                                            </div>
+                                            <div class="card-body card-content">
+                                                <input asp-for="CharacterStatValues" class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="" 
+                                                               value="@item.Value"/>
+                                            </div>
+                                            <div class="card-footer">
+                                                <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
+                                            </div>
+                                        </div>
+                                        <!--------------------------------------->
+                                }
+                            
                             </div>
                         </div>
 

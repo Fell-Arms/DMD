@@ -30,7 +30,7 @@ namespace DMD.UI.Controllers
 
                 //-------------Load lists for display menus-----------\\
 
-                accountViewModel.myCharacters = CharacterManager.Load().Result;
+                accountViewModel.userCharacters = CharacterManager.LoadByUserId(user.Id).Result;
                 //accountViewModel.myMaps = MapManager.Load().Result;
 
                 return View(accountViewModel);

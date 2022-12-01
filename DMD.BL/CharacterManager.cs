@@ -151,12 +151,16 @@ namespace DMD.BL
                             character.CharacterClasses = new List<CharacterClass>();
                             foreach (tblCharacterClass cc in c.tblCharacterClasses.ToList())
                             {
+                                tblClass classRow = dc.tblClasses.Where(c => c.Id == cc.Class_Id).First();
+
                                 CharacterClass characterClass = new CharacterClass
                                 {
+
                                     Id = cc.Id,
                                     Class_Id = cc.Class_Id,
                                     Character_Id = cc.Character_Id,
-                                    Class_Level = cc.Class_Level
+                                    Class_Level = cc.Class_Level,
+                                    Name = classRow.Name,
                                 };
                                 character.CharacterClasses.Add(characterClass);
                             }
@@ -379,12 +383,15 @@ namespace DMD.BL
                             character.CharacterClasses = new List<CharacterClass>();
                             foreach (tblCharacterClass cc in c.tblCharacterClasses.ToList())
                             {
+                                tblClass classRow = dc.tblClasses.Where(c => c.Id == cc.Class_Id).First();
+
                                 CharacterClass characterClass = new CharacterClass
                                 {
                                     Id = cc.Id,
                                     Class_Id = cc.Class_Id,
                                     Character_Id = cc.Character_Id,
-                                    Class_Level = cc.Class_Level
+                                    Class_Level = cc.Class_Level,
+                                    Name = classRow.Name
                                 };
                                 character.CharacterClasses.Add(characterClass);
                             }
@@ -572,12 +579,15 @@ namespace DMD.BL
                             character.CharacterClasses = new();
                             foreach (tblCharacterClass tcc in tblCharacter.tblCharacterClasses.ToList())
                             {
+                                tblClass classRow = dc.tblClasses.Where(c => c.Id == cc.Class_Id).First();
+
                                 CharacterClass cc = new()
                                 {
                                     Id = tcc.Id,
                                     Character_Id = tcc.Character_Id,
                                     Class_Id = tcc.Class_Id,
-                                    Class_Level = tcc.Class_Level
+                                    Class_Level = tcc.Class_Level,
+                                    Name = classRow.Name,
                                 };
                                 character.CharacterClasses.Add(cc);
                             }

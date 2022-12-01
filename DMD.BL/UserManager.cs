@@ -243,6 +243,7 @@ namespace DMD.BL
                                     // Back fill all the user data, if logged in succedes
                                     user.FirstName = tblUser.FirstName;
                                     user.LastName = tblUser.LastName;
+                                    user.Email = tblUser.Email;
                                     user.Id = tblUser.Id;
                                     return true;
                                 }

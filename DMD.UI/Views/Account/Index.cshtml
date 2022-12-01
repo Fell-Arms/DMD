@@ -95,10 +95,7 @@
                         <!--User Profile Image-->
                         <img src="~/img/DefaultUser.png" style="width:100%" alt="Avatar">
                         <div class="w3-display-bottomleft w3-container w3-text-black">
-                            @{
-                                var fullname = @HttpContextAccessor.HttpContext?.Session.GetString("fullname");
-                            }
-                            <h3>@fullname</h3>
+                            <h3>@Model.User.UserName</h3>
                         </div>
                     </div>
                     <div class="w3-container container top-push">
@@ -171,12 +168,13 @@
                                 @foreach (var item in Model.myCharacters)
                                 {
                                     <div class="row">
-                                    <div class="card m-2 col">
+                                    <div class="card m-2 col-md-6">
                                         <div class="card-header">
-                                            @item.FirstName
+                                            @item.FirstName @item.LastName
                                         </div>
                                         <div class="card-body">
-                                            @item.ImagePath
+                                            <img src="~/img/GameAssets/HumanRangerPlayer.png" height="200px" width="200px"/>
+                                            @*@item.ImagePath*@
                                         </div>
                                         <div class="card-footer">
                                             @item.CharacterLevelId
@@ -362,11 +360,10 @@
                             <!--GENERAL-->
                             <div class="card m-3">
                                 <div class="card-body">
-                                    <h5 class="row m-3 w3-opacity"><b>Username: OgreSlayer34</b></h5>
-                                    <h5 class="row m-3 w3-opacity"><b>Email:"Billybob.Hates.Ogres@gmail.com"</b></h5>
-                                    <h5 class="row m-3 w3-opacity"><b>First Name: Johnny</b></h5>
-                                    <h5 class="row m-3 w3-opacity"><b>Last Name: Billybob</b></h5>
-                                    <h5 class="row m-3 w3-opacity"><b>Join Date: 10/10/2022</b></h5>
+                                    <h5 class="row m-3 w3-opacity"><b>Username: @Model.User.UserName</b></h5>
+                                    <h5 class="row m-3 w3-opacity"><b>Email: @Model.User.Email</b></h5>
+                                    <h5 class="row m-3 w3-opacity"><b>First Name: @Model.User.FirstName</b></h5>
+                                    <h5 class="row m-3 w3-opacity"><b>Last Name: @Model.User.LastName</b></h5>
                                     <a class="row justify-content-center m-4 btn btn-custom btn-pop-toggle" asp-area="" asp-controller="Account" asp-action="Edit">Edit Account Info</a>
                                 </div> 
                             </div>

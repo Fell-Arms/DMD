@@ -579,7 +579,7 @@ namespace DMD.BL
                             character.CharacterClasses = new();
                             foreach (tblCharacterClass tcc in tblCharacter.tblCharacterClasses.ToList())
                             {
-                                tblClass classRow = dc.tblClasses.Where(c => c.Id == cc.Class_Id).First();
+                                tblClass classRow = dc.tblClasses.Where(c => c.Id == tcc.Class_Id).First();
 
                                 CharacterClass cc = new()
                                 {

@@ -28,7 +28,8 @@
 </head>
 
 <script>
-       
+        //var selectedCharacter = Model.currentUserCharacter;
+
         var currentZoom = 1.0;
 
         function zoomOut() {
@@ -107,6 +108,21 @@
               minWidth: 200
             });
 
+            //var charIndex;
+
+            //$( ".characterSelect" ).change(function() {
+                
+            //    alert("Checking for Input, Update the Character Form");
+            //    alert($(".characterSelect")[0].selectedIndex);
+
+            //    charIndex = $(".characterSelect")[0].selectedIndex;
+
+            //    if(charIndex >= 0)
+            //    {
+            //        alert(charArr[charIndex]);
+            //    }
+
+            //});
         });
             
             let x;
@@ -148,42 +164,6 @@
 
                 document.getElementById("diceLabel").innerHTML = x;
             }
-            //document.getElementById("roll4").onclick = function () {
-
-            //    x = Math.floor(Math.random() * 4) + 1;
-
-            //    document.getElementById("xlabel").innerHTML = x;
-            //}
-            //document.getElementById("roll6").onclick = function () {
-
-            //    x = Math.floor(Math.random() * 6) + 1;
-
-            //    document.getElementById("ylabel").innerHTML = x;
-            //}
-            //document.getElementById("roll8").onclick = function () {
-
-            //    x = Math.floor(Math.random() * 8) + 1;
-
-            //    document.getElementById("zlabel").innerHTML = x;
-            //}
-            //document.getElementById("roll10").onclick = function () {
-
-            //    x = Math.floor(Math.random() * 10) + 1;
-
-            //    document.getElementById("ilabel").innerHTML = x;
-            //}
-            //document.getElementById("roll12").onclick = function () {
-
-            //    x = Math.floor(Math.random() * 12) + 1;
-
-            //    document.getElementById("jlabel").innerHTML = x;
-            //}
-            //document.getElementById("roll20").onclick = function () {
-
-            //    x = Math.floor(Math.random() * 20) + 1;
-
-            //    document.getElementById("klabel").innerHTML = x;
-            //}
             
     </script>
     
@@ -304,21 +284,30 @@
             <button class="btnClose" onclick="toggleCharSheet()">X</button>
             <h2>Select the character you wish to play as. </h2>
 
-            <select asp-for="SelectedCharacterId">
-            @foreach (var item in Model.allUserCharacters)
-                {
-                    <option>
-                    @item.FirstName @item.LastName
-                     | 
-                    Level @item.CharacterLevelId
-                     | 
-                    @foreach (var thing in item.CharacterClasses)
+            <form asp-action="SelectCharacter">
+               
+            <select asp-for="SelectedCharacterId" class="form-select form-control col m-1" asp-items="@(new SelectList(Model.allUserCharacters,"Id","FirstName"))"><option selected disabled hidden>Select a Character</option></select>
+            @* 
+            <select class="characterSelect" asp-for="SelectedCharacterId">
+                @foreach (var item in Model.allUserCharacters)
                     {
-                        <p>Level @thing.Class_Level @thing.Name</p>
+                        <option onclick="checkNewSelection()">
+                        @item.FirstName @item.LastName
+                         | 
+                        Level @item.CharacterLevelId
+                         | 
+                        @foreach (var thing in item.CharacterClasses)
+                        {
+                            <p>Level @thing.Class_Level @thing.Name</p>
+                        }
+                        </option>
                     }
-                    </option>
-                }
-            </select>
+                </select>
+                *@
+                <div class="form-group mt-2 custom-center">
+                    <input type="submit" value="Create" class="custom-button m-3" />
+                </div>
+            </form>
 
             <div id="charForm">
 

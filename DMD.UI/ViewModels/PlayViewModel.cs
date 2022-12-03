@@ -15,11 +15,13 @@ namespace DMD.UI.ViewModels
 
         public Character currentUserCharacter { get; set; }
         public List<Character> allUserCharacters { get; set; } // List all the CHARACTERS.
+        public Guid SelectedCharacterId { get; set; } //
+        public bool isSelected { get; set; }
+
+
+
         public User User { get; set; } //Uses entire user model
         public List<Map> myMaps { get; set; } // List all the MAPS
-
-        public Guid SelectedCharacterId { get; set; } //
-
 
         //-------------FOR STATS LOADING AND UPDATES ------------------------
         public List<Stat> CharacterStats { get; set; }               //Lists all the STATS to choose from

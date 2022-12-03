@@ -11,6 +11,16 @@ namespace DMD.UI.Controllers
 {
     public class PlayController : Controller
     {
+        public void SetIsSelected(PlayViewModel playViewModel)
+        {
+            HttpContext.Session.SetObject("isSelected", playViewModel.isSelected);
+        }
+
+        public void SetSelectedId(PlayViewModel playViewModel)
+        {
+            HttpContext.Session.SetObject("SelectedCharacterId", playViewModel.SelectedCharacterId);
+        }
+
         // GET: PlayController
         public ActionResult Index(string returnUrl)
         {
@@ -19,13 +29,25 @@ namespace DMD.UI.Controllers
             {
                 TempData["returnurl"] = returnUrl;
                 User user = HttpContext.Session.GetObject<User>("user");
+                bool isSelected = HttpContext.Session.GetObject<bool>("isSelected");
+                Guid selectedCharacterId = HttpContext.Session.GetObject<Guid>("SelectedCharacterId");
 
                 PlayViewModel playViewModel = new PlayViewModel();
                 playViewModel.User = user;
 
                 playViewModel.allUserCharacters = CharacterManager.LoadByUserId(user.Id).Result;
 
-                playViewModel.currentUserCharacter = CharacterManager.LoadByUserId(user.Id).Result.FirstOrDefault();
+                if (isSelected == true)
+                {
+                    playViewModel.currentUserCharacter = CharacterManager.LoadById(selectedCharacterId).Result;
+                }
+                else
+                {
+                    playViewModel.currentUserCharacter = CharacterManager.LoadByUserId(user.Id).Result.FirstOrDefault();
+                }
+
+
+                //}
 
                 playViewModel.Stats = StatManager.Load().Result;
 
@@ -41,6 +63,25 @@ namespace DMD.UI.Controllers
                 return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
             }
         }
+
+        // POST: PlayController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SelectCharacter(PlayViewModel playViewModel)
+        {
+            try
+            {
+                playViewModel.isSelected = true;
+                SetIsSelected(playViewModel);
+                SetSelectedId(playViewModel);
+                return RedirectToAction("Index", "Play");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
 
         // GET: PlayController/Details/5
         public ActionResult Details(int id)

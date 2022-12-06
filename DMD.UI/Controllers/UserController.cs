@@ -47,7 +47,8 @@ namespace DMD.UI.Controllers
                 }
                 else
                 {
-                    return View();
+                    //May change later to a landing page
+                    return RedirectToAction("Index", "Home");
                 }
             }
             catch (Exception ex)
@@ -86,6 +87,7 @@ namespace DMD.UI.Controllers
             try
             {
                 UserManager.Insert(user);
+                Login(user);
                 if (TempData["returnurl"] != null)
                 {
                     var returnurl = TempData["returnurl"];
@@ -94,7 +96,8 @@ namespace DMD.UI.Controllers
                 }
                 else
                 {
-                    return View();
+                    //May change later to a landing page
+                    return RedirectToAction("Index", "Home");
                 }
             }
             catch

@@ -48,7 +48,7 @@ namespace DMD.UI.Controllers
 
 
                 //}
-
+                playViewModel.allMaps = MapsManager.Load().Result;
                 playViewModel.Stats = StatManager.Load().Result;
                 playViewModel.currentCharRace = RacesManager.LoadById(playViewModel.currentUserCharacter.RaceId);
 

@@ -24,7 +24,7 @@ namespace DMD.UI.ViewModels
 
 
         //FOR DISPLAYS
-        public List<Map> myMaps { get; set; } // List all the MAPS
+        public List<Map> allMaps { get; set; } // List all the MAPS
         public Race currentCharRace { get; set; } // gets the CURRENT CHARACTER RACE
 
 

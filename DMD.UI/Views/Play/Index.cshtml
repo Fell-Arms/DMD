@@ -282,33 +282,42 @@
         <!-----------------------CHARACTER SHEET ------------------------>
         <div id="charSheet">
             <button class="btnClose" onclick="toggleCharSheet()">X</button>
-            <label>Select the character you wish to play as. </label>
 
-            <form asp-action="SelectCharacter">
-               
-            <select asp-for="SelectedCharacterId" class="form-select form-control col m-1" asp-items="@(new SelectList(Model.allUserCharacters,"Id","FirstName"))"><option selected disabled hidden>@Model.currentUserCharacter.FirstName</option></select>
-            @*
-            <select class="characterSelect" asp-for="SelectedCharacterId">
-                @foreach (var item in Model.allUserCharacters)
-                    {
-                        <option hidden selected disabled>@Model.currentUserCharacter.FirstName | @Model.currentUserCharacter.LastName | Level @Model.currentUserCharacter.CharacterLevelId</option>
-                        <option>
-                        @item.FirstName @item.LastName
-                         | 
-                        Level @item.CharacterLevelId
-                         | 
-                        @foreach (var thing in item.CharacterClasses)
-                        {
-                            <p>Level @thing.Class_Level @thing.Name</p>
-                        }
-                        </option>
-                    }
-                </select>
-                *@
-                <div class="form-group mt-2 custom-center justify-content-center">
-                    <input type="submit" value="Change Character" class="custom-button m-3" />
+            <div class="card m-3">
+                <div class="card-header">
+                    <h2 class="h5 m-2">Select the character you wish to play as. </h2>
+                    <em class="m-2 text-danger">*Note: The page will reload after your selection.</em>
                 </div>
-            </form>
+
+                <div class="card-body">
+                    <form asp-action="SelectCharacter">
+                        <div class="row justify-content-center">
+                        <select asp-for="SelectedCharacterId" class="form-select form-control col m-2" asp-items="@(new SelectList(Model.allUserCharacters,"Id","FirstName"))"><option selected disabled hidden>@Model.currentUserCharacter.FirstName</option></select>
+                            <div class="form-group justify-content-center mt-2 col m-2">
+                                <input type="submit" value="Change Character" class="custom-button m-3" />
+                            </div>
+                        </div>
+                    @*
+                    <select class="characterSelect" asp-for="SelectedCharacterId">
+                        @foreach (var item in Model.allUserCharacters)
+                            {
+                                <option hidden selected disabled>@Model.currentUserCharacter.FirstName | @Model.currentUserCharacter.LastName | Level @Model.currentUserCharacter.CharacterLevelId</option>
+                                <option>
+                                @item.FirstName @item.LastName
+                                 | 
+                                Level @item.CharacterLevelId
+                                 | 
+                                @foreach (var thing in item.CharacterClasses)
+                                {
+                                    <p>Level @thing.Class_Level @thing.Name</p>
+                                }
+                                </option>
+                            }
+                        </select>
+                        *@
+                    </form>
+                </div>
+            </div>
 
             <div id="charForm">
 
@@ -1053,7 +1062,21 @@
         <div id="MapsGallery">
             <button class="btnClose" type="button" onclick="toggleMapsGallery()">X</button>
 
-            <p> This box will contain a bunch of map images to choose from</p>
+            <h3 class="m-4">Maps</h3>
+
+            @foreach (var item in Model.allMaps)
+            {
+                <div class="row m-2 justify-content-center" width="350px">
+                    <div class="card col m-2 justify-content-center">
+                        <div class="card-header">
+                            @item.Type
+                        </div>
+                        <div class=card-body>
+                        <img src="~/img/GameAssets/@item.ImagePath" height="200px" width="300px"></img>
+                        </div>
+                    </div>
+                </div>
+            }
 
         </div>
         <!---------------------->

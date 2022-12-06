@@ -50,6 +50,7 @@ namespace DMD.UI.Controllers
                 //}
 
                 playViewModel.Stats = StatManager.Load().Result;
+                playViewModel.currentCharRace = RacesManager.LoadById(playViewModel.currentUserCharacter.RaceId);
 
                 //-------------Load lists for display menus-----------\\
 

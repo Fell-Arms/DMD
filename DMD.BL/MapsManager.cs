@@ -4,31 +4,31 @@ using DMD.PL;
 namespace DMD.BL
 {
 
-    public static class RacesManager
+    public static class MapsManager
     {
-        //public async static Task<List<Race>> Load()
+        //public async static Task<List<Map>> Load()
         //{
         //    try
         //    {
-        //        List<Race> races = new List<Race>();
+        //        List<Map> maps = new List<Map>();
         //        await Task.Run(() =>
         //        {
         //            using (DMDEntities ra = new DMDEntities())
         //            {
-        //                foreach (tblRace r in ra.tblRaces.ToList())
+        //                foreach (tblMap r in ra.tblMaps.ToList())
         //                {
-        //                    Race race = new Race
+        //                    Map map = new Map
         //                    {
         //                        Id = r.Id,
         //                        Name = r.Name,
         //                        Description = r.Description,
         //                    };
 
-        //                    races.Add(race);
+        //                    maps.Add(map);
         //                }
         //            }
         //        });
-        //        return races;
+        //        return maps;
         //    }
 
         //    catch (Exception)
@@ -39,26 +39,26 @@ namespace DMD.BL
 
         //}
 
-        public async static Task<List<Race>> Load()
+        public async static Task<List<Map>> Load()
         {
             try
             {
-                List<Race> races = new List<Race>();
+                List<Map> maps = new List<Map>();
                 await Task.Run(() =>
                 {
                     using (DMDEntities dc = new DMDEntities())
                     {
-                        dc.tblRaces
+                        dc.tblMaps
                             .ToList()
-                            .ForEach(r => races.Add(new Race()
+                            .ForEach(m => maps.Add(new Map()
                             {
-                                Id = r.Id,
-                                Name = r.Name,
-                                Description = r.Description
+                                Id = m.Id,
+                                Type = m.Type,
+                                ImagePath = m.ImagePath
                             }));
                     }
                 });
-                return races;
+                return maps;
             }
 
             catch (Exception)
@@ -70,21 +70,21 @@ namespace DMD.BL
         }
 
 
-        public static Race LoadById(Guid id)
+        public static Map LoadById(Guid id)
         {
             try
             {
                 using (DMDEntities dc = new DMDEntities())
                 {
-                    tblRace row = dc.tblRaces.FirstOrDefault(r => r.Id == id);
+                    tblMap row = dc.tblMaps.FirstOrDefault(m => m.Id == id);
 
                     if (row != null)
                     {
-                        return new Race
+                        return new Map
                         {
                             Id = row.Id,
-                            Name = row.Name,
-                            Description = row.Description
+                            Type = row.Type,
+                            ImagePath = row.ImagePath
 
                         };
                     }
@@ -104,4 +104,5 @@ namespace DMD.BL
         }
     }
 }
+
 

@@ -32,6 +32,27 @@
         }
     </style>
 
+    <script>
+
+        $(function(){
+            //Sets Submit Button as disabled on page load
+            $('.btnSubmit').prop('disabled',true);
+
+            //Runs everytime a required field is changed
+            $(".requiredField").change(function(){
+
+                //Ensure required fields are not empty - ERRORS FIX LATER
+                $('.requiredField').each(function() {
+
+                    if ($(this).val().length != 0)
+                        $('.btnSubmit').prop('disabled', false);            
+                    else
+                        $('.btnSubmit').prop('disabled',true);
+                });
+            })
+        });
+    </script>
+
 <form asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -50,13 +71,13 @@
             <div class="card col-8">
                 <div class="card-body card-content align-middle">
                     <div class="row justify-content-around section1">
-                        <input asp-for="Character.FirstName" class="col m-1 form-control" type="text" placeholder="First Name">
-                        <input asp-for="Character.LastName" class="col m-1 form-control" type="text" placeholder="Last Name">
+                        <input asp-for="Character.FirstName" class="col m-1 form-control requiredField" type="text" placeholder="First Name">
+                            <input asp-for="Character.LastName" class="col m-1 form-control requiredField" type="text" placeholder="Last Name">
                     </div>
                     <div class="row justify-content-around section1">
                         <select asp-for="ClassId" class="form-select form-control col m-1" asp-items="@(new SelectList(Model.Classes,"Id","Name"))"><option selected disabled hidden>Class</option></select>
-                        <input asp-for="Character.CharacterLevelId" class="col m-1 form-control" type="number" placeholder="Level">
-                        <input disabled class="col m-1 form-control" type="number" placeholder="Experience">
+                        <input asp-for="Character.CharacterLevelId" class="col m-1 form-control requiredField" type="number" placeholder="Level">
+                            <input disabled class="col m-1 form-control requiredField" type="number" placeholder="Experience">
                     </div>
                 </div>
             </div>
@@ -95,7 +116,7 @@
                                     <input hidden asp-for="CharacterStatIds" class="form-control" value="@item.Id">
                                 </div>
                                 <div class="card-body card-content">
-                                    <input asp-for="CharacterStatValues" class="w-100 form-control form-control-lg stat-modifier" type="number" placeholder="">
+                                        <input asp-for="CharacterStatValues" class="w-100 form-control form-control-lg stat-modifier requiredField" type="number" placeholder="">
                                 </div>
                                 <div class="card-footer">
                                     <input disabled class="w-100 form-control form-control-sm base-stat" type="number" placeholder="">
@@ -547,7 +568,7 @@
                                                 <div class="input-group-prepend w-75">
                                                     <div class="input-group-text char-check-text">Max Hit Points</div>
                                                 </div>
-                                                <input asp-for="Character.MaxHitpoints" class="w-25 form-control form-control-sm" type="number" placeholder="0">
+                                                    <input asp-for="Character.MaxHitpoints" class="w-25 form-control form-control-sm requiredField" type="number" placeholder="0">
                                             </div>
                                             <textarea disabled class="form-control" id="txtCurrentHitPoints" rows="3"></textarea>
                                         </div>
@@ -664,10 +685,10 @@
 
                                                 <div class="header">
                                                     <h2 class="stat-header">@item.Name</h2>
-                                                    <input hidden asp-for="CharacterCurrencyIds" class="form-control" value="@item.Id">
+                                                        <input hidden asp-for="CharacterCurrencyIds" class="form-control" value="@item.Id">
                                                 </div>
                                                 @*<div class="card-body card-content">*@
-                                                    <input asp-for="CharacterCurrencyAmounts" class="w-100 form-control" type="number" placeholder="#">
+                                                    <input asp-for="CharacterCurrencyAmounts" class="w-100 form-control requiredField" type="number" placeholder="#">
                                                 @*</div>*@
 
                                                 <!--------------------------------------->
@@ -685,14 +706,14 @@
                                         @*<select asp-for="SelectedWeaponIds" class="form-control col m-1" asp-items="@(new MultiSelectList(Model.Weapons,"Id","Name"))"><option selected disabled hidden>Weapons</option></select>*@
                                         <select 
                                             asp-for="SelectedArmorIds" 
-                                            class="form-control col m-1" 
+                                            class="form-control col m-1 requiredField" 
                                             multiple 
                                             asp-items="@(new MultiSelectList(Model.Armors, "Id", "Name"))">
                                         </select>
 
                                         <select 
                                             asp-for="SelectedWeaponIds" 
-                                            class="form-control col m-1" 
+                                            class="form-control col m-1 requiredField" 
                                             multiple 
                                             asp-items="@(new MultiSelectList(Model.Weapons, "Id", "Name"))">
                                         </select>
@@ -721,7 +742,7 @@
                             <div class="card-body card-content align-middle">
                                 <div class="row justify-content-around section1">
                                     <input class="col m-1 form-control" type="text" placeholder="Gender">
-                                    <select asp-for="Character.RaceId" class="form-select form-control col m-1" asp-items="@(new SelectList(Model.Races,"Id","Name","Description"))"><option selected disabled hidden>Race</option></select>
+                                        <select asp-for="Character.RaceId" class="form-select form-control col m-1 requiredField" asp-items="@(new SelectList(Model.Races,"Id","Name","Description"))"><option selected disabled hidden>Race</option></select>
                                     <input class="col m-1 form-control" type="text" placeholder="Height">
                                     <input class="col m-1 form-control" type="text" placeholder="Weight">
                                 </div>
@@ -873,7 +894,7 @@
     </div>
     
     <div class="row justify-content-center">
-        <input type="submit" value="Create" class="btn btn-primary custom-big-button col-sm-2 m3" />
+        <input type="submit" value="Create" class="btn btn-primary custom-big-button col-sm-2 m3 btnSubmit" />
     </div>
 </form>
 

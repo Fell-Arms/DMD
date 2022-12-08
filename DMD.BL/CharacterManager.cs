@@ -983,9 +983,9 @@ namespace DMD.BL
                 });
                 return results;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 

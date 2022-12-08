@@ -101,17 +101,11 @@ namespace DMD.UI.Controllers
             {
                 User user = HttpContext.Session.GetObject<User>("user");
 
-                //characterViewModel.Character.RaceId = characterViewModel.Race.Id;
-                //characterViewModel.Character.CharacterLevel = 1;
                 characterViewModel.Character.UserId = user.Id;
 
                 _ = CharacterManager.Insert(characterViewModel.Character).Result;
                 Guid characterId = characterViewModel.Character.Id;
 
-                //foreach(var stat in characterViewModel.CharacterStats)
-                //{
-                //    CharacterStatsManager.Insert(characterId, stat.Id, stat.Value);
-                //}
 
                 _ = CharacterClassesManager.Insert(characterId, characterViewModel.ClassId, characterViewModel.Character.CharacterLevelId);
 
@@ -162,19 +156,12 @@ namespace DMD.UI.Controllers
 
                 return RedirectToAction("CharacterAdded", "Character");
 
-                /*
-                 *  StudentManager.Insert(studentAdvisors.Student);
-                    int id = studentAdvisors.Student.Id;
-
-                    // Convey changes to the database
-                    studentAdvisors.AdvisorIds.ToList().ForEach(a => StudentAdvisorManager.Insert(id, a));
-                 * 
-                 * 
-                 */
+                
             }
-            catch
+            catch (Exception ex)
             {
-                return View(characterViewModel);
+                ViewBag.Error = ex.Message;
+                return View();
             }
         }
 

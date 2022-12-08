@@ -366,12 +366,12 @@
                         <div class="section1">
                             <div class="row m-3 justify-content-lg-around">
                                 
-                                @foreach (var item in Model.Stats)
+                                @foreach (var item in Model.currentUserCharacter.CharacterStats)
                                 {
                                         <!----------------STRENGTH--------------->
                                         <div class="card m-1 col">
                                             <div class="card-header header">
-                                                <h2 class="stat-header">@item.Name</h2>
+                                                <h2 class="stat-header">@*@item.Name*@</h2>
                                                 <input hidden asp-for="CharacterStatIds" class="form-control" value="@item.Id">
                                             </div>
                                             <div class="card-body card-content">

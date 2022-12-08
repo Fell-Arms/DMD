@@ -12,5 +12,6 @@ namespace DMD.BL.Models
         public Guid Character_Id { get; set; }
         public Guid Stat_Id { get; set; }
         public int Value { get; set; }
+        public string Name { get; set; }
     }
 }

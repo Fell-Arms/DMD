@@ -188,7 +188,8 @@ namespace DMD.BL
                                     Id = cs.Id,
                                     Character_Id = cs.Character_Id,
                                     Stat_Id = cs.Stats_Id,
-                                    Value = cs.Value
+                                    Value = cs.Value,
+                                    Name = cs.Stats.Name
                                 };
                                 character.CharacterStats.Add(characterStat);
                             }
@@ -419,7 +420,8 @@ namespace DMD.BL
                                     Id = cs.Id,
                                     Character_Id = cs.Character_Id,
                                     Stat_Id = cs.Stats_Id,
-                                    Value = cs.Value
+                                    Value = cs.Value,
+                                    Name = cs.Stats.Name
                                 };
                                 character.CharacterStats.Add(characterStat);
                             }
@@ -613,7 +615,8 @@ namespace DMD.BL
                                     Id = tcs.Id,
                                     Character_Id = tcs.Character_Id,
                                     Stat_Id = tcs.Stats_Id,
-                                    Value = tcs.Value
+                                    Value = tcs.Value,
+                                    Name = tcs.Stats.Name
                                 };
                                 character.CharacterStats.Add(characterStat);
                             }

@@ -9,4 +9,4 @@ Scaffold-DbContext "Server=(localdb)\MSSQLLocalDb;Database=DMD.DB;Integrated Sec
 
 
 remote server:
-optionsBuilder.UseSqlServer("Data Source=dmdadmindb.database.windows.net;Initial Catalog=dmddb;User ID=dmdadmindb;Password=Test123!;Connect Timeout = 30;Encrypt = True; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+optionsBuilder.UseSqlServer("Data Source=dmdadmindb.database.windows.net;Initial Catalog=dmddb;User ID=lozierdb;Password=Test123!;Connect Timeout = 30;Encrypt = True; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");

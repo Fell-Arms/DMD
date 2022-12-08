@@ -4,25 +4,83 @@
 <style>
     body {
         background-color:black;
-        color:azure;
-        
+        color:azure;     
     }
     img{
        
     }
+</style>
+    
+<style>
+    .background-image {
+        width: 100vw;
+        height: 900px;
+        background-image: url('../../img/LandingBackgroundPic.jpg');
+        background-size: cover;
+    }
 
+    .custom-link {
+        font-weight: 500;
+    }
 
+        .custom-link:hover {
+            color: #FF3366;
+            font-weight: 500;
+        }
+
+    .custom-background {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.6);
+        top: 100px;
+    }
+
+    .custom-big-button {
+        text-decoration: none;
+        background-color: white;
+        color: black;
+        padding: 14px 28px 14px 28px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+        .custom-big-button:hover {
+            background-color: #FF3366;
+            color: white;
+            transition: .3s;
+        }
+
+        .custom-big-button:visited {
+            text-decoration: none;
+        }
+
+    .custom-margin {
+        padding-top: 12vh;
+        margin: 0;
+    }
 </style>
 
-<body>
-<div class="text-center">
-    <h1 class="display-4">Welcome Adventurer!</h1>
-    <br />
-    <p>
-        Your journey into the great unkown begins today!  Slay beasts with a mighty sword, cast a fire ball and loot treasure in your own fantasy world!
-        Dungeon Master Developers is proud to present the ultimate role playing adventure online for you and your friends!
-    </p>
-        <img src="~/img/supersynth.jpg" alt="Moon" width="1000" height="500">
-</div>
 
+<body>
+    <div class="background-image">
+        <div class="row justify-content-center align-content-center">
+            <div class="card col-5 custom-background">
+                <div class="text-center">
+                    <h1 class="display-5 text-light custom-margin">Character Successfully Added</h1>
+                    <br />
+
+                    <div class="row justify-content-center">
+                        <p class="text-light m-5">
+                            Your new character has been created.<br /> To view all your characters see your account page.
+                        </p>
+                    </div>
+                    <div class="row justify-content-around">
+                        <a class="custom-big-button m-3 col-sm-4" asp-controller="Account" asp-action="Index">My Account</a>
+                        <a class="custom-big-button m-3 col-sm-4" asp-controller="Play" asp-action="Index">Play</a>
+                        <a class="custom-big-button m-3 col-sm-4" asp-controller="Character" asp-action="Create">New Character</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>

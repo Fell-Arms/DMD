@@ -47,8 +47,8 @@ namespace DMD.UI.Controllers
                 }
                 else
                 {
-                    //May change later to a landing page
-                    return RedirectToAction("Index", "Home");
+                    
+                    return RedirectToAction("Index", "Landing");
                 }
             }
             catch (Exception ex)
@@ -96,8 +96,7 @@ namespace DMD.UI.Controllers
                 }
                 else
                 {
-                    //May change later to a landing page
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Landing");
                 }
             }
             catch

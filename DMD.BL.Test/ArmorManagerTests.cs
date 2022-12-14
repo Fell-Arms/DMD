@@ -24,7 +24,7 @@ namespace DMD.BL.Test
         }
 
 
-
+        /*
         [TestMethod]
         public async Task InsertTest()
         {

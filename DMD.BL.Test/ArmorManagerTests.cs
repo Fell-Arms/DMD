@@ -24,9 +24,7 @@ namespace DMD.BL.Test
         }
 
 
-        /* CREATE A INSERT METHOD IN THE ARMOR MANAGER.
-        //COMMENT OUT
-        //This test method is used to test inserting data into ArmorManager and into the Armor Table
+
         [TestMethod]
         public async Task InsertTest()
         {
